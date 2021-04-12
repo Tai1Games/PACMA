@@ -2,61 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Utility;
-
-/*      Ejemplo para crear postes. Se que se podria hacer mejor lo de los vectores pero estamos aqui para mermedalear.
- 
-        //POSTE DE TAMAÑO 1
-
-        Poste poste = Instantiate(vecPostes[0]).GetComponent<Poste>();
-        List<Direccion> direcciones = new List<Direccion>();
-
-        Direccion dir;
-        dir.sentido = Sentido.Derecha;
-        dir.destino = 0;
-
-        direcciones.Add(dir);
-
-        poste.Init(new Vector3(0, 0, 10), direcciones);
-
-        //POSTE DE TAMAÑO 2
-        poste = Instantiate(vecPostes[1]).GetComponent<Poste>();
-        direcciones = new List<Direccion>();
-
-        dir.sentido = Sentido.Derecha;
-        dir.destino = 0;
-
-        direcciones.Add(dir);
-
-        dir.sentido = Sentido.Izquierda;
-        dir.destino = 0;
-
-        direcciones.Add(dir);
-
-        poste.Init(new Vector3(0, 0, 20), direcciones);
-
-        //POSTE DE TAMAÑO 3
-        poste = Instantiate(vecPostes[2]).GetComponent<Poste>();
-        direcciones = new List<Direccion>();
-
-        dir.sentido = Sentido.Derecha;
-        dir.destino = 0;
-
-        direcciones.Add(dir);
-
-        dir.sentido = Sentido.Derecha;
-        dir.destino = 0;
-
-        direcciones.Add(dir);
-
-        dir.sentido = Sentido.Derecha;
-        dir.destino = 0;
-
-        direcciones.Add(dir);
-
-        poste.Init(new Vector3(0, 0, 30), direcciones);
-*/
-
-
 public class Poste : MonoBehaviour
 {
     public Transform padreCarteles;
