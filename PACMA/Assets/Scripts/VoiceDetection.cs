@@ -6,8 +6,7 @@ using UnityEngine.Windows.Speech;
 public class VoiceDetection : MonoBehaviour
 {
 
-    [SerializeField]
-    private string[] m_Keywords = new string[] { "izquierda", "derecha" };
+    public string[] m_Keywords = new string[] { "izquierda", "derecha" };
 
     private KeywordRecognizer m_Recognizer;
 
