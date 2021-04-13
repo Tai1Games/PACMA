@@ -2,16 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class SetSignImg : MonoBehaviour
 {
-    private RawImage img;
+    [System.Serializable]
+    public struct Sign
+    {
+        public float weight;
+        public Texture image;
+    }
+
     [SerializeField]
-    private Texture[] imagenes;
+    public Sign[] signs;
+    private RawImage img;
+
+    enum DirHospital { Left, Right, Front };
     
     void Start()
     {
         img = GetComponent<RawImage>();
+    }
+
+    private void Awake()
+    {
+
     }
 
     // Update is called once per frame

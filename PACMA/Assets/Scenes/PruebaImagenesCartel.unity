@@ -372,10 +372,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 382536281433184390, guid: fbdc17843fcffb64ba2c8a4a7f60a3ef, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 453506604}
     - target: {fileID: 4963752049314624248, guid: fbdc17843fcffb64ba2c8a4a7f60a3ef, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -426,20 +422,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbdc17843fcffb64ba2c8a4a7f60a3ef, type: 3}
---- !u!1 &5598479320917198683 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2164616828689266409, guid: fbdc17843fcffb64ba2c8a4a7f60a3ef, type: 3}
-  m_PrefabInstance: {fileID: 5598479320917198682}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5598479320917198684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5598479320917198683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18ee3eac800898f4e926e015d7cee670, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
