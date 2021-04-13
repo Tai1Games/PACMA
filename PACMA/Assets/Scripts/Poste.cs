@@ -10,6 +10,9 @@ public class Poste : MonoBehaviour
     public GameObject cartelDirecciones;
     public GameObject cartelSeguirRecto;
 
+    public float posteRotVal = 8;
+    public float cartelRotVal = 15;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,8 +25,14 @@ public class Poste : MonoBehaviour
         
     }
 
-    public void Init(Vector3 pos, List<Utility.Direccion> direcciones)
+    public void Init(Vector3 pos, List<Utility.Direccion> direcciones, int posteTipo)
     {
+        if (posteTipo != 3) //Yeah I know
+        {
+            transform.Rotate(new Vector3(1, 0, 0), Random.Range(-posteRotVal, posteRotVal));
+            transform.Rotate(new Vector3(0, 0, 1), Random.Range(-posteRotVal, posteRotVal));
+        } 
+
         foreach (Transform hijo in padreCarteles)
         {
             carteles.Add(hijo.gameObject);
@@ -54,8 +63,9 @@ public class Poste : MonoBehaviour
             float scaleVar = Random.Range(1.0f, 1.2f);
             cartelActual.transform.localScale *= scaleVar;
 
-            float rotVar = Random.Range(-20, 20);
-            cartelActual.transform.Rotate(new Vector3(0, 1, 0), rotVar);
+            float rotVar = Random.Range(-cartelRotVal, cartelRotVal);
+            if(direcciones[k].sentido != Sentido.Recto) cartelActual.transform.Rotate(new Vector3(0, 1, 0), rotVar);
+            else cartelActual.transform.Rotate(new Vector3(1, 0, 0), rotVar);
         }
     }
 }
