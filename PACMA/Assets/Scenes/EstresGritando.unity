@@ -408,8 +408,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   micLoudness: 0
   stress: {fileID: 314851804}
-  volToRecoverStress: 0.705
-  stressIncrement: 100
+  volToRecoverStress: 0.6
+  minStressIncrement: 100
+  maxStressIncrement: 150
 --- !u!114 &2106878539
 MonoBehaviour:
   m_ObjectHideFlags: 0

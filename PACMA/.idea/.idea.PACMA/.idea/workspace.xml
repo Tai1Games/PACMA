@@ -56,7 +56,7 @@
       <option name="presentableId" value="Default" />
       <updated>1618305844193</updated>
       <workItem from="1618305857298" duration="748000" />
-      <workItem from="1618306632093" duration="44000" />
+      <workItem from="1618306632093" duration="1444000" />
     </task>
     <servers />
   </component>
@@ -73,13 +73,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/VoiceVolumeDetection.cs</url>
-          <line>66</line>
+          <line>69</line>
           <properties documentPath="C:\Uni\Proyectos\JamOn\PACMA\PACMA\Assets\Scripts\VoiceVolumeDetection.cs" initialLine="66" containingFunctionPresentation="method 'Update'">
             <startOffsets>
-              <option value="1548" />
+              <option value="1652" />
             </startOffsets>
             <endOffsets>
-              <option value="1601" />
+              <option value="1707" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="2" />
