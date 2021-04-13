@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance = null;
 
+    private int record;
+
     public string gameSceneName;
     private void Awake()
     {
@@ -23,13 +25,19 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (PlayerPrefs.HasKey("record")) record = PlayerPrefs.GetInt("record");
+        else record = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public int getRecord()
+    {
+        return record;
     }
 
     public void SendCommand(string command)
@@ -60,5 +68,10 @@ public class GameManager : MonoBehaviour
         {
             yield return null;
         }
+    }
+
+    private void OnDestroy()
+    {
+        PlayerPrefs.SetInt("record", record);
     }
 }
