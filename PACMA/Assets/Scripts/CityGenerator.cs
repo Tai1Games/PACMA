@@ -20,20 +20,13 @@ public class CityGenerator : MonoBehaviour
 
     //Listas para guardar las carreteras que vamos generando
     private List<GameObject> currentCarretera;
-    GameObject inters = null, lastTile = null, tileOpt1 = null, tileOpt2 = null;
+    GameObject inters = null, lastTile = null, tileOpt1 = null, tileOpt2 = null, oldInters = null;
     Vector3 facingVec = new Vector3(0, 0, 1);
     Vector3 origin = Vector3.zero;
 
     GameObject PlaceTile(GameObject tile, Vector3 direccionVec, Vector3 previousTilePos)
     {
         return Instantiate(tile, previousTilePos + tileSize * direccionVec + origin, Quaternion.LookRotation(direccionVec, Vector3.up));
-    }
-    void TurnFacingDir(Sentido dir)
-    {
-        if (dir == Sentido.Derecha)
-            facingVec = Quaternion.AngleAxis(90, Vector3.up) * facingVec;
-        else if (dir == Sentido.Izquierda)
-            facingVec = Quaternion.AngleAxis(-90, Vector3.up) * facingVec;
     }
 
     Vector3 rotaVector(Vector3 vec, Sentido dir)
@@ -61,25 +54,47 @@ public class CityGenerator : MonoBehaviour
         }
         //Coloca una interseccion
         inters = PlaceTile(intersections[Random.Range(0, intersections.Count)], direccionVec, lastTile.transform.position);
-        currentCarretera.Add(inters);
         //Generar una tile mas a cada lado de la interseccion
         tileOpt1 = PlaceTile(straights[Random.Range(0, straights.Count)], rotaVector(direccionVec, Sentido.Izquierda), inters.transform.position);
+
         tileOpt2 = PlaceTile(straights[Random.Range(0, straights.Count)], rotaVector(direccionVec, Sentido.Derecha), inters.transform.position);
+    }
+
+    void cleanCarretera()
+    {
+        foreach(GameObject item in currentCarretera)
+        {
+            Destroy(item);
+        }
+        currentCarretera.Clear();
     }
 
     void initMovement(Sentido dir)
     {
+        Destroy(oldInters);
+        oldInters = inters;
         switch (dir)
         {
             case Sentido.Recto:
                 Debug.Log("Te moristes");
                 break;
-            case Sentido.Derecha:
-
-                break;
             case Sentido.Izquierda:
+                player.transform.Rotate(new Vector3(0, -90));
+                Destroy(tileOpt2);
+                //Clean carretera
+                cleanCarretera();
+                GeneraTramo(player.transform.forward, tileOpt1.transform.position);
                 break;
+            case Sentido.Derecha:
+                player.transform.Rotate(new Vector3(0, 90));
+                Destroy(tileOpt1);
+                //Clean carretera
+                cleanCarretera();
+                GeneraTramo(player.transform.forward, tileOpt2.transform.position);
+                break;
+            
         }
+        playerNextDir = Sentido.Recto;
     }
 
     void Start()
@@ -87,12 +102,6 @@ public class CityGenerator : MonoBehaviour
         currentCarretera = new List<GameObject>();
         facingVec = player.transform.forward;
         GeneraTramo(facingVec, new Vector3(0, 0, 0));
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     private void FixedUpdate()
@@ -105,5 +114,16 @@ public class CityGenerator : MonoBehaviour
     {
         Debug.Log("enteringIntersection");
         initMovement(playerNextDir);
+    }
+
+    public void playerTurn(string direction)
+    {
+        if(direction == "Derecha")
+        {
+            playerNextDir = Sentido.Derecha;
+        }else if(direction == "Izquierda")
+        {
+            playerNextDir = Sentido.Izquierda;
+        }
     }
 }

@@ -19,7 +19,6 @@ public class PlayerCollisionHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("OnTriggerEnter");
         if(other.gameObject.GetComponent<Intersection>())
             cityManager.enteringIntersection();
     }
