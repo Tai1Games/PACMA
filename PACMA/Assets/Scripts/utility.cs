@@ -3,7 +3,8 @@ namespace Utility
     public enum Sentido
     {
         Derecha = 0,
-        Izquierda = 1
+        Izquierda = 1,
+        Recto
     }
 
     public struct Direccion

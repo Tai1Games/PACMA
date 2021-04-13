@@ -15,7 +15,7 @@ public class test_Postes : MonoBehaviour
         List<Direccion> direcciones = new List<Direccion>();
 
         Direccion dir;
-        dir.sentido = Sentido.Derecha;
+        dir.sentido = Sentido.Recto;
         dir.destino = 0;
 
         direcciones.Add(dir);
@@ -42,7 +42,7 @@ public class test_Postes : MonoBehaviour
         poste = Instantiate(vecPostes[2]).GetComponent<Poste>();
         direcciones = new List<Direccion>();
 
-        dir.sentido = Sentido.Derecha;
+        dir.sentido = Sentido.Recto;
         dir.destino = 0;
 
         direcciones.Add(dir);
@@ -52,7 +52,7 @@ public class test_Postes : MonoBehaviour
 
         direcciones.Add(dir);
 
-        dir.sentido = Sentido.Derecha;
+        dir.sentido = Sentido.Recto;
         dir.destino = 0;
 
         direcciones.Add(dir);
@@ -68,7 +68,7 @@ public class test_Postes : MonoBehaviour
 
         direcciones.Add(dir);
 
-        dir.sentido = Sentido.Derecha;
+        dir.sentido = Sentido.Recto;
         dir.destino = 0;
 
         direcciones.Add(dir);
