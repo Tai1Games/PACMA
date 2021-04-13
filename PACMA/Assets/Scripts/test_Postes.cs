@@ -15,12 +15,12 @@ public class test_Postes : MonoBehaviour
         List<Direccion> direcciones = new List<Direccion>();
 
         Direccion dir;
-        dir.sentido = Sentido.Derecha;
+        dir.sentido = Sentido.Recto;
         dir.destino = 0;
 
         direcciones.Add(dir);
 
-        poste.Init(new Vector3(0, 0, 0), direcciones);
+        poste.Init(new Vector3(0, 0, 0), direcciones, 0);
 
         //POSTE DE TAMAÑO 2
         poste = Instantiate(vecPostes[1]).GetComponent<Poste>();
@@ -36,13 +36,13 @@ public class test_Postes : MonoBehaviour
 
         direcciones.Add(dir);
 
-        poste.Init(new Vector3(10, 0, 0), direcciones);
+        poste.Init(new Vector3(10, 0, 0), direcciones, 1);
 
         //POSTE DE TAMAÑO 3
         poste = Instantiate(vecPostes[2]).GetComponent<Poste>();
         direcciones = new List<Direccion>();
 
-        dir.sentido = Sentido.Derecha;
+        dir.sentido = Sentido.Recto;
         dir.destino = 0;
 
         direcciones.Add(dir);
@@ -52,12 +52,12 @@ public class test_Postes : MonoBehaviour
 
         direcciones.Add(dir);
 
-        dir.sentido = Sentido.Derecha;
+        dir.sentido = Sentido.Recto;
         dir.destino = 0;
 
         direcciones.Add(dir);
 
-        poste.Init(new Vector3(20, 0, 0), direcciones);
+        poste.Init(new Vector3(20, 0, 0), direcciones, 2);
 
         //POSTE DE TAMAÑO 4
         poste = Instantiate(vecPostes[3]).GetComponent<Poste>();
@@ -68,12 +68,12 @@ public class test_Postes : MonoBehaviour
 
         direcciones.Add(dir);
 
-        dir.sentido = Sentido.Derecha;
+        dir.sentido = Sentido.Recto;
         dir.destino = 0;
 
         direcciones.Add(dir);
 
-        poste.Init(new Vector3(50, 0, 0), direcciones);
+        poste.Init(new Vector3(50, 0, 0), direcciones, 3);
     }
 
     // Update is called once per frame
