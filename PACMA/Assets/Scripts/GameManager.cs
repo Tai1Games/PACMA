@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
 
     public static GameManager instance = null;
+
+    public Text recordText;
+
+    private int record;
 
     public string gameSceneName;
 
@@ -24,13 +29,21 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (PlayerPrefs.HasKey("record")) record = PlayerPrefs.GetInt("record");
+        else record = 0;
+        recordText.text = record.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.P)) updateRecord(1);
+    }
+
+    public void updateRecord(int p)
+    {
+        record += p;
+        recordText.text = record.ToString();
     }
 
     public void SendCommand(string command)
@@ -61,5 +74,10 @@ public class GameManager : MonoBehaviour
         {
             yield return null;
         }
+    }
+
+    private void OnDestroy()
+    {
+        PlayerPrefs.SetInt("record", record);
     }
 }
