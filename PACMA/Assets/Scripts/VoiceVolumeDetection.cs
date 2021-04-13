@@ -5,8 +5,17 @@ using UnityEngine;
 public class VoiceVolumeDetection : MonoBehaviour
 {
     public float micLoudness;
+    public estres stress;
+    
+    [Range(0.0f,1.0f)]
+    public float volToRecoverStress;
+    public float minStressIncrement;
+    public float maxStressIncrement;
+    
+    
     private AudioClip clipRecord = null;
     int sampleWindow = 128; //Numero de samples que se restan
+    private float stressDifference;
 
     float LevelMax()
     {
@@ -42,6 +51,7 @@ public class VoiceVolumeDetection : MonoBehaviour
 
         clipRecord = Microphone.Start(null, true, 10, 44100);
         Debug.Log(clipRecord);
+        stressDifference = maxStressIncrement - minStressIncrement;
     }
 
     void StopMicrophone()
@@ -53,5 +63,16 @@ public class VoiceVolumeDetection : MonoBehaviour
     void Update()
     {
         micLoudness = LevelMax();
+
+        if (micLoudness >= volToRecoverStress)
+        {
+            stress.UpdateEstres(-StressIncrement()*Time.deltaTime);
+        }
+    }
+
+    float StressIncrement()
+    {
+        float interpolation = (micLoudness-volToRecoverStress)/(1-volToRecoverStress);
+        return minStressIncrement + (stressDifference * interpolation);
     }
 }
