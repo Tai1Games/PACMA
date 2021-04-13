@@ -21,6 +21,7 @@ public class VoiceDetection : MonoBehaviour
     private void OnPhraseRecognized(PhraseRecognizedEventArgs args)
     {
         Debug.Log(args.text);
+        GameManager.instance.SendCommand(args.text);
     }
 
     // Update is called once per frame
