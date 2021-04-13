@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     private int record;
 
     public string gameSceneName;
+
     private void Awake()
     {
         if (instance == null)
@@ -57,7 +58,7 @@ public class GameManager : MonoBehaviour
         else if (command == "Start")
         {
             Debug.Log("Vamo a jugal");
-            StartCoroutine(LoadSceneAsync("t_Postes"));
+            StartCoroutine(LoadSceneAsync(gameSceneName));
         }else if(command == "Exit"){
             Debug.Log("Saliendo del juego");
             Application.Quit();

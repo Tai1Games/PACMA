@@ -10,7 +10,7 @@ public class VoiceDetection : MonoBehaviour
 
     public string command;
 
-    private KeywordRecognizer m_Recognizer;
+    protected KeywordRecognizer m_Recognizer;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,7 @@ public class VoiceDetection : MonoBehaviour
         m_Recognizer.Start();
     }
 
-    private void OnPhraseRecognized(PhraseRecognizedEventArgs args)
+    protected virtual void OnPhraseRecognized(PhraseRecognizedEventArgs args)
     {
         Debug.Log(args.text);
         GameManager.instance.SendCommand(command);
@@ -32,7 +32,7 @@ public class VoiceDetection : MonoBehaviour
         
     }
 
-    private void OnApplicationQuit()
+    protected void OnApplicationQuit()
     {
         if(m_Recognizer != null && m_Recognizer.IsRunning)
         {
