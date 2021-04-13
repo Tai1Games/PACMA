@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
 
     public static GameManager instance = null;
+
+    public string gameSceneName;
     private void Awake()
     {
         if (instance == null)
@@ -38,11 +41,24 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Girando a izquierda");
         }
-        else if (command == "Play" || command == "Jugar" || command == "Empezar" || command == "Entrar")
+        else if (command == "Start")
         {
             Debug.Log("Vamo a jugal");
-        }else if(command == "Exit" || command == "Salir"){
+            StartCoroutine(LoadSceneAsync("t_Postes"));
+        }else if(command == "Exit"){
             Debug.Log("Saliendo del juego");
+            Application.Quit();
+        }
+    }
+
+    IEnumerator LoadSceneAsync(string sceneName)
+    {
+        Debug.Log("Loading scene: " + sceneName);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
         }
     }
 }
