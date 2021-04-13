@@ -52,5 +52,13 @@ MonoBehaviour:
   - {fileID: 2100000, guid: f6275d076f832734cb3fcdd6be3574ac, type: 2}
   - {fileID: 2100000, guid: 8ec34766987e5474d960e52fcd81aa40, type: 2}
   - {fileID: 2100000, guid: c064b0405eca80e4fb540a425be665c8, type: 2}
+  - {fileID: 2100000, guid: 10b4a6997b8dffd4b8fda7a2be117e6c, type: 2}
+  - {fileID: 2100000, guid: 2d995d67667bc34478083c01f7bc9766, type: 2}
+  - {fileID: 2100000, guid: 1efc1c8346bc7d94bbf8cd93ec666a6b, type: 2}
+  - {fileID: 2100000, guid: 07ccaa27c9b0cbd458e6b11ada909fb4, type: 2}
+  - {fileID: 2100000, guid: 44f13be3319d7644fb8ceab1c82e8f35, type: 2}
+  - {fileID: 2100000, guid: 92206774156804f4588c30a3135f95e3, type: 2}
+  - {fileID: 2100000, guid: 62d661733c93f4342afbcdbb9fb84d85, type: 2}
+  - {fileID: 2100000, guid: e2d0ec201bb8abe4ca77eeb5cdfac6f6, type: 2}
   archivoPaletas: {fileID: 4900000, guid: 5172cb0fcc211e84b9eb9e07d6fb25ee, type: 3}
   paletaActual: 0
