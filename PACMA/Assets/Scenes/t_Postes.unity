@@ -488,7 +488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shake_decay: 0.001
   shake_intensity: 0.005
-  disableX: 0
+  disableX: 1
   disableY: 0
   disableZ: 0
   rotationOffset: 6
