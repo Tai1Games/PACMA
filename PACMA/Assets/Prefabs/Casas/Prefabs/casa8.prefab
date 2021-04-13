@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1095805722406758770}
   - component: {fileID: 2941380754295610808}
   m_Layer: 0
-  m_Name: house_type08
+  m_Name: casa8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,7 +62,7 @@ MeshRenderer:
   - {fileID: 2100000, guid: 3ff7de00e78ca1e4ba0783c2514595ea, type: 2}
   - {fileID: 3398073514908505954, guid: b3fd9666276f60f41b85ae5eeead4048, type: 3}
   - {fileID: 2100000, guid: 8ec34766987e5474d960e52fcd81aa40, type: 2}
-  - {fileID: 2100000, guid: 92206774156804f4588c30a3135f95e3, type: 2}
+  - {fileID: 2100000, guid: a0a177076edb360449798032a6185546, type: 2}
   - {fileID: 2100000, guid: 428b804ef1a84954c9a28fea7d18ab1e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
