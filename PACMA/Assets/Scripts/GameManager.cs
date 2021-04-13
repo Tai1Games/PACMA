@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
         else if (command == "Start")
         {
             Debug.Log("Vamo a jugal");
-            StartCoroutine(LoadSceneAsync("PlayGame"));
+            StartCoroutine(LoadSceneAsync(gameSceneName));
         }else if(command == "Exit"){
             Debug.Log("Saliendo del juego");
             Application.Quit();
