@@ -10,6 +10,7 @@ public class estres : MonoBehaviour
     public RawImage imagen;
     public Animator animador;
     public float stressIncrement;
+    public ShaderEstresScript shaderEstressScript;
 
     private void Update()
     {
@@ -22,10 +23,11 @@ public class estres : MonoBehaviour
         nivelEstres = Mathf.Clamp(nivelEstres, 0, 100);
         //Debug.Log("Nivel de estres: " + nivelEstres);
         Color color = imagen.color;
-        color.a = nivelEstres / 100;
+        color.a = Mathf.Pow(nivelEstres / 100, 2);
         imagen.color = color;
         //Debug.Log("Alfa de la imagen: " + imagen.color.a);
         animador.speed = 1 + (nivelEstres / 10);
+        shaderEstressScript.updateIntensityVignete(nivelEstres / 100);
         //Debug.Log("Velocidad de la animación " + animador.speed);
     }
 }

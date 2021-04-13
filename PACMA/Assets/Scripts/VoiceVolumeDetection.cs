@@ -6,7 +6,7 @@ public class VoiceVolumeDetection : MonoBehaviour
 {
     public float micLoudness;
     public estres stress;
-    
+
     [Range(0.0f,1.0f)]
     public float volToRecoverStress;
     public float minStressIncrement;
