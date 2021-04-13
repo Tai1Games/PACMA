@@ -20,7 +20,7 @@ public class test_Postes : MonoBehaviour
 
         direcciones.Add(dir);
 
-        poste.Init(new Vector3(0, 0, 0), direcciones);
+        poste.Init(new Vector3(0, 0, 0), direcciones, 0);
 
         //POSTE DE TAMAÑO 2
         poste = Instantiate(vecPostes[1]).GetComponent<Poste>();
@@ -36,7 +36,7 @@ public class test_Postes : MonoBehaviour
 
         direcciones.Add(dir);
 
-        poste.Init(new Vector3(10, 0, 0), direcciones);
+        poste.Init(new Vector3(10, 0, 0), direcciones, 1);
 
         //POSTE DE TAMAÑO 3
         poste = Instantiate(vecPostes[2]).GetComponent<Poste>();
@@ -57,7 +57,7 @@ public class test_Postes : MonoBehaviour
 
         direcciones.Add(dir);
 
-        poste.Init(new Vector3(20, 0, 0), direcciones);
+        poste.Init(new Vector3(20, 0, 0), direcciones, 2);
 
         //POSTE DE TAMAÑO 4
         poste = Instantiate(vecPostes[3]).GetComponent<Poste>();
@@ -73,7 +73,7 @@ public class test_Postes : MonoBehaviour
 
         direcciones.Add(dir);
 
-        poste.Init(new Vector3(50, 0, 0), direcciones);
+        poste.Init(new Vector3(50, 0, 0), direcciones, 3);
     }
 
     // Update is called once per frame
