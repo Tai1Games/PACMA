@@ -58,6 +58,22 @@ public class test_Postes : MonoBehaviour
         direcciones.Add(dir);
 
         poste.Init(new Vector3(20, 0, 0), direcciones);
+
+        //POSTE DE TAMAÑO 4
+        poste = Instantiate(vecPostes[3]).GetComponent<Poste>();
+        direcciones = new List<Direccion>();
+
+        dir.sentido = Sentido.Izquierda;
+        dir.destino = 0;
+
+        direcciones.Add(dir);
+
+        dir.sentido = Sentido.Derecha;
+        dir.destino = 0;
+
+        direcciones.Add(dir);
+
+        poste.Init(new Vector3(50, 0, 0), direcciones);
     }
 
     // Update is called once per frame
