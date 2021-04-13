@@ -121,15 +121,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2179103692776074575, guid: 77ad6ed2cbfe5184eaa2a0d84865ce01, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -167
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2179103692776074575, guid: 77ad6ed2cbfe5184eaa2a0d84865ce01, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 35.06875
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2179103692776074575, guid: 77ad6ed2cbfe5184eaa2a0d84865ce01, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -45.950775
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2179103692776074575, guid: 77ad6ed2cbfe5184eaa2a0d84865ce01, type: 3}
       propertyPath: m_LocalRotation.w
@@ -159,6 +159,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2886092519020158039, guid: 77ad6ed2cbfe5184eaa2a0d84865ce01, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2886092519020158039, guid: 77ad6ed2cbfe5184eaa2a0d84865ce01, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5347088572708608427, guid: 77ad6ed2cbfe5184eaa2a0d84865ce01, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.55
@@ -169,7 +177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6729136477230953415, guid: 77ad6ed2cbfe5184eaa2a0d84865ce01, type: 3}
       propertyPath: m_Name
-      value: Interseccion
+      value: Interseccion Variant 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77ad6ed2cbfe5184eaa2a0d84865ce01, type: 3}

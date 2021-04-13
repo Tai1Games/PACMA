@@ -121,15 +121,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2179103692776074575, guid: 77ad6ed2cbfe5184eaa2a0d84865ce01, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -167
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2179103692776074575, guid: 77ad6ed2cbfe5184eaa2a0d84865ce01, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 35.06875
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2179103692776074575, guid: 77ad6ed2cbfe5184eaa2a0d84865ce01, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -45.950775
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2179103692776074575, guid: 77ad6ed2cbfe5184eaa2a0d84865ce01, type: 3}
       propertyPath: m_LocalRotation.w
@@ -169,7 +169,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6729136477230953415, guid: 77ad6ed2cbfe5184eaa2a0d84865ce01, type: 3}
       propertyPath: m_Name
-      value: Interseccion Variant
+      value: Interseccion Variant 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77ad6ed2cbfe5184eaa2a0d84865ce01, type: 3}
