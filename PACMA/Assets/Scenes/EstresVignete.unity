@@ -446,7 +446,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1401666629}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
   m_Name: 
@@ -531,7 +531,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   micLoudness: 0
   stress: {fileID: 314851804}
-  volToRecoverStress: 0
+  volToRecoverStress: 0.2
   minStressIncrement: 100
   maxStressIncrement: 150
 --- !u!114 &2106878539
@@ -671,5 +671,41 @@ PrefabInstance:
       propertyPath: shaderEstressScript
       value: 
       objectReference: {fileID: 192047497}
+    - target: {fileID: 945321187728059031, guid: ec8e04bdc74a22243af90ab827a13765, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 945321188642876081, guid: ec8e04bdc74a22243af90ab827a13765, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 945321188642876081, guid: ec8e04bdc74a22243af90ab827a13765, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 945321188642876081, guid: ec8e04bdc74a22243af90ab827a13765, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 945321188642876081, guid: ec8e04bdc74a22243af90ab827a13765, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 945321188642876081, guid: ec8e04bdc74a22243af90ab827a13765, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 202
+      objectReference: {fileID: 0}
+    - target: {fileID: 945321188642876081, guid: ec8e04bdc74a22243af90ab827a13765, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 114
+      objectReference: {fileID: 0}
+    - target: {fileID: 945321188642876081, guid: ec8e04bdc74a22243af90ab827a13765, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 945321188642876081, guid: ec8e04bdc74a22243af90ab827a13765, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec8e04bdc74a22243af90ab827a13765, type: 3}
