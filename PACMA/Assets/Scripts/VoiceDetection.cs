@@ -6,10 +6,11 @@ using UnityEngine.Windows.Speech;
 public class VoiceDetection : MonoBehaviour
 {
 
-    [SerializeField]
-    private string[] m_Keywords = new string[] { "izquierda", "derecha" };
+    public string[] m_Keywords = new string[] { "izquierda", "derecha" };
 
-    private KeywordRecognizer m_Recognizer;
+    public string command;
+
+    protected KeywordRecognizer m_Recognizer;
 
     // Start is called before the first frame update
     void Start()
@@ -19,9 +20,10 @@ public class VoiceDetection : MonoBehaviour
         m_Recognizer.Start();
     }
 
-    private void OnPhraseRecognized(PhraseRecognizedEventArgs args)
+    protected virtual void OnPhraseRecognized(PhraseRecognizedEventArgs args)
     {
         Debug.Log(args.text);
+        GameManager.instance.SendCommand(command);
     }
 
     // Update is called once per frame
@@ -30,7 +32,7 @@ public class VoiceDetection : MonoBehaviour
         
     }
 
-    private void OnApplicationQuit()
+    protected void OnApplicationQuit()
     {
         if(m_Recognizer != null && m_Recognizer.IsRunning)
         {
