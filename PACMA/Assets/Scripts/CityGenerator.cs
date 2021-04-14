@@ -16,7 +16,7 @@ public class CityGenerator : MonoBehaviour
     //Jugador
     public GameObject player;
     public float playerSpeed = 1;
-    private bool moving = false;
+    private bool moving = true;
     private Sentido playerNextDir = Sentido.Recto;
 
     //Listas para guardar las carreteras que vamos generando
@@ -56,7 +56,7 @@ public class CityGenerator : MonoBehaviour
         if (interActual.salidas.Contains(Sentido.Recto))
         {
             //Generar otro tramo
-            GeneraTramo(direccionVec, inters.transform.position + tileSize * direccionVec, true);
+            GeneraTramo(direccionVec, inters.transform.position, true);
         }
     }
 
@@ -78,6 +78,7 @@ public class CityGenerator : MonoBehaviour
             //50% de que salga recta con algun variante
             if (Random.Range(0, 100) % 2 == 0)
             {
+                Debug.Log("Spawning straight");
                 //Crear recta
                 inters = PlaceTile(straightIntersections[Random.Range(0, straightIntersections.Count)], direccionVec, lastTile.transform.position);
             }
@@ -85,6 +86,7 @@ public class CityGenerator : MonoBehaviour
             {
                 //Crear normal
                 inters = PlaceTile(intersections[Random.Range(0, intersections.Count)], direccionVec, lastTile.transform.position);
+
             }
         }
         else
@@ -97,9 +99,7 @@ public class CityGenerator : MonoBehaviour
         }
 
         if (!generatingStraightExtra)
-        {
             generaTilesSalidaInterseccion(direccionVec);
-        }
     }
 
     void cleanCarretera()
@@ -118,11 +118,12 @@ public class CityGenerator : MonoBehaviour
         if (dir == Sentido.Izquierda && inter.salidas.Contains(Sentido.Izquierda))
         {
             //El jugador decide girar a la izquierda y puede
-            Destroy(interRecta);
             Destroy(tileOptDer);
             cleanCarretera();
+            currentCarretera.Add(interRecta);
+            currentCarretera.Add(tileOptIzq);
             player.transform.Rotate(new Vector3(0, -90));
-            GeneraTramo(player.transform.forward, tileOptIzq.transform.position, true);
+            GeneraTramo(player.transform.forward, tileOptIzq.transform.position, false);
         }
         else if (dir == Sentido.Derecha && inter.salidas.Contains(Sentido.Derecha))
         {
@@ -130,8 +131,10 @@ public class CityGenerator : MonoBehaviour
             Destroy(interRecta);
             Destroy(tileOptIzq);
             cleanCarretera();
+            currentCarretera.Add(interRecta);
+            currentCarretera.Add(tileOptDer);
             player.transform.Rotate(new Vector3(0, 90));
-            GeneraTramo(player.transform.forward, tileOptDer.transform.position, true);
+            GeneraTramo(player.transform.forward, tileOptDer.transform.position, false);
         }
         else if (dir == Sentido.Recto && inter.salidas.Contains(Sentido.Recto))
         {
@@ -158,7 +161,10 @@ public class CityGenerator : MonoBehaviour
 
     private void FixedUpdate()
     {
-        player.transform.position += player.transform.forward * playerSpeed;
+        if (moving)
+        {
+            player.transform.position += player.transform.forward * playerSpeed;
+        }
     }
 
     //Para ser llamado por el jugador cuando entre a una interseccion
