@@ -628,10 +628,16 @@ MonoBehaviour:
   straights:
   - {fileID: 6729136477230953415, guid: f4bb2a2735af03b41a06ba397cdc0103, type: 3}
   - {fileID: 3020301529065013862, guid: 51fa99bb4b6f9ba4f8849542a39fe7ff, type: 3}
+  - {fileID: 6851273152665890374, guid: 48695cbc7442f13429039af3b4755c24, type: 3}
+  - {fileID: 6064711822975864763, guid: daaa87d6825009e4789be1e0873ba0fc, type: 3}
+  - {fileID: 811870850630462494, guid: 2170c78849e603a46aa319f306f809eb, type: 3}
   intersections:
+  - {fileID: 9099250111137878633, guid: 56ef3381c39cb544291b4d1492fc022a, type: 3}
   - {fileID: 6729136477230953415, guid: 77ad6ed2cbfe5184eaa2a0d84865ce01, type: 3}
   - {fileID: 611150672822567583, guid: 7a1fefc686d974d408c33fd61fef031b, type: 3}
   - {fileID: 4781067691376664462, guid: f3b2c87cede199e4ba7b1e3d97c2aa6d, type: 3}
+  straightIntersections:
+  - {fileID: 4781067691376664462, guid: 3a32f3a54325b6f4ebc6bd3a322ba841, type: 3}
   tileSize: 10
   maxStraight: 4
   minStraight: 1

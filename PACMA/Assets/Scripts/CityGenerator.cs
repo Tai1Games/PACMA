@@ -5,129 +5,183 @@ using Utility;
 
 public class CityGenerator : MonoBehaviour
 {
-	//Parametros de generacion
-	public List<GameObject> straights;
-	public List<GameObject> intersections;
-	public int tileSize = 5;
-	public int maxStraight = 3;
-	public int minStraight = 1;
+    //Parametros de generacion
+    public List<GameObject> straights;
+    public List<GameObject> intersections;
+    public List<GameObject> straightIntersections;
+    public int tileSize = 5;
+    public int maxStraight = 3;
+    public int minStraight = 1;
 
-	public ParticleSystem ps;
+    //Jugador
+    public GameObject player;
+    public float playerSpeed = 1;
+    private bool moving = true;
+    private Sentido playerNextDir = Sentido.Recto;
 
-	//Jugador
-	public GameObject player;
-	public PlayerCollisionHandler playerColHandler;
-	public float playerSpeed = 1;
-	private bool moving = false;
-	private Sentido playerNextDir = Sentido.Recto;
+    //Listas para guardar las carreteras que vamos generando
+    private List<GameObject> currentCarretera;
+    GameObject inters = null, oldInters = null, interRecta = null,
+        lastTile = null, tileOptIzq = null, tileOptDer = null;
+    Vector3 facingVec = new Vector3(0, 0, 1);
 
-	public float tiempoAnimGirar = 1f;
+    GameObject PlaceTile(GameObject tile, Vector3 direccionVec, Vector3 previousTilePos)
+    {
+        return Instantiate(tile, previousTilePos + tileSize * direccionVec, Quaternion.LookRotation(direccionVec, Vector3.up));
+    }
 
-	//Listas para guardar las carreteras que vamos generando
-	private List<GameObject> currentCarretera;
-	GameObject inters = null, lastTile = null, tileOpt1 = null, tileOpt2 = null, oldInters = null;
-	Vector3 facingVec = new Vector3(0, 0, 1);
-	Vector3 origin = Vector3.zero;
+    Vector3 rotaVector(Vector3 vec, Sentido dir)
+    {
+        if (dir == Sentido.Derecha)
+            return Quaternion.AngleAxis(90, Vector3.up) * vec;
+        else if (dir == Sentido.Izquierda)
+            return Quaternion.AngleAxis(-90, Vector3.up) * vec;
+        else
+            return vec;
+    }
 
-	GameObject PlaceTile(GameObject tile, Vector3 direccionVec, Vector3 previousTilePos)
-	{
-		return Instantiate(tile, previousTilePos + tileSize * direccionVec + origin, Quaternion.LookRotation(direccionVec, Vector3.up));
-	}
+    void generaTilesSalidaInterseccion(Vector3 direccionVec)
+    {
+        //Generar una tile mas a cada lado de la interseccion
+        Intersection interActual = inters.GetComponent<Intersection>();
+        //Salida izquierda
+        if (interActual.salidas.Contains(Sentido.Izquierda))
+        {
+            tileOptIzq = PlaceTile(straights[Random.Range(0, straights.Count)], rotaVector(direccionVec, Sentido.Izquierda), inters.transform.position);
+        }
+        if (interActual.salidas.Contains(Sentido.Derecha))
+        {
+            tileOptDer = PlaceTile(straights[Random.Range(0, straights.Count)], rotaVector(direccionVec, Sentido.Derecha), inters.transform.position);
+        }
+        if (interActual.salidas.Contains(Sentido.Recto))
+        {
+            //Generar otro tramo
+            GeneraTramo(direccionVec, inters.transform.position, true);
+        }
+    }
 
-	Vector3 rotaVector(Vector3 vec, Sentido dir)
-	{
-		if (dir == Sentido.Derecha)
-			return Quaternion.AngleAxis(90, Vector3.up) * vec;
-		else if (dir == Sentido.Izquierda)
-			return Quaternion.AngleAxis(-90, Vector3.up) * vec;
-		else
-			return vec;
-	}
+    void GeneraTramo(Vector3 direccionVec, Vector3 startPos, bool generatingStraightExtra)
+    {
+        lastTile = PlaceTile(straights[Random.Range(0, straights.Count)], direccionVec, startPos);
+        currentCarretera.Add(lastTile);
 
-	void GeneraTramo(Vector3 direccionVec, Vector3 startPos)
-	{
-		lastTile = PlaceTile(straights[Random.Range(0, straights.Count)], direccionVec, startPos);
-		currentCarretera.Add(lastTile);
-		//currentCarretera.Add(PlaceTile(straights[Random.Range(0, straights.Count)], direccionVec, startPos));
-		//Coloca una cantidad de rectas aleatorias
-		int nTiles = Random.Range(minStraight, maxStraight);
-		for (int i = 1; i < nTiles; i++)
-		{
-			lastTile = PlaceTile(straights[Random.Range(0, straights.Count)], direccionVec, lastTile.transform.position);
-			//currentCarretera.Add(PlaceTile(straights[Random.Range(0, straights.Count)], direccionVec, currentCarretera[i-1].transform.position));
-			currentCarretera.Add(lastTile);
-		}
-		//Coloca una interseccion
-		inters = PlaceTile(intersections[Random.Range(0, intersections.Count)], direccionVec, lastTile.transform.position);
-		//Generar una tile mas a cada lado de la interseccion
-		tileOpt1 = PlaceTile(straights[Random.Range(0, straights.Count)], rotaVector(direccionVec, Sentido.Izquierda), inters.transform.position);
+        //Coloca una cantidad de rectas aleatorias
+        int nTiles = Random.Range(minStraight, maxStraight);
+        for (int i = 1; i < nTiles; i++)
+        {
+            lastTile = PlaceTile(straights[Random.Range(0, straights.Count)], direccionVec, lastTile.transform.position);
+            currentCarretera.Add(lastTile);
+        }
+        //Coloca una interseccion
+        if (!generatingStraightExtra)
+        {
+            //50% de que salga recta con algun variante
+            if (Random.Range(0, 100) % 2 == 0)
+            {
+                Debug.Log("Spawning straight");
+                //Crear recta
+                inters = PlaceTile(straightIntersections[Random.Range(0, straightIntersections.Count)], direccionVec, lastTile.transform.position);
+            }
+            else
+            {
+                //Crear normal
+                inters = PlaceTile(intersections[Random.Range(0, intersections.Count)], direccionVec, lastTile.transform.position);
 
-		tileOpt2 = PlaceTile(straights[Random.Range(0, straights.Count)], rotaVector(direccionVec, Sentido.Derecha), inters.transform.position);
-	}
+            }
+        }
+        else
+        {
+            if (generatingStraightExtra)
+                interRecta = PlaceTile(intersections[Random.Range(0, intersections.Count)], direccionVec, lastTile.transform.position);
+            else
+                inters = PlaceTile(intersections[Random.Range(0, intersections.Count)], direccionVec, lastTile.transform.position);
 
-	void cleanCarretera()
-	{
-		foreach (GameObject item in currentCarretera)
-		{
-			Destroy(item);
-		}
-		currentCarretera.Clear();
-	}
+        }
 
-	void initMovement(Sentido dir)
-	{
-		Destroy(oldInters);
-		oldInters = inters;
-		switch (dir)
-		{
-			case Sentido.Recto:
-				Debug.Log("Te moristes");
-				break;
-			case Sentido.Izquierda:
-				playerColHandler.logicFRotate(-90);
-				LeanTween.rotateAroundLocal(player, new Vector3(0, 1, 0), -90, tiempoAnimGirar);
-				Destroy(tileOpt2);
-				//Clean carretera
-				cleanCarretera();
-				GeneraTramo(playerColHandler.getLogicF(), tileOpt1.transform.position);
-				break;
-			case Sentido.Derecha:
-				playerColHandler.logicFRotate(90);
-				LeanTween.rotateAroundLocal(player, new Vector3(0, 1, 0), 90, tiempoAnimGirar);
+        if (!generatingStraightExtra)
+            generaTilesSalidaInterseccion(direccionVec);
+    }
 
-				Destroy(tileOpt1);
-				//Clean carretera
-				cleanCarretera();
-				GeneraTramo(playerColHandler.getLogicF(), tileOpt2.transform.position);
-				break;
+    void cleanCarretera()
+    {
+        foreach (GameObject item in currentCarretera)
+        {
+            Destroy(item);
+        }
+        currentCarretera.Clear();
+    }
 
-		}
-		playerNextDir = Sentido.Recto;
-	}
+    void initMovement(Sentido dir, Intersection inter)
+    {
+        Destroy(oldInters);
+        oldInters = inters;
+        if (dir == Sentido.Izquierda && inter.salidas.Contains(Sentido.Izquierda))
+        {
+            //El jugador decide girar a la izquierda y puede
+            playerColHandler.logicFRotate(-90);
+			LeanTween.rotateAroundLocal(player, new Vector3(0, 1, 0), -90, tiempoAnimGirar);
+            Destroy(tileOptDer);
+            cleanCarretera();
+            currentCarretera.Add(interRecta);
+            currentCarretera.Add(tileOptIzq);
+            player.transform.Rotate(new Vector3(0, -90));
+            GeneraTramo(player.transform.forward, tileOptIzq.transform.position, false);
+        }
+        else if (dir == Sentido.Derecha && inter.salidas.Contains(Sentido.Derecha))
+        {
+            //El jugador decide girar a la derecha y puede
+            playerColHandler.logicFRotate(90);
+			LeanTween.rotateAroundLocal(player, new Vector3(0, 1, 0), 90, tiempoAnimGirar);
+            Destroy(interRecta);
+            Destroy(tileOptIzq);
+            cleanCarretera();
+            currentCarretera.Add(interRecta);
+            currentCarretera.Add(tileOptDer);
+            player.transform.Rotate(new Vector3(0, 90));
+            GeneraTramo(player.transform.forward, tileOptDer.transform.position, false);
+        }
+        else if (dir == Sentido.Recto && inter.salidas.Contains(Sentido.Recto))
+        {
+            //El jugador decide no girar y puede
+            Destroy(tileOptDer);
+            Destroy(tileOptIzq);
+            inters = interRecta;
+            generaTilesSalidaInterseccion(player.transform.forward);
+        }
+        else
+        {
+            Debug.LogError("Te moristes");
+        }
 
-	void Start()
-	{
-		currentCarretera = new List<GameObject>();
-		facingVec = playerColHandler.getLogicF();
-		GeneraTramo(facingVec, new Vector3(0, 0, 0));
-	}
+        playerNextDir = Sentido.Recto;
+    }
 
-	private void FixedUpdate()
-	{
-		float p = 1.0f;
+    void Start()
+    {
+        currentCarretera = new List<GameObject>();
+        facingVec = playerColHandler.getLogicF();
+        GeneraTramo(facingVec, new Vector3(0, 0, 0), false);
+    }
+
+    private void FixedUpdate()
+    {
+        if (moving)
+        {
+            float p = 1.0f;
 		if (Input.GetKey(KeyCode.Space))
 		{
 			p = 5.0f;
 		}
 
 		player.transform.position += playerColHandler.getLogicF() * playerSpeed * p;
-	}
+        }
+    }
 
-	//Para ser llamado por el jugador cuando entre a una interseccion
-	public void enteringIntersection()
-	{
-		Debug.Log("enteringIntersection");
-		if (Input.GetKey(KeyCode.RightArrow))
+    //Para ser llamado por el jugador cuando entre a una interseccion
+    public void EnteringIntersection(Intersection inter)
+    {
+        Debug.Log("enteringIntersection");
+        if (Input.GetKey(KeyCode.RightArrow))
 		{
 			playerNextDir = Sentido.Derecha;
 		}
@@ -135,18 +189,18 @@ public class CityGenerator : MonoBehaviour
 		{
 			playerNextDir = Sentido.Izquierda;
 		}
-		initMovement(playerNextDir);
-	}
+        initMovement(playerNextDir, inter);
+    }
 
-	public void playerTurn(string direction)
-	{
-		if (direction == "Derecha")
-		{
-			playerNextDir = Sentido.Derecha;
-		}
-		else if (direction == "Izquierda")
-		{
-			playerNextDir = Sentido.Izquierda;
-		}
-	}
+    public void playerTurn(string direction)
+    {
+        if (direction == "Derecha")
+        {
+            playerNextDir = Sentido.Derecha;
+        }
+        else if (direction == "Izquierda")
+        {
+            playerNextDir = Sentido.Izquierda;
+        }
+    }
 }
