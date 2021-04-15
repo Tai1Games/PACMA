@@ -171,6 +171,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Keywords:
   - Derecha
+  - A tu derecha
+  - A la derecha
+  - Tira a la derecha
+  - Deecha
+  - Mueve a la derecha
+  - Tira a la derecha
+  - Pa la derecha
+  - Para la derecha
+  - Alvar bobo
+  - Mueve derecha
+  - Libertad
   command: Derecha
   cityManager: {fileID: 1607931597}
 --- !u!114 &218207749
@@ -187,6 +198,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Keywords:
   - Izquierda
+  - A tu izquierda
+  - A la izquierda
+  - Tira a la izquierda
+  - Iquierda
+  - Mueve a la izquierda
+  - Tira a la izquierda
+  - Pa la izquierda
+  - Para la izquierda
+  - Sans de undertale
+  - Mueve izquierda
+  - Comunismo
+  - Socialismo
   command: Izquierda
   cityManager: {fileID: 1607931597}
 --- !u!114 &218207750
@@ -222,6 +245,16 @@ MonoBehaviour:
   - recto
   - sigue
   - continua
+  - adelante
+  - todo recto
+  - enfrente
+  - en frente
+  - tira enfrente
+  - reto
+  - sigue adelante
+  - sigue recto
+  - to tieso para adelante
+  - todo tieso para adelante
   command: Recto
   cityManager: {fileID: 1607931597}
 --- !u!1 &380646963
