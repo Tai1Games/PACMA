@@ -98,7 +98,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 025193d46ee54354189c9c6463a3cf4e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a0a177076edb360449798032a6185546, type: 2}
+      objectReference: {fileID: 2100000, guid: 13cbc559bf7baa44c9c172037abad11b, type: 2}
     - target: {fileID: 919132149155446097, guid: 025193d46ee54354189c9c6463a3cf4e, type: 3}
       propertyPath: m_Name
       value: campfire_stones
@@ -176,7 +176,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 1205c3f0e0301a64c9fd1755eb2a9064, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 10b4a6997b8dffd4b8fda7a2be117e6c, type: 2}
+      objectReference: {fileID: 2100000, guid: 44f13be3319d7644fb8ceab1c82e8f35, type: 2}
     - target: {fileID: 919132149155446097, guid: 1205c3f0e0301a64c9fd1755eb2a9064, type: 3}
       propertyPath: m_Name
       value: campfire_planks
