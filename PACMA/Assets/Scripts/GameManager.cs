@@ -12,9 +12,10 @@ public class GameManager : MonoBehaviour
 
     public Text recordText;
 
+    public CarMainMenu car;
+
     private int record;
 
-    public string gameSceneName;
 
     private void Awake()
     {
@@ -57,15 +58,17 @@ public class GameManager : MonoBehaviour
         }
         else if (command == "Start")
         {
-            Debug.Log("Vamo a jugal");
-            StartCoroutine(LoadSceneAsync(gameSceneName));
+            Debug.Log("Vamo a jugal          ...              cuando llegue el coche");
+            
+            car.StartCar();
+            
         }else if(command == "Exit"){
             Debug.Log("Saliendo del juego");
             Application.Quit();
         }
     }
 
-    IEnumerator LoadSceneAsync(string sceneName)
+    public IEnumerator LoadSceneAsync(string sceneName)
     {
         Debug.Log("Loading scene: " + sceneName);
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);

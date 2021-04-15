@@ -19,13 +19,15 @@ public class CarSound : MonoBehaviour
     public float maxPitch;
 
     public float targetPitch;
+
+    public bool playOnStart;
     
     private bool _starting;
     
 
     private void Start()
     {
-        StartEngine();
+        if(playOnStart)StartEngine();
     }
 
     private void Update()
