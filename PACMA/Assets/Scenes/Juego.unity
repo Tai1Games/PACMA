@@ -356,7 +356,7 @@ MonoBehaviour:
   cityManager: {fileID: 1607931597}
   rotationPivot: {fileID: 1720240592}
   anguloRotDer: 1.79
-  anguloRotIzq: 3
+  anguloRotIzq: 3.15
 --- !u!1001 &1018195435
 PrefabInstance:
   m_ObjectHideFlags: 0
