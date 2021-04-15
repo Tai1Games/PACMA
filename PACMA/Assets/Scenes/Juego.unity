@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 218207749}
   - component: {fileID: 218207748}
   - component: {fileID: 218207750}
+  - component: {fileID: 218207751}
   m_Layer: 0
   m_Name: Voice Detection
   m_TagString: Untagged
@@ -170,6 +171,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Keywords:
   - Derecha
+  - A tu derecha
+  - A la derecha
+  - Tira a la derecha
+  - Deecha
+  - Mueve a la derecha
+  - Tira a la derecha
+  - Pa la derecha
+  - Para la derecha
+  - Alvar bobo
+  - Mueve derecha
+  - Libertad
   command: Derecha
   cityManager: {fileID: 1607931597}
 --- !u!114 &218207749
@@ -186,6 +198,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Keywords:
   - Izquierda
+  - A tu izquierda
+  - A la izquierda
+  - Tira a la izquierda
+  - Iquierda
+  - Mueve a la izquierda
+  - Tira a la izquierda
+  - Pa la izquierda
+  - Para la izquierda
+  - Sans de undertale
+  - Mueve izquierda
+  - Comunismo
+  - Socialismo
   command: Izquierda
   cityManager: {fileID: 1607931597}
 --- !u!114 &218207750
@@ -205,6 +229,34 @@ MonoBehaviour:
   volToRecoverStress: 0
   minStressIncrement: 100
   maxStressIncrement: 150
+--- !u!114 &218207751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218207746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44f1d57661979944c94819b190cf72f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Keywords:
+  - recto
+  - sigue
+  - continua
+  - adelante
+  - todo recto
+  - enfrente
+  - en frente
+  - tira enfrente
+  - reto
+  - sigue adelante
+  - sigue recto
+  - to tieso para adelante
+  - todo tieso para adelante
+  command: Recto
+  cityManager: {fileID: 1607931597}
 --- !u!1 &380646963
 GameObject:
   m_ObjectHideFlags: 0
