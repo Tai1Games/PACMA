@@ -134,6 +134,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: MaterialManager
       objectReference: {fileID: 0}
+    - target: {fileID: 1265049051227884798, guid: 65f9f2da22e0f2541b45d223bd7b4821, type: 3}
+      propertyPath: paletaActual
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1265049051227884798, guid: 65f9f2da22e0f2541b45d223bd7b4821, type: 3}
+      propertyPath: arrayMateriales.Array.data[13]
+      value: 
+      objectReference: {fileID: 2100000, guid: 196fabac3b910434994d0699f64b04c5, type: 2}
+    - target: {fileID: 1265049051227884798, guid: 65f9f2da22e0f2541b45d223bd7b4821, type: 3}
+      propertyPath: arrayMateriales.Array.data[14]
+      value: 
+      objectReference: {fileID: 2100000, guid: bd72a169ce163f24ea14f719536b29ce, type: 2}
+    - target: {fileID: 1265049051227884798, guid: 65f9f2da22e0f2541b45d223bd7b4821, type: 3}
+      propertyPath: arrayMateriales.Array.data[15]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6e88c76a9cc21524bad60c276a3616ce, type: 2}
     - target: {fileID: 1265049051227884799, guid: 65f9f2da22e0f2541b45d223bd7b4821, type: 3}
       propertyPath: m_RootOrder
       value: 7
