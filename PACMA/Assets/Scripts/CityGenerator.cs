@@ -19,7 +19,7 @@ public class CityGenerator : MonoBehaviour
     //Jugador
     public GameObject player;
     public float playerSpeed = 1;
-    private bool moving = true;
+    private bool moving = false;
     private Sentido playerNextDir = Sentido.Recto;
     public PlayerCollisionHandler playerColHandler;
     float tiempoAnimGirar = 1f;
@@ -29,6 +29,8 @@ public class CityGenerator : MonoBehaviour
     GameObject inters = null, oldInters = null, interRecta = null,
         lastTile = null, tileOptIzq = null, tileOptDer = null;
     Vector3 facingVec = new Vector3(0, 0, 1);
+
+    public void StartMoving() { moving = true; }
 
     GameObject PlaceTile(GameObject tile, Vector3 direccionVec, Vector3 previousTilePos)
     {
