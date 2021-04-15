@@ -237,5 +237,9 @@ public class CityGenerator : MonoBehaviour
         {
             playerNextDir = Sentido.Izquierda;
         }
+        else if(direction == "Recto")
+        {
+            playerNextDir = Sentido.Recto;
+        }
     }
 }
