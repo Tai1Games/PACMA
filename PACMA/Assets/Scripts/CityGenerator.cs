@@ -18,6 +18,8 @@ public class CityGenerator : MonoBehaviour
     public float playerSpeed = 1;
     private bool moving = true;
     private Sentido playerNextDir = Sentido.Recto;
+    public PlayerCollisionHandler playerColHandler;
+    float tiempoAnimGirar = 1f;
 
     //Listas para guardar las carreteras que vamos generando
     private List<GameObject> currentCarretera;
@@ -118,23 +120,25 @@ public class CityGenerator : MonoBehaviour
         if (dir == Sentido.Izquierda && inter.salidas.Contains(Sentido.Izquierda))
         {
             //El jugador decide girar a la izquierda y puede
+            playerColHandler.logicFRotate(-90);
+			LeanTween.rotateAroundLocal(player, new Vector3(0, 1, 0), -90, tiempoAnimGirar);
             Destroy(tileOptDer);
             cleanCarretera();
             currentCarretera.Add(interRecta);
             currentCarretera.Add(tileOptIzq);
-            player.transform.Rotate(new Vector3(0, -90));
-            GeneraTramo(player.transform.forward, tileOptIzq.transform.position, false);
+            GeneraTramo(playerColHandler.getLogicF(), tileOptIzq.transform.position, false);
         }
         else if (dir == Sentido.Derecha && inter.salidas.Contains(Sentido.Derecha))
         {
             //El jugador decide girar a la derecha y puede
+            playerColHandler.logicFRotate(90);
+			LeanTween.rotateAroundLocal(player, new Vector3(0, 1, 0), 90, tiempoAnimGirar);
             Destroy(interRecta);
             Destroy(tileOptIzq);
             cleanCarretera();
             currentCarretera.Add(interRecta);
             currentCarretera.Add(tileOptDer);
-            player.transform.Rotate(new Vector3(0, 90));
-            GeneraTramo(player.transform.forward, tileOptDer.transform.position, false);
+            GeneraTramo(playerColHandler.getLogicF(), tileOptDer.transform.position, false);
         }
         else if (dir == Sentido.Recto && inter.salidas.Contains(Sentido.Recto))
         {
@@ -155,7 +159,7 @@ public class CityGenerator : MonoBehaviour
     void Start()
     {
         currentCarretera = new List<GameObject>();
-        facingVec = player.transform.forward;
+        facingVec = playerColHandler.getLogicF();
         GeneraTramo(facingVec, new Vector3(0, 0, 0), false);
     }
 
@@ -163,7 +167,13 @@ public class CityGenerator : MonoBehaviour
     {
         if (moving)
         {
-            player.transform.position += player.transform.forward * playerSpeed;
+            float p = 1.0f;
+		if (Input.GetKey(KeyCode.Space))
+		{
+			p = 5.0f;
+		}
+
+		player.transform.position += playerColHandler.getLogicF() * playerSpeed * p;
         }
     }
 
@@ -171,6 +181,14 @@ public class CityGenerator : MonoBehaviour
     public void EnteringIntersection(Intersection inter)
     {
         Debug.Log("enteringIntersection");
+        if (Input.GetKey(KeyCode.RightArrow))
+		{
+			playerNextDir = Sentido.Derecha;
+		}
+		else if (Input.GetKey(KeyCode.LeftArrow))
+		{
+			playerNextDir = Sentido.Izquierda;
+		}
         initMovement(playerNextDir, inter);
     }
 
