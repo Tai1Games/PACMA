@@ -695,6 +695,7 @@ MonoBehaviour:
   tileSize: 10
   maxStraight: 4
   minStraight: 1
+  failChance: 0
   player: {fileID: 670654398}
   playerSpeed: 0.1
   playerColHandler: {fileID: 670654402}
@@ -902,7 +903,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 945321187728059029, guid: ec8e04bdc74a22243af90ab827a13765, type: 3}
       propertyPath: stressIncrement
-      value: 10
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 945321187728059029, guid: ec8e04bdc74a22243af90ab827a13765, type: 3}
       propertyPath: shaderEstressScript
