@@ -21,8 +21,7 @@ public class CityGenerator : MonoBehaviour
 	private bool moving = false;
 	private Sentido playerNextDir = Sentido.Recto;
 
-	private bool tweetDer = false;
-	private bool tweetIz = false;
+	public float tiempoAnimGirar = 1f;
 
 	//Listas para guardar las carreteras que vamos generando
 	private List<GameObject> currentCarretera;
@@ -86,7 +85,7 @@ public class CityGenerator : MonoBehaviour
 				break;
 			case Sentido.Izquierda:
 				playerColHandler.logicFRotate(-90);
-				LeanTween.rotateAroundLocal(player, new Vector3(0, 1, 0), -90, 1f);
+				LeanTween.rotateAroundLocal(player, new Vector3(0, 1, 0), -90, tiempoAnimGirar);
 				Destroy(tileOpt2);
 				//Clean carretera
 				cleanCarretera();
@@ -94,7 +93,7 @@ public class CityGenerator : MonoBehaviour
 				break;
 			case Sentido.Derecha:
 				playerColHandler.logicFRotate(90);
-				LeanTween.rotateAroundLocal(player, new Vector3(0, 1, 0), 90, 1f);
+				LeanTween.rotateAroundLocal(player, new Vector3(0, 1, 0), 90, tiempoAnimGirar);
 
 				Destroy(tileOpt1);
 				//Clean carretera
@@ -119,11 +118,7 @@ public class CityGenerator : MonoBehaviour
 		if (Input.GetKey(KeyCode.Space))
 		{
 			p = 5.0f;
-			ps.enableEmission = true;
 		}
-		else ps.enableEmission = true;
-
-		if (Input.GetKeyDown(KeyCode.J)) LeanTween.rotateAroundLocal(player, new Vector3(0, 1, 0), 90, 2f);
 
 		player.transform.position += playerColHandler.getLogicF() * playerSpeed * p;
 	}
