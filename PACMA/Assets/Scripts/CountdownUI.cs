@@ -21,7 +21,6 @@ public class CountdownUI : MonoBehaviour
         foreach (Image im in countdownNumbers) im.enabled = false;
         for (int i = 0; i < countdownNumbers.Count; i++)
         {
-            Debug.Log("COUNTDOWN " + i);
             countdownNumbers[i].enabled = true;
             countdownAnims[i].Play("NumberAnim");
             yield return new WaitForSeconds(1);
