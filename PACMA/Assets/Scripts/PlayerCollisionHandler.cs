@@ -1,17 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utility;
 
 public class PlayerCollisionHandler : MonoBehaviour
 {
     public CityGenerator cityManager;
 
     private Vector3 logicForward;
-
+    private Animator carAnimator;
     // Start is called before the first frame update
     void Start()
     {
         logicForward = transform.forward;
+        carAnimator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -22,8 +24,10 @@ public class PlayerCollisionHandler : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Intersection inter = other.gameObject.GetComponent<Intersection>();
-        if(inter)
+        if (inter)
+        {
             cityManager.EnteringIntersection(inter);
+        }
     }
 
     public Vector3 getLogicF() {
@@ -36,5 +40,14 @@ public class PlayerCollisionHandler : MonoBehaviour
 
     public void logicFRotate(float angle ) {
         logicForward = Quaternion.AngleAxis(angle, transform.up) * logicForward;
+    }
+
+    public void rotatationTiltAnimation(Sentido s)
+    {
+        if (s == Sentido.Derecha)
+        {
+            carAnimator.SetFloat("Direccion", 1);
+        }
+        else carAnimator.SetFloat("Direccion", 0);
     }
 }
