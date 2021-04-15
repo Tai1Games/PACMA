@@ -57,13 +57,18 @@ public class PlayerCollisionHandler : MonoBehaviour
     {
         if (s == Sentido.Izquierda)
         {
-            rotationPivot.transform.position = transform.position + new Vector3(-3.4f, 0, 0);
+            rotationPivot.transform.localPosition = transform.localPosition -3.4f * transform.right;
             transform.SetParent(rotationPivot.transform);
         }
-        else
+        else if (s == Sentido.Derecha)
         {
-            rotationPivot.transform.position = transform.position + new Vector3(3.4f, 0, 0);
+            rotationPivot.transform.localPosition = transform.localPosition + 3.4f * transform.right;
             transform.SetParent(rotationPivot.transform);
         }
+    }
+
+    public void endRotation()
+    {
+        transform.SetParent(null);
     }
 }
