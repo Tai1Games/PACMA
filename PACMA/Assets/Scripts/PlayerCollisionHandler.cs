@@ -12,6 +12,10 @@ public class PlayerCollisionHandler : MonoBehaviour
     private BoxCollider playerCollider;
 
     public GameObject rotationPivot;
+    [Range(0.0f, 4.0f)]
+    public float anguloRotDer;
+    [Range(0.0f, 4.0f)]
+    public float anguloRotIzq;
     // Start is called before the first frame update
     void Start()
     {
@@ -59,13 +63,13 @@ public class PlayerCollisionHandler : MonoBehaviour
     {
         if (s == Sentido.Izquierda)
         {
-            rotationPivot.transform.localPosition = transform.localPosition -3.4f * transform.right;
+            rotationPivot.transform.localPosition = transform.localPosition -anguloRotIzq * transform.right;
             transform.SetParent(rotationPivot.transform);
             playerCollider.enabled = false;
         }
         else if (s == Sentido.Derecha)
         {
-            rotationPivot.transform.localPosition = transform.localPosition + 3.4f * transform.right;
+            rotationPivot.transform.localPosition = transform.localPosition + anguloRotDer * transform.right;
             transform.SetParent(rotationPivot.transform);
             playerCollider.enabled = false;
         }

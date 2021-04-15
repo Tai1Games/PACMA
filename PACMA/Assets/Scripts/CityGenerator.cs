@@ -166,14 +166,6 @@ public class CityGenerator : MonoBehaviour
         playerNextDir = Sentido.Recto;
     }
 
-    IEnumerator rotationWaiter()
-    {
-        moving = false;
-        yield return new WaitForSecondsRealtime(tiempoAnimGirar);
-        playerColHandler.endRotation();
-        moving = true;
-    }
-
     void Start()
     {
         currentCarretera = new List<GameObject>();
