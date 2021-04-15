@@ -12,7 +12,10 @@ public class CityGenerator : MonoBehaviour
     public int tileSize = 5;
     public int maxStraight = 3;
     public int minStraight = 1;
-
+    
+    [Range(0,1)]
+    public float failChance = 0.5f;
+    private bool playerDecision = false;
     //Jugador
     public GameObject player;
     public float playerSpeed = 1;
@@ -113,10 +116,30 @@ public class CityGenerator : MonoBehaviour
         currentCarretera.Clear();
     }
 
+    Sentido pickRandomDir(Intersection inter, Sentido correcta)
+    {
+        Debug.Log("Random para " + correcta);
+        if (Random.Range(0f, 1f) > failChance)
+        {
+            Debug.Log("Devuelve correcta " + correcta);
+            return correcta;
+        }
+        int i = 0;
+        //Si peta aqui es culpa del que ha hecho la interseccion, no del codigo
+        while (inter.salidas[i] == correcta)
+            i++;
+        Debug.Log("Devuelve falsa" + inter.salidas[i]);
+        return inter.salidas[i];
+    }
+
     void initMovement(Sentido dir, Intersection inter)
     {
         Destroy(oldInters);
         oldInters = inters;
+        if (!playerDecision)
+            //Por ahora no tenemos forma de saber la salida correcta
+            //Asi que pongo la primera? Si? Vale
+            dir = pickRandomDir(inter,inter.salidas[0]);
         if (dir == Sentido.Izquierda && inter.salidas.Contains(Sentido.Izquierda))
         {
             //El jugador decide girar a la izquierda y puede
@@ -154,6 +177,7 @@ public class CityGenerator : MonoBehaviour
         }
 
         playerNextDir = Sentido.Recto;
+        playerDecision = false;
     }
 
     void Start()
@@ -194,6 +218,7 @@ public class CityGenerator : MonoBehaviour
 
     public void playerTurn(string direction)
     {
+        playerDecision = true;
         if (direction == "Derecha")
         {
             playerNextDir = Sentido.Derecha;
