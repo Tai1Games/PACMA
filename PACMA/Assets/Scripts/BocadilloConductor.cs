@@ -41,7 +41,7 @@ public class BocadilloConductor : MonoBehaviour
                 break;
         }
         bocadillo.enabled = true;
-        animator.Play(0);
+        animator.Play(1);
     }
 
     public void hideBocadillo()
