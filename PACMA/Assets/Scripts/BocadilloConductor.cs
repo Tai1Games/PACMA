@@ -6,20 +6,22 @@ public enum Bocadillos { izquierda, derecha, recto, confuso }
 
 public class BocadilloConductor : MonoBehaviour
 {
-    private Animator animator;
+    //private Animator animator;
+    private Animation anim;
     private Image bocadillo;
     public List<Image> imagenesBocadillo;
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
+        anim = GetComponent<Animation>();
         bocadillo = GetComponent<Image>();
         hideBocadillo();
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.B)) showBocadillo(Bocadillos.izquierda);
+        if (Input.GetKeyDown(KeyCode.B)) hideBocadillo();
     }
 
     public void showBocadillo(Bocadillos estado)
@@ -41,12 +43,11 @@ public class BocadilloConductor : MonoBehaviour
                 break;
         }
         bocadillo.enabled = true;
-        animator.Play(1);
+        anim.Play("BocadilloConductor");
     }
 
     public void hideBocadillo()
     {
-        bocadillo.enabled = false;
-        foreach (Image im in imagenesBocadillo) im.enabled = false;
+        anim.Play("BocadilloConductorHide");
     }
 }

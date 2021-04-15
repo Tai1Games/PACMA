@@ -175,6 +175,13 @@ public class CityGenerator : MonoBehaviour
     {
         Debug.Log("enteringIntersection");
         initMovement(playerNextDir, inter);
+        bocadillos.hideBocadillo();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) playerTurn("Izquierda");
+        else if (Input.GetKeyDown(KeyCode.RightArrow)) playerTurn("Derecha");
     }
 
     public void playerTurn(string direction)
