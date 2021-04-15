@@ -9,6 +9,7 @@ public class PlayerCollisionHandler : MonoBehaviour
 
     private Vector3 logicForward;
     private Animator carAnimator;
+    private BoxCollider playerCollider;
 
     public GameObject rotationPivot;
     // Start is called before the first frame update
@@ -16,6 +17,7 @@ public class PlayerCollisionHandler : MonoBehaviour
     {
         logicForward = transform.forward;
         carAnimator = GetComponentInChildren<Animator>();
+        playerCollider = GetComponent<BoxCollider>();
     }
 
     // Update is called once per frame
@@ -59,16 +61,19 @@ public class PlayerCollisionHandler : MonoBehaviour
         {
             rotationPivot.transform.localPosition = transform.localPosition -3.4f * transform.right;
             transform.SetParent(rotationPivot.transform);
+            playerCollider.enabled = false;
         }
         else if (s == Sentido.Derecha)
         {
             rotationPivot.transform.localPosition = transform.localPosition + 3.4f * transform.right;
             transform.SetParent(rotationPivot.transform);
+            playerCollider.enabled = false;
         }
     }
 
     public void endRotation()
     {
         transform.SetParent(null);
+        playerCollider.enabled = true;
     }
 }

@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 3978375670462476318}
   - component: {fileID: 4483835183909439325}
   m_Layer: 0
-  m_Name: Interseccion4_m1_2
+  m_Name: I_Straight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -161,8 +161,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.1, z: 0.1}
-  m_Center: {x: 0, y: 0.1, z: -0.11}
+  m_Size: {x: 0.3, y: 0.1, z: 0.21580148}
+  m_Center: {x: 0, y: 0.1, z: -0.052099254}
 --- !u!114 &4483835183909439325
 MonoBehaviour:
   m_ObjectHideFlags: 0

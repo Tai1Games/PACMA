@@ -126,7 +126,8 @@ public class CityGenerator : MonoBehaviour
             //El jugador decide girar a la izquierda y puede
             playerColHandler.logicFRotate(-90);
 			LeanTween.rotateAroundLocal(carRotationPivot, new Vector3(0, 1, 0), -90, tiempoAnimGirar).setOnComplete(playerColHandler.endRotation);
-            playerColHandler.rotatationTiltAnimation(Sentido.Derecha); //Lo se, leave me alone
+
+
             Destroy(tileOptDer);
             cleanCarretera();
             currentCarretera.Add(interRecta);
@@ -141,7 +142,8 @@ public class CityGenerator : MonoBehaviour
             //El jugador decide girar a la derecha y puede
             playerColHandler.logicFRotate(90);
             LeanTween.rotateAroundLocal(carRotationPivot, new Vector3(0, 1, 0), 90, tiempoAnimGirar).setOnComplete(playerColHandler.endRotation);
-            playerColHandler.rotatationTiltAnimation(Sentido.Izquierda);
+
+
             Destroy(tileOptIzq);
             cleanCarretera();
             currentCarretera.Add(interRecta);
