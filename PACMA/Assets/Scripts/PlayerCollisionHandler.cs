@@ -9,6 +9,8 @@ public class PlayerCollisionHandler : MonoBehaviour
 
     private Vector3 logicForward;
     private Animator carAnimator;
+
+    public GameObject rotationPivot;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,8 +48,22 @@ public class PlayerCollisionHandler : MonoBehaviour
     {
         if (s == Sentido.Derecha)
         {
-            carAnimator.SetFloat("Direccion", 1);
+            carAnimator.SetTrigger("Derecha");
         }
-        else carAnimator.SetFloat("Direccion", 0);
+        else carAnimator.SetTrigger("Izquierda");
+    }
+
+    public void prepareRotation(Sentido s)
+    {
+        if (s == Sentido.Izquierda)
+        {
+            rotationPivot.transform.position = transform.position + new Vector3(-3.4f, 0, 0);
+            transform.SetParent(rotationPivot.transform);
+        }
+        else
+        {
+            rotationPivot.transform.position = transform.position + new Vector3(3.4f, 0, 0);
+            transform.SetParent(rotationPivot.transform);
+        }
     }
 }
