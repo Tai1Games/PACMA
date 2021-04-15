@@ -202,7 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   micLoudness: 0
   stress: {fileID: 571794711}
-  volToRecoverStress: 0.8
+  volToRecoverStress: 0
   minStressIncrement: 100
   maxStressIncrement: 150
 --- !u!1 &380646963
@@ -452,22 +452,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 576490115859323425, guid: cc4f2cfba24832944890afc6ef086099, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: c064b0405eca80e4fb540a425be665c8, type: 2}
-    - target: {fileID: 576490115900215245, guid: cc4f2cfba24832944890afc6ef086099, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 8f08e20119d25244385003b013e8b9f8, type: 2}
-    - target: {fileID: 576490116283383273, guid: cc4f2cfba24832944890afc6ef086099, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 8f08e20119d25244385003b013e8b9f8, type: 2}
-    - target: {fileID: 576490116489618463, guid: cc4f2cfba24832944890afc6ef086099, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 428b804ef1a84954c9a28fea7d18ab1e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc4f2cfba24832944890afc6ef086099, type: 3}
 --- !u!4 &1018195436 stripped
@@ -630,6 +614,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: MaterialManager
       objectReference: {fileID: 0}
+    - target: {fileID: 1265049051227884798, guid: 65f9f2da22e0f2541b45d223bd7b4821, type: 3}
+      propertyPath: paletaActual
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1265049051227884798, guid: 65f9f2da22e0f2541b45d223bd7b4821, type: 3}
+      propertyPath: arrayMateriales.Array.data[13]
+      value: 
+      objectReference: {fileID: 2100000, guid: 13cbc559bf7baa44c9c172037abad11b, type: 2}
+    - target: {fileID: 1265049051227884798, guid: 65f9f2da22e0f2541b45d223bd7b4821, type: 3}
+      propertyPath: arrayMateriales.Array.data[14]
+      value: 
+      objectReference: {fileID: 2100000, guid: abecd17989663b14a833c917a85e4e23, type: 2}
+    - target: {fileID: 1265049051227884798, guid: 65f9f2da22e0f2541b45d223bd7b4821, type: 3}
+      propertyPath: arrayMateriales.Array.data[15]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0944333e838137a47ac9b1f75f847ad9, type: 2}
     - target: {fileID: 1265049051227884799, guid: 65f9f2da22e0f2541b45d223bd7b4821, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -791,6 +791,7 @@ MonoBehaviour:
   tileSize: 10
   maxStraight: 4
   minStraight: 1
+  failChance: 0
   player: {fileID: 670654398}
   carRotationPivot: {fileID: 1720240592}
   playerSpeed: 0.1
@@ -1030,7 +1031,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 945321187728059029, guid: ec8e04bdc74a22243af90ab827a13765, type: 3}
       propertyPath: stressIncrement
-      value: 10
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 945321187728059029, guid: ec8e04bdc74a22243af90ab827a13765, type: 3}
       propertyPath: shaderEstressScript
