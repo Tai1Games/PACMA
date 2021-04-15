@@ -636,6 +636,8 @@ MonoBehaviour:
   - {fileID: 6729136477230953415, guid: 77ad6ed2cbfe5184eaa2a0d84865ce01, type: 3}
   - {fileID: 611150672822567583, guid: 7a1fefc686d974d408c33fd61fef031b, type: 3}
   - {fileID: 4781067691376664462, guid: f3b2c87cede199e4ba7b1e3d97c2aa6d, type: 3}
+  straightIntersections:
+  - {fileID: 4781067691376664462, guid: 3a32f3a54325b6f4ebc6bd3a322ba841, type: 3}
   tileSize: 10
   maxStraight: 4
   minStraight: 1
