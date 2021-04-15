@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0944333e838137a47ac9b1f75f847ad9, type: 2}
+  - {fileID: 2100000, guid: 44f13be3319d7644fb8ceab1c82e8f35, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 2886092519020158039}
   - component: {fileID: 4391901886944697020}
   m_Layer: 0
-  m_Name: I_3
+  m_Name: T 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -150,8 +150,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6349816, y: 0.1, z: 0.42656216}
-  m_Center: {x: -0.04283309, y: 0.1, z: 0.10814345}
+  m_Size: {x: 0.44743347, y: 0.16563034, z: 0.22969055}
+  m_Center: {x: -0.029975891, y: 0.024438858, z: 0.11}
 --- !u!114 &4391901886944697020
 MonoBehaviour:
   m_ObjectHideFlags: 0

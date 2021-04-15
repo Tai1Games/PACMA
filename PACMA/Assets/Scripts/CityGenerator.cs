@@ -18,12 +18,11 @@ public class CityGenerator : MonoBehaviour
     private bool playerDecision = false;
     //Jugador
     public GameObject player;
-    public GameObject carRotationPivot;
     public float playerSpeed = 1;
     private bool moving = false;
     private Sentido playerNextDir = Sentido.Recto;
     public PlayerCollisionHandler playerColHandler;
-    public float tiempoAnimGirar = 1f;
+    float tiempoAnimGirar = 1f;
 
     //Listas para guardar las carreteras que vamos generando
     private List<GameObject> currentCarretera;
@@ -145,14 +144,9 @@ public class CityGenerator : MonoBehaviour
             dir = pickRandomDir(inter,inter.salidas[0]);
         if (dir == Sentido.Izquierda && inter.salidas.Contains(Sentido.Izquierda))
         {
-            playerColHandler.prepareRotation(Sentido.Izquierda);
-            playerColHandler.rotatationTiltAnimation(Sentido.Izquierda);
-
             //El jugador decide girar a la izquierda y puede
             playerColHandler.logicFRotate(-90);
-			LeanTween.rotateAroundLocal(carRotationPivot, new Vector3(0, 1, 0), -90, tiempoAnimGirar).setOnComplete(playerColHandler.endRotation);
-
-
+			LeanTween.rotateAroundLocal(player, new Vector3(0, 1, 0), -90, tiempoAnimGirar);
             Destroy(tileOptDer);
             cleanCarretera();
             currentCarretera.Add(interRecta);
@@ -161,14 +155,10 @@ public class CityGenerator : MonoBehaviour
         }
         else if (dir == Sentido.Derecha && inter.salidas.Contains(Sentido.Derecha))
         {
-            playerColHandler.prepareRotation(Sentido.Derecha);
-            playerColHandler.rotatationTiltAnimation(Sentido.Derecha);
-
             //El jugador decide girar a la derecha y puede
             playerColHandler.logicFRotate(90);
-            LeanTween.rotateAroundLocal(carRotationPivot, new Vector3(0, 1, 0), 90, tiempoAnimGirar).setOnComplete(playerColHandler.endRotation);
-
-
+			LeanTween.rotateAroundLocal(player, new Vector3(0, 1, 0), 90, tiempoAnimGirar);
+            Destroy(interRecta);
             Destroy(tileOptIzq);
             cleanCarretera();
             currentCarretera.Add(interRecta);
@@ -209,7 +199,7 @@ public class CityGenerator : MonoBehaviour
 			p = 5.0f;
 		}
 
-		player.transform.position += player.transform.forward * playerSpeed * p;
+		player.transform.position += playerColHandler.getLogicF() * playerSpeed * p;
         }
     }
 
