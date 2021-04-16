@@ -31,6 +31,8 @@ public class CityGenerator : MonoBehaviour
         lastTile = null, tileOptIzq = null, tileOptDer = null;
     Vector3 facingVec = new Vector3(0, 0, 1);
 
+    private SignGenerator signGenerator;
+
     public GameObject GetInters() { return inters; }
     
     GameObject PlaceTile(GameObject tile, Vector3 direccionVec, Vector3 previousTilePos)
@@ -94,7 +96,6 @@ public class CityGenerator : MonoBehaviour
             {
                 //Crear normal
                 inters = PlaceTile(intersections[Random.Range(0, intersections.Count)], direccionVec, lastTile.transform.position);
-
             }
         }
         else
@@ -105,6 +106,12 @@ public class CityGenerator : MonoBehaviour
                 inters = PlaceTile(intersections[Random.Range(0, intersections.Count)], direccionVec, lastTile.transform.position);
 
         }
+
+        // generacion de postes
+        signGenerator.PlacePoste(inters);
+        if(generatingStraightExtra)
+            signGenerator.PlacePoste(interRecta);
+
 
         if (!generatingStraightExtra)
             generaTilesSalidaInterseccion(direccionVec);
@@ -194,6 +201,7 @@ public class CityGenerator : MonoBehaviour
 
     void Start()
     {
+        signGenerator = GetComponent<SignGenerator>();
         currentCarretera = new List<GameObject>();
         facingVec = playerColHandler.getLogicF();
         GeneraTramo(facingVec, new Vector3(0, 0, 0), false);

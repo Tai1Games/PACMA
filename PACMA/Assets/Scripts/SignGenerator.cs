@@ -12,18 +12,12 @@ public class SignGenerator : MonoBehaviour
     ///  Posiblemente acabará estando en el PartidaManager.
     /// </summary>
     public int imgID;
-    private CityGenerator cityGenerator;
     Intersection inter = null;
-
-    private void Start()
-    {
-        cityGenerator = GetComponent<CityGenerator>();
-    }
 
     /// <summary>
     /// </summary>
     /// <returns> una direccion aleatoria de entre las disponibles en inter.salidas </returns>
-    Utility.Sentido GetRandomSentidoAvailable()
+    Utility.Sentido GetRandomSentidoAvailable(Intersection inter)
     {
         Utility.Sentido s;
         do s = Random.Range((int)Utility.Sentido.Derecha, (int)Utility.Sentido.Recto + 1) + Utility.Sentido.Derecha;
@@ -31,12 +25,13 @@ public class SignGenerator : MonoBehaviour
         return s;
     }
 
-    void PlacePoste()
+    /// <summary>
+    /// Coloca un poste con numero de carteles aleatorio
+    /// </summary>
+    /// <param name="inter"> Las intersecciones del siguiente cruce </param>
+    public void PlacePoste(GameObject intersectionGO)
     {
-        // obtiene las intersecciones del siguiente cruce
-        GameObject inters = cityGenerator.GetInters();
-        inter = inters.GetComponent<Intersection>();
-
+        Intersection inter = intersectionGO.GetComponent<Intersection>();
         // el numero de direcciones del cartel es aleatorio
         int numCarteles = Random.Range(0, vecPostes.Count);
 
@@ -46,10 +41,12 @@ public class SignGenerator : MonoBehaviour
         for(int i = 0; i < numCarteles; i++)
         {
             Direccion direccion;
-            direccion.sentido = GetRandomSentidoAvailable();
+            direccion.sentido = GetRandomSentidoAvailable(inter);
             direccion.destino = 0;
             dirsList.Add(direccion);
         }
-        poste.Init(new Vector3(0, 0, 0), dirsList, numCarteles);
+
+        Vector3 pos = intersectionGO.GetComponent<PosCartel>().GetPos();
+        poste.Init(pos, dirsList, numCarteles);
     }
 }
