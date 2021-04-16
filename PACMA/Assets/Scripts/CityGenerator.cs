@@ -97,21 +97,13 @@ public class CityGenerator : MonoBehaviour
                 //Crear normal
                 inters = PlaceTile(intersections[Random.Range(0, intersections.Count)], direccionVec, lastTile.transform.position);
             }
+            signGenerator.PlacePoste(inters);
         }
         else
-        {
-            if (generatingStraightExtra)
-                interRecta = PlaceTile(intersections[Random.Range(0, intersections.Count)], direccionVec, lastTile.transform.position);
-            else
-                inters = PlaceTile(intersections[Random.Range(0, intersections.Count)], direccionVec, lastTile.transform.position);
-
-        }
-
-        // generacion de postes
-        signGenerator.PlacePoste(inters);
-        if(generatingStraightExtra)
+        { 
+            interRecta = PlaceTile(intersections[Random.Range(0, intersections.Count)], direccionVec, lastTile.transform.position);
             signGenerator.PlacePoste(interRecta);
-
+        }
 
         if (!generatingStraightExtra)
             generaTilesSalidaInterseccion(direccionVec);

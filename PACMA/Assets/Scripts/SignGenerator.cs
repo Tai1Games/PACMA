@@ -12,7 +12,6 @@ public class SignGenerator : MonoBehaviour
     ///  Posiblemente acabará estando en el PartidaManager.
     /// </summary>
     public int imgID;
-    Intersection inter = null;
 
     /// <summary>
     /// </summary>
@@ -20,8 +19,9 @@ public class SignGenerator : MonoBehaviour
     Utility.Sentido GetRandomSentidoAvailable(Intersection inter)
     {
         Utility.Sentido s;
-        do s = Random.Range((int)Utility.Sentido.Derecha, (int)Utility.Sentido.Recto + 1) + Utility.Sentido.Derecha;
-            while (!inter.salidas.Contains(s));
+        do {
+            s = Random.Range((int)Utility.Sentido.Derecha, (int)Utility.Sentido.Recto + 1) + Utility.Sentido.Derecha;
+        } while (!inter.salidas.Contains(s));
         return s;
     }
 
@@ -33,9 +33,9 @@ public class SignGenerator : MonoBehaviour
     {
         Intersection inter = intersectionGO.GetComponent<Intersection>();
         // el numero de direcciones del cartel es aleatorio
-        int numCarteles = Random.Range(0, vecPostes.Count);
+        int numCarteles = Random.Range(0, vecPostes.Count) + 1;
 
-        Poste poste = Instantiate(vecPostes[numCarteles]).GetComponent<Poste>();
+        Poste poste = Instantiate(vecPostes[numCarteles - 1]).GetComponent<Poste>();
         List<Utility.Direccion> dirsList = new List<Utility.Direccion>();
         
         for(int i = 0; i < numCarteles; i++)
@@ -47,6 +47,8 @@ public class SignGenerator : MonoBehaviour
         }
 
         Vector3 pos = intersectionGO.GetComponent<PosCartel>().GetPos();
-        poste.Init(pos, dirsList, numCarteles);
+        poste.Init(pos, dirsList, numCarteles - 1);
+        poste.transform.Rotate(new Vector3(0.0f, intersectionGO.transform.rotation.eulerAngles.y, 0.0f));
+        poste.transform.SetParent(intersectionGO.transform);
     }
 }

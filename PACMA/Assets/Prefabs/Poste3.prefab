@@ -156,15 +156,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8341610305308449378}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 1.9591886, y: -0.6965313, z: 10.245977}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 763079117697364011}
   - {fileID: 5817690636777268393}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &574535987160390518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,6 +180,8 @@ MonoBehaviour:
   padreCarteles: {fileID: 5817690636777268393}
   cartelDirecciones: {fileID: 8685868049930511047, guid: 3dd4c0db219bce74f9607b7ec35ff8fc, type: 3}
   cartelSeguirRecto: {fileID: 6715210712217168149, guid: d2e973624f059f34794bda0a85a44230, type: 3}
+  posteRotVal: 8
+  cartelRotVal: 15
 --- !u!1001 &2024737844752060735
 PrefabInstance:
   m_ObjectHideFlags: 0

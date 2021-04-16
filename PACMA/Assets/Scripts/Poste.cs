@@ -54,7 +54,7 @@ public class Poste : MonoBehaviour
             {
                 cartelActual = carteles[2 * k];
                 carteles[2 * k + 1].SetActive(false);
-                if (direcciones[k].sentido == Sentido.Derecha) cartelActual.transform.localScale = new Vector3(-cartelActual.transform.lossyScale.x, cartelActual.transform.lossyScale.y, cartelActual.transform.lossyScale.z);
+                if (direcciones[k].sentido == Sentido.Derecha) cartelActual.transform.localScale = new Vector3(-cartelActual.transform.localScale.x, cartelActual.transform.localScale.y, cartelActual.transform.localScale.z);
             }
 
             //Aquí poner las imágenes pero por el momento xd
