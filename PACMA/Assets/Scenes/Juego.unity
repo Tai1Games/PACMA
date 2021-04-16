@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1619571000}
-  m_IndirectSpecularColor: {r: 0.36297253, g: 0.5661971, b: 0.84371066, a: 1}
+  m_IndirectSpecularColor: {r: 0.33317593, g: 0.71267104, b: 0.9840203, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: b38053dd1799d464b993301aa1f339d6, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -686,7 +686,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1265049051227884798, guid: 65f9f2da22e0f2541b45d223bd7b4821, type: 3}
       propertyPath: paletaActual
-      value: 0
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1265049051227884798, guid: 65f9f2da22e0f2541b45d223bd7b4821, type: 3}
       propertyPath: arrayMateriales.Array.data[13]
