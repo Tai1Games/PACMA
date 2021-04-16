@@ -840,6 +840,7 @@ MonoBehaviour:
   - {fileID: 4781067691376664462, guid: f3b2c87cede199e4ba7b1e3d97c2aa6d, type: 3}
   straightIntersections:
   - {fileID: 4781067691376664462, guid: 3a32f3a54325b6f4ebc6bd3a322ba841, type: 3}
+  hospitalTile: {fileID: 1621001731527474819, guid: 43a3c2530ee09f34e914fca165c10564, type: 3}
   tileSize: 10
   maxStraight: 4
   minStraight: 1

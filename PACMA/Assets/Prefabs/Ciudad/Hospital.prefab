@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6134464297455935499}
   - component: {fileID: 7138540070559961363}
-  - component: {fileID: 8642248232286640120}
+  - component: {fileID: -2279572276785639383}
   m_Layer: 0
   m_Name: Hospital
   m_TagString: Untagged
@@ -85,8 +85,8 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.6349816, y: 0.1, z: 0.42656216}
-  m_Center: {x: -0.04283309, y: 0.1, z: 0.10814345}
---- !u!114 &8642248232286640120
+  m_Center: {x: -0.04283309, y: 0.1, z: -0.13}
+--- !u!114 &-2279572276785639383
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,10 +95,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1621001731527474819}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 044aade799b9d514c983e261aecab68c, type: 3}
+  m_Script: {fileID: 11500000, guid: fbe4fe3cf9bdc7340bb93bc4d956f7c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  salidas: 0000000001000000
 --- !u!1 &6995152425580452939
 GameObject:
   m_ObjectHideFlags: 0

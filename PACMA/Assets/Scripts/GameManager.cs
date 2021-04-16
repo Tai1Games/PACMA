@@ -16,6 +16,10 @@ public class GameManager : MonoBehaviour
 
     private int record;
 
+    private int currentPoints = 0;
+
+    public int pointsToWin = 3;
+
 
     private void Awake()
     {
@@ -82,5 +86,20 @@ public class GameManager : MonoBehaviour
     private void OnDestroy()
     {
         PlayerPrefs.SetInt("record", record);
+    }
+
+    public float getPoints()
+    {
+        return currentPoints;
+    }
+
+    public float getPointsForWin()
+    {
+        return pointsToWin;
+    }
+
+    public void addPoint()
+    {
+        currentPoints += 1;
     }
 }
