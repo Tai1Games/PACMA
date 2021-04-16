@@ -31,6 +31,8 @@ public class CityGenerator : MonoBehaviour
         lastTile = null, tileOptIzq = null, tileOptDer = null;
     Vector3 facingVec = new Vector3(0, 0, 1);
 
+    public GameObject GetInters() { return inters; }
+    
     GameObject PlaceTile(GameObject tile, Vector3 direccionVec, Vector3 previousTilePos)
     {
         return Instantiate(tile, previousTilePos + tileSize * direccionVec, Quaternion.LookRotation(direccionVec, Vector3.up));
