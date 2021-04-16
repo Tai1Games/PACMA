@@ -17,8 +17,6 @@ public class MaterialManger : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		Resources.FindObjectsOfTypeAll(typeof(Material));
-
 		string[] lineasArchivo = archivoPaletas.text.Split('\n');
 
 		nPaletas = int.Parse(lineasArchivo[0]);
