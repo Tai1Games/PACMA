@@ -439,7 +439,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 44f13be3319d7644fb8ceab1c82e8f35, type: 2}
+  - {fileID: 2100000, guid: 0944333e838137a47ac9b1f75f847ad9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1943,13 +1943,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1423528300}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.24598965, y: 0.6854383, z: -0.23149116, w: 0.645039}
+  m_LocalPosition: {x: -13.07, y: 5.738, z: -98.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 39.397, y: 94.503, z: 2.862}
 --- !u!1001 &1532298547
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2031,6 +2031,7 @@ GameObject:
   - component: {fileID: 1537109564}
   - component: {fileID: 1537109563}
   - component: {fileID: 1537109562}
+  - component: {fileID: 1537109566}
   m_Layer: 0
   m_Name: AAAAA PERO ESTOS SI
   m_TagString: Untagged
@@ -2071,7 +2072,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 44f13be3319d7644fb8ceab1c82e8f35, type: 2}
+  - {fileID: 2100000, guid: 0944333e838137a47ac9b1f75f847ad9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2115,6 +2116,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1537109566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537109561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 522066ef0ec693543ac957115599633d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrayMateriales:
+  - {fileID: 2100000, guid: 428b804ef1a84954c9a28fea7d18ab1e, type: 2}
+  - {fileID: 2100000, guid: 3ff7de00e78ca1e4ba0783c2514595ea, type: 2}
+  - {fileID: 2100000, guid: 8f08e20119d25244385003b013e8b9f8, type: 2}
+  - {fileID: 2100000, guid: 550ab775b5324314c9059e30b2d88fa7, type: 2}
+  - {fileID: 2100000, guid: a0a177076edb360449798032a6185546, type: 2}
+  - {fileID: 2100000, guid: a0a177076edb360449798032a6185546, type: 2}
+  - {fileID: 2100000, guid: f6275d076f832734cb3fcdd6be3574ac, type: 2}
+  - {fileID: 2100000, guid: 8ec34766987e5474d960e52fcd81aa40, type: 2}
+  - {fileID: 2100000, guid: c064b0405eca80e4fb540a425be665c8, type: 2}
+  - {fileID: 2100000, guid: 10b4a6997b8dffd4b8fda7a2be117e6c, type: 2}
+  - {fileID: 2100000, guid: 2d995d67667bc34478083c01f7bc9766, type: 2}
+  - {fileID: 2100000, guid: 1efc1c8346bc7d94bbf8cd93ec666a6b, type: 2}
+  - {fileID: 2100000, guid: 07ccaa27c9b0cbd458e6b11ada909fb4, type: 2}
+  - {fileID: 2100000, guid: 07ccaa27c9b0cbd458e6b11ada909fb4, type: 2}
+  - {fileID: 2100000, guid: 44f13be3319d7644fb8ceab1c82e8f35, type: 2}
+  - {fileID: 2100000, guid: 13cbc559bf7baa44c9c172037abad11b, type: 2}
+  - {fileID: 2100000, guid: abecd17989663b14a833c917a85e4e23, type: 2}
+  - {fileID: 2100000, guid: 0944333e838137a47ac9b1f75f847ad9, type: 2}
+  archivoPaletas: {fileID: 4900000, guid: 5172cb0fcc211e84b9eb9e07d6fb25ee, type: 3}
+  paletaActual: 5
 --- !u!1001 &1714232095
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,14 +12,18 @@ public class CityGenerator : MonoBehaviour
     public int tileSize = 5;
     public int maxStraight = 3;
     public int minStraight = 1;
-
+    
+    [Range(0,1)]
+    public float failChance = 0.5f;
+    private bool playerDecision = false;
     //Jugador
     public GameObject player;
+    public GameObject carRotationPivot;
     public float playerSpeed = 1;
     private bool moving = true;
     private Sentido playerNextDir = Sentido.Recto;
     public PlayerCollisionHandler playerColHandler;
-    float tiempoAnimGirar = 1f;
+    public float tiempoAnimGirar = 1f;
 
     //Listas para guardar las carreteras que vamos generando
     private List<GameObject> currentCarretera;
@@ -113,15 +117,40 @@ public class CityGenerator : MonoBehaviour
         currentCarretera.Clear();
     }
 
+    Sentido pickRandomDir(Intersection inter, Sentido correcta)
+    {
+        Debug.Log("Random para " + correcta);
+        if (Random.Range(0f, 1f) > failChance)
+        {
+            Debug.Log("Devuelve correcta " + correcta);
+            return correcta;
+        }
+        int i = 0;
+        //Si peta aqui es culpa del que ha hecho la interseccion, no del codigo
+        while (inter.salidas[i] == correcta)
+            i++;
+        Debug.Log("Devuelve falsa" + inter.salidas[i]);
+        return inter.salidas[i];
+    }
+
     void initMovement(Sentido dir, Intersection inter)
     {
         Destroy(oldInters);
         oldInters = inters;
+        if (!playerDecision)
+            //Por ahora no tenemos forma de saber la salida correcta
+            //Asi que pongo la primera? Si? Vale
+            dir = pickRandomDir(inter,inter.salidas[0]);
         if (dir == Sentido.Izquierda && inter.salidas.Contains(Sentido.Izquierda))
         {
+            playerColHandler.prepareRotation(Sentido.Izquierda);
+            playerColHandler.rotatationTiltAnimation(Sentido.Izquierda);
+
             //El jugador decide girar a la izquierda y puede
             playerColHandler.logicFRotate(-90);
-			LeanTween.rotateAroundLocal(player, new Vector3(0, 1, 0), -90, tiempoAnimGirar);
+			LeanTween.rotateAroundLocal(carRotationPivot, new Vector3(0, 1, 0), -90, tiempoAnimGirar).setOnComplete(playerColHandler.endRotation);
+
+
             Destroy(tileOptDer);
             cleanCarretera();
             currentCarretera.Add(interRecta);
@@ -130,10 +159,14 @@ public class CityGenerator : MonoBehaviour
         }
         else if (dir == Sentido.Derecha && inter.salidas.Contains(Sentido.Derecha))
         {
+            playerColHandler.prepareRotation(Sentido.Derecha);
+            playerColHandler.rotatationTiltAnimation(Sentido.Derecha);
+
             //El jugador decide girar a la derecha y puede
             playerColHandler.logicFRotate(90);
-			LeanTween.rotateAroundLocal(player, new Vector3(0, 1, 0), 90, tiempoAnimGirar);
-            Destroy(interRecta);
+            LeanTween.rotateAroundLocal(carRotationPivot, new Vector3(0, 1, 0), 90, tiempoAnimGirar).setOnComplete(playerColHandler.endRotation);
+
+
             Destroy(tileOptIzq);
             cleanCarretera();
             currentCarretera.Add(interRecta);
@@ -154,6 +187,7 @@ public class CityGenerator : MonoBehaviour
         }
 
         playerNextDir = Sentido.Recto;
+        playerDecision = false;
     }
 
     void Start()
@@ -173,7 +207,7 @@ public class CityGenerator : MonoBehaviour
 			p = 5.0f;
 		}
 
-		player.transform.position += playerColHandler.getLogicF() * playerSpeed * p;
+		player.transform.position += player.transform.forward * playerSpeed * p;
         }
     }
 
@@ -194,6 +228,7 @@ public class CityGenerator : MonoBehaviour
 
     public void playerTurn(string direction)
     {
+        playerDecision = true;
         if (direction == "Derecha")
         {
             playerNextDir = Sentido.Derecha;
@@ -201,6 +236,10 @@ public class CityGenerator : MonoBehaviour
         else if (direction == "Izquierda")
         {
             playerNextDir = Sentido.Izquierda;
+        }
+        else if(direction == "Recto")
+        {
+            playerNextDir = Sentido.Recto;
         }
     }
 }
