@@ -6,12 +6,24 @@ using Utility;
 public class SignGenerator : MonoBehaviour
 {
     public List<GameObject> vecPostes;
+    public float extraDistance = 50f;
+    private PlayerCollisionHandler playerCollision; 
 
     /// <summary>
-    ///  ID [0 - nº señales) de la imagen del sitio al que vamos.
-    ///  Posiblemente acabará estando en el PartidaManager.
+    ///  ID [0 - nï¿½ seï¿½ales) de la imagen del sitio al que vamos.
+    ///  Posiblemente acabarï¿½ estando en el PartidaManager.
     /// </summary>
     public int imgID;
+
+    /// <summary>
+    /// COMENTARIOS
+    /// </summary>
+    void Start()
+    {
+        playerCollision = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCollisionHandler>();
+        if (!playerCollision)
+            Debug.Log("No pille la colision xd");
+    }
 
     /// <summary>
     /// </summary>
@@ -31,6 +43,10 @@ public class SignGenerator : MonoBehaviour
     /// <param name="inter"> Las intersecciones del siguiente cruce </param>
     public void PlacePoste(GameObject intersectionGO)
     {
+        //Estupido orden de inicializacion
+        if(playerCollision==null)
+            playerCollision = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCollisionHandler>();
+
         Intersection inter = intersectionGO.GetComponent<Intersection>();
         // el numero de direcciones del cartel es aleatorio
         int numCarteles = Random.Range(0, vecPostes.Count) + 1;
@@ -46,7 +62,7 @@ public class SignGenerator : MonoBehaviour
             dirsList.Add(direccion);
         }
 
-        Vector3 pos = intersectionGO.GetComponent<PosCartel>().GetPos();
+        Vector3 pos = intersectionGO.GetComponent<PosCartel>().GetPos() - playerCollision.getLogicF() * extraDistance;
         poste.Init(pos, dirsList, numCarteles - 1);
         poste.transform.Rotate(new Vector3(0.0f, intersectionGO.transform.rotation.eulerAngles.y, 0.0f));
         poste.transform.SetParent(intersectionGO.transform);
