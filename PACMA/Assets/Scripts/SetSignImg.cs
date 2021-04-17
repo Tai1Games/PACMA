@@ -5,15 +5,15 @@ using UnityEngine.UI;
 public class SetSignImg : MonoBehaviour
 {
     public List<Texture> textures;
-    public int lastHospitalImg = 3;
     public static Color[] colores = { Color.red, Color.blue, Color.green };
+    public static int numTextures = 0;
 
     private RawImage img;
 
     void Start()
     {
-        if (textures == null) textures = new List<Texture>();
         img = GetComponentInChildren<RawImage>();
+        if (numTextures == 0) numTextures = textures.Count;
     }
 
     public int GetTexturesSize() { return textures.Count; }
@@ -22,10 +22,8 @@ public class SetSignImg : MonoBehaviour
 
     public void SetImg(int id, Color color)
     {
-        //if (id < lastHospitalImg) Debug.Log("Es un hospital");
-        //else Debug.Log("No es un hospital");
-
         //Debug.Log("este es mi id de señal: " + id);
+        if (img == null) img = GetComponentInChildren<RawImage>();      // puto orden
 
         if (id < textures.Count - 1)
         {

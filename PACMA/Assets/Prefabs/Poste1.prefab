@@ -123,8 +123,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 116825988448317800}
   - {fileID: 3376429228087273377}
+  - {fileID: 116825988448317800}
   m_Father: {fileID: 1498401561875487091}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -187,7 +187,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6231548383097156527, guid: d2e973624f059f34794bda0a85a44230, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6231548383097156527, guid: d2e973624f059f34794bda0a85a44230, type: 3}
       propertyPath: m_LocalScale.x
@@ -261,7 +261,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8341148458248681597, guid: 3dd4c0db219bce74f9607b7ec35ff8fc, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8341148458248681597, guid: 3dd4c0db219bce74f9607b7ec35ff8fc, type: 3}
       propertyPath: m_LocalScale.x
@@ -317,7 +317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8685868049930511047, guid: 3dd4c0db219bce74f9607b7ec35ff8fc, type: 3}
       propertyPath: m_Name
-      value: CartelDireccion
+      value: cartel1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dd4c0db219bce74f9607b7ec35ff8fc, type: 3}

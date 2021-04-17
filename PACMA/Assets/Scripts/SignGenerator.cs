@@ -49,24 +49,23 @@ public class SignGenerator : MonoBehaviour
 
         Intersection inter = intersectionGO.GetComponent<Intersection>();
         // el numero de direcciones del cartel es aleatorio entre las direcciones posibles y el maximo de carteles
-        int numCarteles = inter.salidas.Count-1;
+        int numCarteles = inter.salidas.Count;
 
-        Poste poste = Instantiate(vecPostes[numCarteles]).GetComponent<Poste>();
+        Poste poste = Instantiate(vecPostes[numCarteles - 1]).GetComponent<Poste>();
         List<Utility.Sentido> dirsList = new List<Utility.Sentido>();
 
         for (int i = 0; i < numCarteles; i++)
         {
             int j;
-            do
-            {
+            do {
                 j = Random.Range(0, inter.salidas.Count);
             }
-
             while (dirsList.Contains(inter.salidas[j]));
+            dirsList.Add(inter.salidas[j]);
         }
 
         Vector3 pos = intersectionGO.GetComponent<PosCartel>().GetPos() - playerCollision.getLogicF() * extraDistance;
-        poste.Init(pos, dirsList, numCarteles,inter.getCorrect());
+        poste.Init(pos, dirsList, numCarteles, inter.getCorrect());
         poste.transform.Rotate(new Vector3(0.0f, intersectionGO.transform.rotation.eulerAngles.y, 0.0f));
         poste.transform.SetParent(intersectionGO.transform);
 

@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 
     private Text pointsText = null;
 
-    int hospitalDestino = 1;
+    int hospitalDestino = 0;
     Color colorDestino;
 
     public int GetHospitalDestino() { return hospitalDestino; }
@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         colorDestino = SetSignImg.GetRandomColor();
+        colorDestino = Color.red;
         if (PlayerPrefs.HasKey("record")) record = PlayerPrefs.GetInt("record");
         else record = 0;
         recordText.text = record.ToString();
