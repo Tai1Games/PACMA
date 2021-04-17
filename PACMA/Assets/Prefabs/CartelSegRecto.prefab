@@ -232,7 +232,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textures:
-  - {fileID: 2800000, guid: f75fbffe189cf65419b77ff7ac57f66c, type: 3}
   - {fileID: 2800000, guid: 481a8fd1304fb2047a30f4b1c9b4834f, type: 3}
   - {fileID: 2800000, guid: b85920504cc0adb4aa15d3f2695a056d, type: 3}
   - {fileID: 2800000, guid: 502ff1d36483e47428e528263f12a9b4, type: 3}
@@ -263,4 +262,5 @@ MonoBehaviour:
   - {fileID: 2800000, guid: c17f35c246fbe2848b1af9fcb0d1252c, type: 3}
   - {fileID: 2800000, guid: c1710fe313671d847a16c08d8fdcae5a, type: 3}
   - {fileID: 2800000, guid: 279366de9f9f9e2439fb02c81ab378a8, type: 3}
+  - {fileID: 2800000, guid: f75fbffe189cf65419b77ff7ac57f66c, type: 3}
   lastHospitalImg: 3
