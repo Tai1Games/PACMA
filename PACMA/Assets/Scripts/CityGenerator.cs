@@ -92,7 +92,7 @@ public class CityGenerator : MonoBehaviour
 
         Debug.Log("Puntos actuales : " + gM.GetPoints() + ". Puntos necesarios :" + gM.GetPointsForWin());
 
-        if (gM.GetPoints() == gM.GetPointsForWin())
+        if (gM.GetPoints() >= gM.GetPointsForWin())
         {
             PlaceTile(hospitalTile, direccionVec, lastTile.transform.position);
         }
