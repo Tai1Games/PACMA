@@ -20,6 +20,12 @@ public class GameManager : MonoBehaviour
 
     private Text pointsText = null;
 
+    int hospitalDestino = 1;
+    Color colorDestino;
+
+    public int GetHospitalDestino() { return hospitalDestino; }
+    public Color GetColorHospitalDestino() { return colorDestino; }
+
     private void Awake()
     {
         if (instance == null)
@@ -33,6 +39,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        colorDestino = SetSignImg.GetRandomColor();
         if (PlayerPrefs.HasKey("record")) record = PlayerPrefs.GetInt("record");
         else record = 0;
         recordText.text = record.ToString();
