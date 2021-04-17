@@ -6,7 +6,7 @@ using System;
 
 public class estres : MonoBehaviour
 {
-    float nivelEstres = 0;
+    public float nivelEstres = 0;
     public RawImage imagen;
     public Animator animador;
     public float stressIncrement;
