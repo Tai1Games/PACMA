@@ -48,8 +48,8 @@ public class SignGenerator : MonoBehaviour
             playerCollision = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCollisionHandler>();
 
         Intersection inter = intersectionGO.GetComponent<Intersection>();
-        // el numero de direcciones del cartel es aleatorio
-        int numCarteles = Random.Range(0, vecPostes.Count) + 1;
+        // el numero de direcciones del cartel es aleatorio entre las direcciones posibles y el maximo de carteles
+        int numCarteles = Random.Range(vecPostes.Count, 3) + 1;
 
         Poste poste = Instantiate(vecPostes[numCarteles - 1]).GetComponent<Poste>();
         List<Utility.Direccion> dirsList = new List<Utility.Direccion>();
