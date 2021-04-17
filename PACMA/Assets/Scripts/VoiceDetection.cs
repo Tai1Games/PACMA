@@ -6,7 +6,7 @@ using UnityEngine.Windows.Speech;
 public class VoiceDetection : MonoBehaviour
 {
 
-    public string[] m_Keywords = new string[] { "izquierda", "derecha" };
+    public string[] m_Keywords = new string[] { "izquierda", "derecha","recto","sigue" };
 
     public string command;
 

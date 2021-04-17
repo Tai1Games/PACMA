@@ -9,15 +9,22 @@ public class CityGenerator : MonoBehaviour
     public List<GameObject> straights;
     public List<GameObject> intersections;
     public List<GameObject> straightIntersections;
+    public GameObject hospitalTile;
     public int tileSize = 5;
     public int maxStraight = 3;
     public int minStraight = 1;
-
+    
+    [Range(0,1)]
+    public float failChance = 0.5f;
+    private bool playerDecision = false;
     //Jugador
     public GameObject player;
+    public GameObject carRotationPivot;
     public float playerSpeed = 1;
     private bool moving = true;
     private Sentido playerNextDir = Sentido.Recto;
+    public PlayerCollisionHandler playerColHandler;
+    public float tiempoAnimGirar = 1f;
 
     //Listas para guardar las carreteras que vamos generando
     private List<GameObject> currentCarretera;
@@ -25,8 +32,8 @@ public class CityGenerator : MonoBehaviour
         lastTile = null, tileOptIzq = null, tileOptDer = null;
     Vector3 facingVec = new Vector3(0, 0, 1);
 
-    //Bocadillos del conductor
-    public BocadilloConductor bocadillos;
+    //Gamemanager
+    GameManager gM = GameManager.instance;
 
     GameObject PlaceTile(GameObject tile, Vector3 direccionVec, Vector3 previousTilePos)
     {
@@ -75,32 +82,41 @@ public class CityGenerator : MonoBehaviour
             lastTile = PlaceTile(straights[Random.Range(0, straights.Count)], direccionVec, lastTile.transform.position);
             currentCarretera.Add(lastTile);
         }
-        //Coloca una interseccion
-        if (!generatingStraightExtra)
-        {
-            //50% de que salga recta con algun variante
-            if (Random.Range(0, 100) % 2 == 0)
-            {
-                Debug.Log("Spawning straight");
-                //Crear recta
-                inters = PlaceTile(straightIntersections[Random.Range(0, straightIntersections.Count)], direccionVec, lastTile.transform.position);
-            }
-            else
-            {
-                //Crear normal
-                inters = PlaceTile(intersections[Random.Range(0, intersections.Count)], direccionVec, lastTile.transform.position);
 
-            }
+        Debug.Log("Puntos actuales : " + gM.GetPoints() + ". Puntos necesarios :" + gM.GetPointsForWin());
+
+        if (gM.GetPoints() == gM.GetPointsForWin())
+        {
+            PlaceTile(hospitalTile, direccionVec, lastTile.transform.position);
         }
         else
         {
-            if (generatingStraightExtra)
-                interRecta = PlaceTile(intersections[Random.Range(0, intersections.Count)], direccionVec, lastTile.transform.position);
+            //Coloca una interseccion
+            if (!generatingStraightExtra)
+            {
+                //50% de que salga recta con algun variante
+                if (Random.Range(0, 100) % 2 == 0)
+                {
+                    Debug.Log("Spawning straight");
+                    //Crear recta
+                    inters = PlaceTile(straightIntersections[Random.Range(0, straightIntersections.Count)], direccionVec, lastTile.transform.position);
+                }
+                else
+                {
+                    //Crear normal
+                    inters = PlaceTile(intersections[Random.Range(0, intersections.Count)], direccionVec, lastTile.transform.position);
+
+                }
+            }
             else
-                inters = PlaceTile(intersections[Random.Range(0, intersections.Count)], direccionVec, lastTile.transform.position);
+            {
+                if (generatingStraightExtra)
+                    interRecta = PlaceTile(intersections[Random.Range(0, intersections.Count)], direccionVec, lastTile.transform.position);
+                else
+                    inters = PlaceTile(intersections[Random.Range(0, intersections.Count)], direccionVec, lastTile.transform.position);
 
+            }
         }
-
         if (!generatingStraightExtra)
             generaTilesSalidaInterseccion(direccionVec);
     }
@@ -114,30 +130,61 @@ public class CityGenerator : MonoBehaviour
         currentCarretera.Clear();
     }
 
+    Sentido pickRandomDir(Intersection inter, Sentido correcta)
+    {
+        Debug.Log("Random para " + correcta);
+        if (Random.Range(0f, 1f) > failChance)
+        {
+            Debug.Log("Devuelve correcta " + correcta);
+            return correcta;
+        }
+        int i = 0;
+        //Si peta aqui es culpa del que ha hecho la interseccion, no del codigo
+        while (inter.salidas[i] == correcta)
+            i++;
+        Debug.Log("Devuelve falsa" + inter.salidas[i]);
+        return inter.salidas[i];
+    }
+
     void initMovement(Sentido dir, Intersection inter)
     {
         Destroy(oldInters);
         oldInters = inters;
+        if (!playerDecision)
+            //Por ahora no tenemos forma de saber la salida correcta
+            //Asi que pongo la primera? Si? Vale
+            dir = pickRandomDir(inter,inter.salidas[0]);
         if (dir == Sentido.Izquierda && inter.salidas.Contains(Sentido.Izquierda))
         {
+            playerColHandler.prepareRotation(Sentido.Izquierda);
+            playerColHandler.rotatationTiltAnimation(Sentido.Izquierda);
+
             //El jugador decide girar a la izquierda y puede
+            playerColHandler.logicFRotate(-90);
+			LeanTween.rotateAroundLocal(carRotationPivot, new Vector3(0, 1, 0), -90, tiempoAnimGirar).setOnComplete(playerColHandler.endRotation);
+
+
             Destroy(tileOptDer);
             cleanCarretera();
             currentCarretera.Add(interRecta);
             currentCarretera.Add(tileOptIzq);
-            player.transform.Rotate(new Vector3(0, -90));
-            GeneraTramo(player.transform.forward, tileOptIzq.transform.position, false);
+            GeneraTramo(playerColHandler.getLogicF(), tileOptIzq.transform.position, false);
         }
         else if (dir == Sentido.Derecha && inter.salidas.Contains(Sentido.Derecha))
         {
+            playerColHandler.prepareRotation(Sentido.Derecha);
+            playerColHandler.rotatationTiltAnimation(Sentido.Derecha);
+
             //El jugador decide girar a la derecha y puede
-            Destroy(interRecta);
+            playerColHandler.logicFRotate(90);
+            LeanTween.rotateAroundLocal(carRotationPivot, new Vector3(0, 1, 0), 90, tiempoAnimGirar).setOnComplete(playerColHandler.endRotation);
+
+
             Destroy(tileOptIzq);
             cleanCarretera();
             currentCarretera.Add(interRecta);
             currentCarretera.Add(tileOptDer);
-            player.transform.Rotate(new Vector3(0, 90));
-            GeneraTramo(player.transform.forward, tileOptDer.transform.position, false);
+            GeneraTramo(playerColHandler.getLogicF(), tileOptDer.transform.position, false);
         }
         else if (dir == Sentido.Recto && inter.salidas.Contains(Sentido.Recto))
         {
@@ -153,20 +200,28 @@ public class CityGenerator : MonoBehaviour
         }
 
         playerNextDir = Sentido.Recto;
+        playerDecision = false;
     }
 
     void Start()
     {
         currentCarretera = new List<GameObject>();
-        facingVec = player.transform.forward;
+        facingVec = playerColHandler.getLogicF();
         GeneraTramo(facingVec, new Vector3(0, 0, 0), false);
+        //gM = FindObjectOfType<GameManager>(); //I know. Let me be.
     }
 
     private void FixedUpdate()
     {
         if (moving)
         {
-            player.transform.position += player.transform.forward * playerSpeed;
+            float p = 1.0f;
+		if (Input.GetKey(KeyCode.Space))
+		{
+			p = 5.0f;
+		}
+
+		player.transform.position += player.transform.forward * playerSpeed * p;
         }
     }
 
@@ -174,26 +229,32 @@ public class CityGenerator : MonoBehaviour
     public void EnteringIntersection(Intersection inter)
     {
         Debug.Log("enteringIntersection");
+        if (Input.GetKey(KeyCode.RightArrow))
+		{
+			playerNextDir = Sentido.Derecha;
+		}
+		else if (Input.GetKey(KeyCode.LeftArrow))
+		{
+			playerNextDir = Sentido.Izquierda;
+		}
         initMovement(playerNextDir, inter);
-        bocadillos.hideBocadillo();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.LeftArrow)) playerTurn("Izquierda");
-        else if (Input.GetKeyDown(KeyCode.RightArrow)) playerTurn("Derecha");
+        gM.AddPoint(); //Esto se debería poner cuando gire hacia el sitio correcto elemao
     }
 
     public void playerTurn(string direction)
     {
+        playerDecision = true;
         if (direction == "Derecha")
         {
             playerNextDir = Sentido.Derecha;
-            bocadillos.showBocadillo(Bocadillos.derecha);
-        }else if(direction == "Izquierda")
+        }
+        else if (direction == "Izquierda")
         {
             playerNextDir = Sentido.Izquierda;
-            bocadillos.showBocadillo(Bocadillos.izquierda);
+        }
+        else if(direction == "Recto")
+        {
+            playerNextDir = Sentido.Recto;
         }
     }
 }

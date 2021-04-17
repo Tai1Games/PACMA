@@ -6,15 +6,19 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager _instance;
-
     public static GameManager instance = null;
 
     public Text recordText;
 
+    public CarMainMenu car;
+
     private int record;
 
-    public string gameSceneName;
+    private int currentPoints = 0;
+
+    public int pointsToWin = 3;
+
+    private Text pointsText = null;
 
     private void Awake()
     {
@@ -34,6 +38,11 @@ public class GameManager : MonoBehaviour
         recordText.text = record.ToString();
     }
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -48,24 +57,19 @@ public class GameManager : MonoBehaviour
 
     public void SendCommand(string command)
     {
-        if (command == "Derecha")
+        if (command == "Start")
         {
-            Debug.Log("Girando a derecha");
-        }else if(command == "Izquierda")
-        {
-            Debug.Log("Girando a izquierda");
-        }
-        else if (command == "Start")
-        {
-            Debug.Log("Vamo a jugal");
-            StartCoroutine(LoadSceneAsync(gameSceneName));
+            Debug.Log("Vamo a jugal ... cuando llegue el coche");
+            
+            car.StartCar();
+            
         }else if(command == "Exit"){
             Debug.Log("Saliendo del juego");
             Application.Quit();
         }
     }
 
-    IEnumerator LoadSceneAsync(string sceneName)
+    public IEnumerator LoadSceneAsync(string sceneName)
     {
         Debug.Log("Loading scene: " + sceneName);
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
@@ -79,5 +83,29 @@ public class GameManager : MonoBehaviour
     private void OnDestroy()
     {
         PlayerPrefs.SetInt("record", record);
+    }
+
+    public float GetPoints()
+    {
+        return currentPoints;
+    }
+
+    public float GetPointsForWin()
+    {
+        return pointsToWin;
+    }
+
+    public void AddPoint()
+    {
+        currentPoints += 1;
+        pointsText.text = currentPoints.ToString("000");
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "MenuPrincipal")
+            car = GameObject.FindWithTag("FordfiestaInicio").GetComponent<CarMainMenu>();
+        if(scene.name == "Juego")
+            pointsText = GameObject.FindWithTag("TextoPuntuacion").GetComponent<Text>();
     }
 }
