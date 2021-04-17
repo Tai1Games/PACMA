@@ -21,6 +21,10 @@ public class GameManager : MonoBehaviour
     private Text pointsText = null;
     private Animation pointsAnim;
 
+    public AudioClip pointUpAudio;
+    public AudioClip pointDownAudio;
+    private AudioSource audioSource;
+
     private void Awake()
     {
         if (instance == null)
@@ -101,6 +105,8 @@ public class GameManager : MonoBehaviour
         currentPoints += 1;
         pointsText.text = currentPoints.ToString("000");
         pointsAnim.Play("PointUpAnimation");
+        audioSource.clip = pointUpAudio;
+        audioSource.Play();
     }
 
     public void RemovePoint()
@@ -108,6 +114,8 @@ public class GameManager : MonoBehaviour
         if(currentPoints > 0) currentPoints -= 1;
         pointsText.text = currentPoints.ToString("000");
         pointsAnim.Play("PointDownAnimation");
+        audioSource.clip = pointDownAudio;
+        audioSource.Play();
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -118,6 +126,7 @@ public class GameManager : MonoBehaviour
         {
             pointsText = GameObject.FindWithTag("TextoPuntuacion").GetComponent<Text>();
             pointsAnim = pointsText.gameObject.GetComponent<Animation>();
+            audioSource = GameObject.FindWithTag("Player").GetComponent<AudioSource>();
         }
     }
 }
