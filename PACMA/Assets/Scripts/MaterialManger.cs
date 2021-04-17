@@ -14,8 +14,13 @@ public class MaterialManger : MonoBehaviour
 
 	int nPaletas;
 
-	// Start is called before the first frame update
-	void Start()
+    private void Awake()
+    {
+		DontDestroyOnLoad(this.gameObject);
+	}
+
+    // Start is called before the first frame update
+    void Start()
 	{
 		string[] lineasArchivo = archivoPaletas.text.Split('\n');
 
@@ -52,4 +57,9 @@ public class MaterialManger : MonoBehaviour
 
 		return ret;
 	}
+
+	public void setCurrentPallet(int nPallet)
+    {
+		paletaActual = nPallet;
+    }
 }
