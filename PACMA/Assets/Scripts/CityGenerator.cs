@@ -10,6 +10,7 @@ public class CityGenerator : MonoBehaviour
     public List<GameObject> intersections;
     public List<GameObject> straightIntersections;
     private Sentido nextCorrectDir;
+    public GameObject hospitalTile;
     public int tileSize = 5;
     public int maxStraight = 3;
     public int minStraight = 1;
@@ -35,6 +36,11 @@ public class CityGenerator : MonoBehaviour
     private SignGenerator signGenerator;
 
     public GameObject GetInters() { return inters; }
+    //Gamemanager
+    GameManager gM = GameManager.instance;
+
+    //Bocadillo conductor
+    public BocadilloConductor bocadillo;
 
     GameObject PlaceTile(GameObject tile, Vector3 direccionVec, Vector3 previousTilePos)
     {
@@ -83,29 +89,40 @@ public class CityGenerator : MonoBehaviour
             lastTile = PlaceTile(straights[Random.Range(0, straights.Count)], direccionVec, lastTile.transform.position);
             currentCarretera.Add(lastTile);
         }
-        //Coloca una interseccion
-        if (!generatingStraightExtra)
+
+        Debug.Log("Puntos actuales : " + gM.GetPoints() + ". Puntos necesarios :" + gM.GetPointsForWin());
+
+        if (gM.GetPoints() == gM.GetPointsForWin())
         {
-            //50% de que salga recta con algun variante
-            if (Random.Range(0, 100) % 2 == 0)
-            {
-                Debug.Log("Spawning straight");
-                //Crear recta
-                inters = PlaceTile(straightIntersections[Random.Range(0, straightIntersections.Count)], direccionVec, lastTile.transform.position);
-            }
-            else
-            {
-                //Crear normal
-                inters = PlaceTile(intersections[Random.Range(0, intersections.Count)], direccionVec, lastTile.transform.position);
-            }
-            signGenerator.PlacePoste(inters);
+            PlaceTile(hospitalTile, direccionVec, lastTile.transform.position);
         }
         else
         {
-            interRecta = PlaceTile(intersections[Random.Range(0, intersections.Count)], direccionVec, lastTile.transform.position);
-            signGenerator.PlacePoste(interRecta);
-        }
+            //Coloca una interseccion
+            if (!generatingStraightExtra)
+            {
+                //50% de que salga recta con algun variante
+                if (Random.Range(0, 100) % 2 == 0)
+                {
+                    Debug.Log("Spawning straight");
+                    //Crear recta
+                    inters = PlaceTile(straightIntersections[Random.Range(0, straightIntersections.Count)], direccionVec, lastTile.transform.position);
+                }
+                else
+                {
+                    //Crear normal
+                    inters = PlaceTile(intersections[Random.Range(0, intersections.Count)], direccionVec, lastTile.transform.position);
 
+                }
+                signGenerator.PlacePoste(inters);
+            }
+            else
+            {
+                interRecta = PlaceTile(intersections[Random.Range(0, intersections.Count)], direccionVec, lastTile.transform.position);
+                signGenerator.PlacePoste(interRecta);
+            }
+        }
+        
         if (!generatingStraightExtra)
             generaTilesSalidaInterseccion(direccionVec);
     }
@@ -194,6 +211,7 @@ public class CityGenerator : MonoBehaviour
 
         playerNextDir = Sentido.Recto;
         playerDecision = false;
+        bocadillo.hideBocadillo();
     }
 
     void Start()
@@ -202,6 +220,7 @@ public class CityGenerator : MonoBehaviour
         currentCarretera = new List<GameObject>();
         facingVec = playerColHandler.getLogicF();
         GeneraTramo(facingVec, new Vector3(0, 0, 0), false);
+        //gM = FindObjectOfType<GameManager>(); //I know. Let me be.
     }
 
     private void FixedUpdate()
@@ -231,6 +250,7 @@ public class CityGenerator : MonoBehaviour
             playerNextDir = Sentido.Izquierda;
         }
         initMovement(playerNextDir, inter);
+        gM.AddPoint(); //Esto se deber�a poner cuando gire hacia el sitio correcto elemao
     }
 
     public void playerTurn(string direction)
@@ -239,14 +259,17 @@ public class CityGenerator : MonoBehaviour
         if (direction == "Derecha")
         {
             playerNextDir = Sentido.Derecha;
+            bocadillo.showBocadillo(Bocadillos.derecha);
         }
         else if (direction == "Izquierda")
         {
             playerNextDir = Sentido.Izquierda;
+            bocadillo.showBocadillo(Bocadillos.izquierda);
         }
         else if (direction == "Recto")
         {
             playerNextDir = Sentido.Recto;
+            bocadillo.showBocadillo(Bocadillos.recto);
         }
     }
 }
