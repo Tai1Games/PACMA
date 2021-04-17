@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager _instance;
-
     public static GameManager instance = null;
 
     public Text recordText;
@@ -20,6 +18,7 @@ public class GameManager : MonoBehaviour
 
     public int pointsToWin = 3;
 
+    private Text pointsText = null;
 
     private void Awake()
     {
@@ -39,6 +38,11 @@ public class GameManager : MonoBehaviour
         recordText.text = record.ToString();
     }
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -53,16 +57,9 @@ public class GameManager : MonoBehaviour
 
     public void SendCommand(string command)
     {
-        if (command == "Derecha")
+        if (command == "Start")
         {
-            Debug.Log("Girando a derecha");
-        }else if(command == "Izquierda")
-        {
-            Debug.Log("Girando a izquierda");
-        }
-        else if (command == "Start")
-        {
-            Debug.Log("Vamo a jugal          ...              cuando llegue el coche");
+            Debug.Log("Vamo a jugal ... cuando llegue el coche");
             
             car.StartCar();
             
@@ -88,18 +85,27 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("record", record);
     }
 
-    public float getPoints()
+    public float GetPoints()
     {
         return currentPoints;
     }
 
-    public float getPointsForWin()
+    public float GetPointsForWin()
     {
         return pointsToWin;
     }
 
-    public void addPoint()
+    public void AddPoint()
     {
         currentPoints += 1;
+        pointsText.text = currentPoints.ToString("000");
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "MenuPrincipal")
+            car = GameObject.FindWithTag("FordfiestaInicio").GetComponent<CarMainMenu>();
+        if(scene.name == "Juego")
+            pointsText = GameObject.FindWithTag("TextoPuntuacion").GetComponent<Text>();
     }
 }
