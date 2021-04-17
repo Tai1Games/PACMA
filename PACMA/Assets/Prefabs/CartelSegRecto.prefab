@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 6231548383097156527}
   - component: {fileID: 7049597595767110666}
   - component: {fileID: 5058040324261513408}
-  - component: {fileID: 1318862229971086677}
+  - component: {fileID: 7267055898836623872}
   m_Layer: 0
   m_Name: CartelSegRecto
   m_TagString: Untagged
@@ -219,7 +219,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1318862229971086677
+--- !u!114 &7267055898836623872
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -232,6 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textures:
+  - {fileID: 2800000, guid: f75fbffe189cf65419b77ff7ac57f66c, type: 3}
   - {fileID: 2800000, guid: 481a8fd1304fb2047a30f4b1c9b4834f, type: 3}
   - {fileID: 2800000, guid: b85920504cc0adb4aa15d3f2695a056d, type: 3}
   - {fileID: 2800000, guid: 502ff1d36483e47428e528263f12a9b4, type: 3}
@@ -262,9 +263,4 @@ MonoBehaviour:
   - {fileID: 2800000, guid: c17f35c246fbe2848b1af9fcb0d1252c, type: 3}
   - {fileID: 2800000, guid: c1710fe313671d847a16c08d8fdcae5a, type: 3}
   - {fileID: 2800000, guid: 279366de9f9f9e2439fb02c81ab378a8, type: 3}
-  - {fileID: 2800000, guid: f75fbffe189cf65419b77ff7ac57f66c, type: 3}
   lastHospitalImg: 3
-  colores:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 0, b: 1, a: 1}
-  - {r: 0, g: 1, b: 0, a: 1}

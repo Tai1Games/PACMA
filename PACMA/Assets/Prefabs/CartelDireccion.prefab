@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 8341148458248681597}
   - component: {fileID: 4930999318228940760}
   - component: {fileID: 7172715269551964946}
-  - component: {fileID: 4357701307212091476}
+  - component: {fileID: 8783473831000435970}
   m_Layer: 0
   m_Name: CartelDireccion
   m_TagString: Untagged
@@ -219,7 +219,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4357701307212091476
+--- !u!114 &8783473831000435970
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -264,7 +264,3 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 279366de9f9f9e2439fb02c81ab378a8, type: 3}
   - {fileID: 2800000, guid: f75fbffe189cf65419b77ff7ac57f66c, type: 3}
   lastHospitalImg: 3
-  colores:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 0, b: 1, a: 1}
-  - {r: 0, g: 1, b: 0, a: 1}

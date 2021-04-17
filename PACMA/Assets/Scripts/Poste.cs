@@ -57,37 +57,36 @@ public class Poste : MonoBehaviour
                 cartelActual.transform.Rotate(new Vector3(0, 1, 0), rotVar);
             else 
                 cartelActual.transform.Rotate(new Vector3(1, 0, 0), rotVar);
-
-
-            // comienzo de la carbonara para que los carteles tengan imagen y eso 🍝
-
-            // escoger las imagenes que iran en los carteles
-            List<int> idsImgs = new List<int>();
-            for (int i = 0; i < posteTipo; i++)
-            {
-                int newId;
-                do
-                {
-                    newId = Random.Range(0, SetSignImg.GetTexturesSize());
-                } while (idsImgs.Contains(newId));
-                idsImgs.Add(newId);
-            }
-
-            // colocar las imagenes en los carteles
-            for (int i = 0; i < carteles.Count; i++)
-            {
-                SetSignImg img = carteles[i].GetComponent<SetSignImg>();
-                img.SetImg(idsImgs[i], SetSignImg.GetRandomColor());
-            }
-
-            // reescribir uno de los carteles con el destino correcto
-            int l = 0;
-            while (l < direcciones.Count && direcciones[l] != correcta) l++;
-            // poner el cartel con la imagen y el color del destino
-            carteles[l].GetComponent<SetSignImg>().SetImg(GameManager.instance.GetHospitalDestino(), GameManager.instance.GetColorHospitalDestino());
-
-            // final de la carbonara 🍝
         }
+
+        // comienzo de la carbonara para que los carteles tengan imagen y eso 🍝
+
+        // escoger las imagenes que iran en los carteles
+        List<int> idsImgs = new List<int>();
+        for (int i = 0; i < posteTipo; i++)
+        {
+            int newId;
+            do
+            {
+                newId = Random.Range(0, 30);    // no deberia ser 30 sino SetSignImg.imgs.Count() - 1
+            } while (idsImgs.Contains(newId));
+            idsImgs.Add(newId);
+        }
+
+        // colocar las imagenes en los carteles
+        for (int i = 0; i < carteles.Count; i++)
+        {
+            SetSignImg img = carteles[i].GetComponent<SetSignImg>();
+            img.SetImg(idsImgs[i], SetSignImg.GetRandomColor());
+        }
+
+        // reescribir uno de los carteles con el destino correcto
+        int l = 0;
+        while (l < direcciones.Count && direcciones[l] != correcta) l++;
+        // poner el cartel con la imagen y el color del destino
+        carteles[l].GetComponent<SetSignImg>().SetImg(GameManager.instance.GetHospitalDestino(), GameManager.instance.GetColorHospitalDestino());
+
+        // final de la carbonara 🍝
     }
 
     public Sentido getCorrectDir()
