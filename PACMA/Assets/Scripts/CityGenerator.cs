@@ -9,6 +9,7 @@ public class CityGenerator : MonoBehaviour
     public List<GameObject> straights;
     public List<GameObject> intersections;
     public List<GameObject> straightIntersections;
+    public GameObject hospitalTile;
     public int tileSize = 5;
     public int maxStraight = 3;
     public int minStraight = 1;
@@ -30,6 +31,9 @@ public class CityGenerator : MonoBehaviour
     GameObject inters = null, oldInters = null, interRecta = null,
         lastTile = null, tileOptIzq = null, tileOptDer = null;
     Vector3 facingVec = new Vector3(0, 0, 1);
+
+    //Gamemanager
+    GameManager gM = GameManager.instance;
 
     GameObject PlaceTile(GameObject tile, Vector3 direccionVec, Vector3 previousTilePos)
     {
@@ -78,32 +82,41 @@ public class CityGenerator : MonoBehaviour
             lastTile = PlaceTile(straights[Random.Range(0, straights.Count)], direccionVec, lastTile.transform.position);
             currentCarretera.Add(lastTile);
         }
-        //Coloca una interseccion
-        if (!generatingStraightExtra)
-        {
-            //50% de que salga recta con algun variante
-            if (Random.Range(0, 100) % 2 == 0)
-            {
-                Debug.Log("Spawning straight");
-                //Crear recta
-                inters = PlaceTile(straightIntersections[Random.Range(0, straightIntersections.Count)], direccionVec, lastTile.transform.position);
-            }
-            else
-            {
-                //Crear normal
-                inters = PlaceTile(intersections[Random.Range(0, intersections.Count)], direccionVec, lastTile.transform.position);
 
-            }
+        Debug.Log("Puntos actuales : " + gM.getPoints() + ". Puntos necesarios :" + gM.getPointsForWin());
+
+        if (gM.getPoints() == gM.getPointsForWin())
+        {
+            PlaceTile(hospitalTile, direccionVec, lastTile.transform.position);
         }
         else
         {
-            if (generatingStraightExtra)
-                interRecta = PlaceTile(intersections[Random.Range(0, intersections.Count)], direccionVec, lastTile.transform.position);
+            //Coloca una interseccion
+            if (!generatingStraightExtra)
+            {
+                //50% de que salga recta con algun variante
+                if (Random.Range(0, 100) % 2 == 0)
+                {
+                    Debug.Log("Spawning straight");
+                    //Crear recta
+                    inters = PlaceTile(straightIntersections[Random.Range(0, straightIntersections.Count)], direccionVec, lastTile.transform.position);
+                }
+                else
+                {
+                    //Crear normal
+                    inters = PlaceTile(intersections[Random.Range(0, intersections.Count)], direccionVec, lastTile.transform.position);
+
+                }
+            }
             else
-                inters = PlaceTile(intersections[Random.Range(0, intersections.Count)], direccionVec, lastTile.transform.position);
+            {
+                if (generatingStraightExtra)
+                    interRecta = PlaceTile(intersections[Random.Range(0, intersections.Count)], direccionVec, lastTile.transform.position);
+                else
+                    inters = PlaceTile(intersections[Random.Range(0, intersections.Count)], direccionVec, lastTile.transform.position);
 
+            }
         }
-
         if (!generatingStraightExtra)
             generaTilesSalidaInterseccion(direccionVec);
     }
@@ -195,6 +208,7 @@ public class CityGenerator : MonoBehaviour
         currentCarretera = new List<GameObject>();
         facingVec = playerColHandler.getLogicF();
         GeneraTramo(facingVec, new Vector3(0, 0, 0), false);
+        //gM = FindObjectOfType<GameManager>(); //I know. Let me be.
     }
 
     private void FixedUpdate()
@@ -224,6 +238,7 @@ public class CityGenerator : MonoBehaviour
 			playerNextDir = Sentido.Izquierda;
 		}
         initMovement(playerNextDir, inter);
+        gM.addPoint(); //Esto se debería poner cuando gire hacia el sitio correcto elemao
     }
 
     public void playerTurn(string direction)

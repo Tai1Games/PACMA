@@ -1060,6 +1060,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recordText: {fileID: 0}
   car: {fileID: 650137481}
+  pointsToWin: 2
 --- !u!4 &994083853
 Transform:
   m_ObjectHideFlags: 0
