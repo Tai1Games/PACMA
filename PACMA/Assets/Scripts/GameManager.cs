@@ -101,6 +101,12 @@ public class GameManager : MonoBehaviour
         pointsText.text = currentPoints.ToString("000");
     }
 
+    public void RemovePoint()
+    {
+        currentPoints = (currentPoints > 0) ? currentPoints-1 : 0;
+        pointsText.text = currentPoints.ToString("000");
+    }
+
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "MenuPrincipal")

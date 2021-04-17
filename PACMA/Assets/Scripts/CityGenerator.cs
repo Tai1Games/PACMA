@@ -155,15 +155,26 @@ public class CityGenerator : MonoBehaviour
     void initMovement(Sentido dir, Intersection inter)
     {
         if (dir == inter.getCorrect())
-            Debug.Log("ueeeeee");
+        {
+            gM.AddPoint();
+            //Soniditos y vainas de pj
+        }
         else
-            Debug.Log("te mamaste we");
+        {
+            gM.RemovePoint();
+            //Soniditos y vainas de pj
+        }
+
         Destroy(oldInters);
         oldInters = inters;
-        if (!playerDecision)
+
+        if (!playerDecision || !inter.salidas.Contains(dir))
+        {
             //Por ahora no tenemos forma de saber la salida correcta
             //Asi que pongo la primera? Si? Vale
-            dir = pickRandomDir(inter, inter.salidas[0]);
+            dir = pickRandomDir(inter, inter.getCorrect());
+        }
+            
         if (dir == Sentido.Izquierda && inter.salidas.Contains(Sentido.Izquierda))
         {
             playerColHandler.prepareRotation(Sentido.Izquierda);
@@ -206,7 +217,7 @@ public class CityGenerator : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Te moristes");
+            Debug.LogError("Esto no debería ocurrir, sorry eksdi");
         }
 
         playerNextDir = Sentido.Recto;
@@ -250,7 +261,6 @@ public class CityGenerator : MonoBehaviour
             playerNextDir = Sentido.Izquierda;
         }
         initMovement(playerNextDir, inter);
-        gM.AddPoint(); //Esto se deber�a poner cuando gire hacia el sitio correcto elemao
     }
 
     public void playerTurn(string direction)
