@@ -242,7 +242,7 @@ public class CityGenerator : MonoBehaviour
 			playerNextDir = Sentido.Izquierda;
 		}
         initMovement(playerNextDir, inter);
-        gM.AddPoint(); //Esto se debería poner cuando gire hacia el sitio correcto elemao
+        gM.RemovePoint(); //Esto se debería poner cuando gire hacia el sitio correcto elemao
     }
 
     public void playerTurn(string direction)
