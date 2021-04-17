@@ -184,6 +184,13 @@ MonoBehaviour:
   - Libertad
   command: Derecha
   cityManager: {fileID: 1607931597}
+  sonidosGata:
+  - {fileID: 8300000, guid: 90aceae96673a8e46b88727079bd3e96, type: 3}
+  - {fileID: 8300000, guid: ad839007e4c495244ab554b48cb79e77, type: 3}
+  - {fileID: 8300000, guid: 6bf39d6f70f5cfb49a54ae0223434131, type: 3}
+  - {fileID: 8300000, guid: 7c0d9b8a9494ee14091542039a5bfc88, type: 3}
+  - {fileID: 8300000, guid: 25b745478e9db954da2a740bb0630b58, type: 3}
+  soundPlayer: {fileID: 670654403}
 --- !u!114 &218207749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,6 +219,13 @@ MonoBehaviour:
   - Socialismo
   command: Izquierda
   cityManager: {fileID: 1607931597}
+  sonidosGata:
+  - {fileID: 8300000, guid: 90aceae96673a8e46b88727079bd3e96, type: 3}
+  - {fileID: 8300000, guid: ad839007e4c495244ab554b48cb79e77, type: 3}
+  - {fileID: 8300000, guid: 6bf39d6f70f5cfb49a54ae0223434131, type: 3}
+  - {fileID: 8300000, guid: 7c0d9b8a9494ee14091542039a5bfc88, type: 3}
+  - {fileID: 8300000, guid: 25b745478e9db954da2a740bb0630b58, type: 3}
+  soundPlayer: {fileID: 670654403}
 --- !u!114 &218207750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,8 +269,17 @@ MonoBehaviour:
   - sigue recto
   - to tieso para adelante
   - todo tieso para adelante
+  - para adelante
+  - sigue adelante
   command: Recto
   cityManager: {fileID: 1607931597}
+  sonidosGata:
+  - {fileID: 8300000, guid: 90aceae96673a8e46b88727079bd3e96, type: 3}
+  - {fileID: 8300000, guid: ad839007e4c495244ab554b48cb79e77, type: 3}
+  - {fileID: 8300000, guid: 6bf39d6f70f5cfb49a54ae0223434131, type: 3}
+  - {fileID: 8300000, guid: 7c0d9b8a9494ee14091542039a5bfc88, type: 3}
+  - {fileID: 8300000, guid: 25b745478e9db954da2a740bb0630b58, type: 3}
+  soundPlayer: {fileID: 670654403}
 --- !u!1 &380646963
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,7 +365,6 @@ GameObject:
   - component: {fileID: 670654402}
   - component: {fileID: 670654401}
   - component: {fileID: 670654400}
-  - component: {fileID: 670654404}
   - component: {fileID: 670654403}
   m_Layer: 0
   m_Name: Player
@@ -549,26 +571,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 944421063}
   m_Enabled: 1
---- !u!114 &670654404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 670654398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9e894fa3804a7042826ea42314822e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minTiempoEntreMaullidos: 4
-  maxTiempoEntreMaullidos: 6
-  sonidos:
-  - {fileID: 8300000, guid: 90aceae96673a8e46b88727079bd3e96, type: 3}
-  - {fileID: 8300000, guid: ad839007e4c495244ab554b48cb79e77, type: 3}
-  - {fileID: 8300000, guid: 6bf39d6f70f5cfb49a54ae0223434131, type: 3}
-  - {fileID: 8300000, guid: 7c0d9b8a9494ee14091542039a5bfc88, type: 3}
-  - {fileID: 8300000, guid: 25b745478e9db954da2a740bb0630b58, type: 3}
 --- !u!114 &944421066
 MonoBehaviour:
   m_ObjectHideFlags: 0
