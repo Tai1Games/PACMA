@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 965916304}
-  m_IndirectSpecularColor: {r: 0.33317593, g: 0.71267104, b: 0.9840203, a: 1}
+  m_IndirectSpecularColor: {r: 0.5072789, g: 0.68714195, b: 0.9880907, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -210,7 +210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1265049051227884798, guid: 65f9f2da22e0f2541b45d223bd7b4821, type: 3}
       propertyPath: paletaActual
-      value: 12
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1265049051227884798, guid: 65f9f2da22e0f2541b45d223bd7b4821, type: 3}
       propertyPath: archivoPaletas
