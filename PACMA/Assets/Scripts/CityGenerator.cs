@@ -170,9 +170,11 @@ public class CityGenerator : MonoBehaviour
 
         if (!playerDecision || !inter.salidas.Contains(dir))
         {
-            //Por ahora no tenemos forma de saber la salida correcta
-            //Asi que pongo la primera? Si? Vale
-            dir = pickRandomDir(inter, inter.getCorrect());
+            //A menos que se pueda ir recto coge una aleatoria a otra direccion
+            if (inter.salidas.Contains(Sentido.Recto))
+                dir = Sentido.Recto;
+            else
+                dir = pickRandomDir(inter, inter.getCorrect());
         }
             
         if (dir == Sentido.Izquierda && inter.salidas.Contains(Sentido.Izquierda))
