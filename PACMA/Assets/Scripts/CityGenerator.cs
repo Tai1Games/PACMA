@@ -83,9 +83,9 @@ public class CityGenerator : MonoBehaviour
             currentCarretera.Add(lastTile);
         }
 
-        Debug.Log("Puntos actuales : " + gM.getPoints() + ". Puntos necesarios :" + gM.getPointsForWin());
+        Debug.Log("Puntos actuales : " + gM.GetPoints() + ". Puntos necesarios :" + gM.GetPointsForWin());
 
-        if (gM.getPoints() == gM.getPointsForWin())
+        if (gM.GetPoints() == gM.GetPointsForWin())
         {
             PlaceTile(hospitalTile, direccionVec, lastTile.transform.position);
         }
@@ -238,7 +238,7 @@ public class CityGenerator : MonoBehaviour
 			playerNextDir = Sentido.Izquierda;
 		}
         initMovement(playerNextDir, inter);
-        gM.addPoint(); //Esto se debería poner cuando gire hacia el sitio correcto elemao
+        gM.AddPoint(); //Esto se debería poner cuando gire hacia el sitio correcto elemao
     }
 
     public void playerTurn(string direction)

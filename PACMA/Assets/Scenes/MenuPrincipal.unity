@@ -1210,7 +1210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recordText: {fileID: 0}
   car: {fileID: 650137481}
-  pointsToWin: 2
+  pointsToWin: 10
 --- !u!4 &994083853
 Transform:
   m_ObjectHideFlags: 0
@@ -2037,7 +2037,7 @@ GameObject:
   - component: {fileID: 650137488}
   m_Layer: 0
   m_Name: fordi
-  m_TagString: Untagged
+  m_TagString: FordfiestaInicio
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
