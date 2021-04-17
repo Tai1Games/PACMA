@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 965916304}
-  m_IndirectSpecularColor: {r: 0.33302954, g: 0.7126091, b: 0.9840252, a: 1}
+  m_IndirectSpecularColor: {r: 0.31056783, g: 0.62146395, b: 0.9868149, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1359,9 +1359,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Keywords:
   - Jugar
+  - Jugar al juego
   - Entrar
   - Empezar
+  - Empezar juego
+  - Empezar partida
   - Play
+  - Comenzar
+  - Comenzar partida
+  - Comenzar juego
+  - Gas gas gas
+  - Dale carla
+  - To tieso pa alante
+  - Todo tieso para adelante
+  - Corre joder
+  - Al hospital
+  - Nos vamos al hospital
   command: Start
 --- !u!4 &1362765510
 Transform:
