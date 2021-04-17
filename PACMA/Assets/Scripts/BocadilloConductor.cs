@@ -16,7 +16,7 @@ public class BocadilloConductor : MonoBehaviour
         //animator = GetComponent<Animator>();
         anim = GetComponent<Animation>();
         bocadillo = GetComponent<Image>();
-        hideBocadillo();
+        disableBocadillo();
     }
 
     private void Update()
@@ -26,7 +26,7 @@ public class BocadilloConductor : MonoBehaviour
 
     public void showBocadillo(Bocadillos estado)
     {
-        hideBocadillo();
+        disableBocadillo();
         switch (estado)
         {
             case Bocadillos.izquierda:
@@ -49,5 +49,11 @@ public class BocadilloConductor : MonoBehaviour
     public void hideBocadillo()
     {
         anim.Play("BocadilloConductorHide");
+    }
+
+    void disableBocadillo()
+    {
+        foreach (Image im in imagenesBocadillo) im.enabled = false;
+        bocadillo.enabled = false;
     }
 }

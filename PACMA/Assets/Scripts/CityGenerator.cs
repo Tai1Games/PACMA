@@ -35,6 +35,9 @@ public class CityGenerator : MonoBehaviour
     //Gamemanager
     GameManager gM = GameManager.instance;
 
+    //Bocadillo conductor
+    public BocadilloConductor bocadillo;
+
     GameObject PlaceTile(GameObject tile, Vector3 direccionVec, Vector3 previousTilePos)
     {
         return Instantiate(tile, previousTilePos + tileSize * direccionVec, Quaternion.LookRotation(direccionVec, Vector3.up));
@@ -201,6 +204,7 @@ public class CityGenerator : MonoBehaviour
 
         playerNextDir = Sentido.Recto;
         playerDecision = false;
+        bocadillo.hideBocadillo();
     }
 
     void Start()
@@ -247,14 +251,17 @@ public class CityGenerator : MonoBehaviour
         if (direction == "Derecha")
         {
             playerNextDir = Sentido.Derecha;
+            bocadillo.showBocadillo(Bocadillos.derecha);
         }
         else if (direction == "Izquierda")
         {
             playerNextDir = Sentido.Izquierda;
+            bocadillo.showBocadillo(Bocadillos.izquierda);
         }
         else if(direction == "Recto")
         {
             playerNextDir = Sentido.Recto;
+            bocadillo.showBocadillo(Bocadillos.recto);
         }
     }
 }
