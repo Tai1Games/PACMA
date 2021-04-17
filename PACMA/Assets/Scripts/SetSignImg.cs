@@ -30,7 +30,8 @@ public class SetSignImg : MonoBehaviour
             img.texture = textures[id];
             img.color = color;
             // rotar por si el cartel apunta al otro lado
-            //img.transform.localScale = new Vector3(transform.localScale.x, img.transform.localScale.y, img.transform.localScale.z);
+            if(img.transform.localScale.y < 0)
+                img.transform.localScale = new Vector3(transform.localScale.x, -1 * transform.localScale.y, img.transform.localScale.z);
         }
         else Debug.Log("??? y esta id de señal???");
     }

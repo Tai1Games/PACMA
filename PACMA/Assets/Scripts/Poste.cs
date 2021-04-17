@@ -17,11 +17,11 @@ public class Poste : MonoBehaviour
     public void Init(Vector3 pos, List<Utility.Sentido> direcciones, int posteTipo, Sentido correcta = Sentido.Izquierda)
     {
         if (posteTipo != 3) //Yeah I know
-            //Understandable, have a nice day
+                            //Understandable, have a nice day
         {
             transform.Rotate(new Vector3(1, 0, 0), Random.Range(-posteRotVal, posteRotVal));
             transform.Rotate(new Vector3(0, 0, 1), Random.Range(-posteRotVal, posteRotVal));
-        } 
+        }
 
         foreach (Transform hijo in padreCarteles)
         {
@@ -53,38 +53,43 @@ public class Poste : MonoBehaviour
             cartelActual.transform.localScale *= scaleVar;
 
             float rotVar = Random.Range(-cartelRotVal, cartelRotVal);
-            if(direcciones[k] != Sentido.Recto) 
+            if (direcciones[k] != Sentido.Recto)
                 cartelActual.transform.Rotate(new Vector3(0, 1, 0), rotVar);
-            else 
+            else
                 cartelActual.transform.Rotate(new Vector3(1, 0, 0), rotVar);
         }
 
         // comienzo de la carbonara para que los carteles tengan imagen y eso 🍝
 
         int dest = GameManager.instance.GetHospitalDestino();
+        int numDirs = direcciones.Count;
+
         // escoger las imagenes que iran en los carteles
         List<int> idsImgs = new List<int>();
-        for (int i = 0; i < posteTipo; i++)
+        for (int i = 0; i < numDirs; i++)
         {
             int newId;
-            do
-            {
-                newId = Random.Range(0, SetSignImg.numTextures - 1);
-            } while (newId == dest || newId == dest);        // para que no aparezca la señal del hospital duplicada
+            do {
+                newId = Random.Range(0, 30);    // no deberia ser 30 sino SetSignImg.imgs.Count() - 1
+            } while (newId == dest || idsImgs.Contains(newId));        // para que no aparezca la señal del hospital duplicada
             idsImgs.Add(newId);
         }
-
-        for (int i = 0; i < direcciones.Count; i++)
-        {
-            GameObject cartelActual = carteles[2 * i + ((direcciones[i] == Sentido.Recto) ? 1 : 0)];
-            cartelActual.GetComponent<SetSignImg>().SetImg(idsImgs[i], SetSignImg.GetRandomColor());
-        }
+        // escoger los colores que iran en los carteles
+        List<Color> colors = new List<Color>();
+        for (int i = 0; i < numDirs; i++) colors.Add(SetSignImg.GetRandomColor());
 
         // reescribir uno de los carteles que tengan la misma direccion con la imagen y el color correctos
         int l = 0;
         while (l < direcciones.Count && direcciones[l] != correcta) l++;
-        if (l >= direcciones.Count) Debug.LogError("Aquí ha pasado algo malo");
-        else carteles[l].GetComponent<SetSignImg>().SetImg(dest, GameManager.instance.GetColorHospitalDestino());
+        // si se rompe es culpa de otro
+        idsImgs[l] = dest;
+        colors[l] = GameManager.instance.GetColorHospitalDestino();
+
+        // aplicar las selecciones
+        for (int i = 0; i < numDirs; i++) {
+            GameObject cartelActual = carteles[2 * i + ((direcciones[i] == Sentido.Recto) ? 1 : 0)];
+            cartelActual.GetComponent<SetSignImg>().SetImg(idsImgs[i], colors[i]);
+        }
 
         // final de la carbonara 🍝
     }
