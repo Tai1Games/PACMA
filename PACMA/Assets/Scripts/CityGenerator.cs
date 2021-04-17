@@ -202,6 +202,7 @@ public class CityGenerator : MonoBehaviour
             Debug.LogError("Te moristes");
         }
 
+        //Reset stuff
         playerNextDir = Sentido.Recto;
         playerDecision = false;
         bocadillo.hideBocadillo();
