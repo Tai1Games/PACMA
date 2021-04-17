@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Utility;
+using UnityEngine.SceneManagement;
 
 public class PlayerCollisionHandler : MonoBehaviour
 {
@@ -32,9 +33,15 @@ public class PlayerCollisionHandler : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Intersection inter = other.gameObject.GetComponent<Intersection>();
+        hospitalTile hospital = other.gameObject.GetComponent<hospitalTile>();
         if (inter)
         {
             cityManager.EnteringIntersection(inter);
+        }
+        else if (hospital)
+        {
+            //jaja ganaste
+            SceneManager.LoadSceneAsync("MenuPrincipal");
         }
     }
 
