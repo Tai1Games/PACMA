@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7642852030188815071}
   - component: {fileID: 7642852030188815064}
   - component: {fileID: 7642852030188815065}
-  - component: {fileID: 7642852030188815070}
   - component: {fileID: 7642852030188815067}
+  - component: {fileID: 1976766404}
   m_Layer: 5
   m_Name: BocadilloConductor
   m_TagString: Untagged
@@ -40,7 +40,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 94.6, y: 67.695}
+  m_AnchoredPosition: {x: 15, y: 132}
   m_SizeDelta: {x: 204.165, y: 135.39}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7642852030188815064
@@ -81,25 +81,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!95 &7642852030188815070
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7642852030188815068}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 50ad3b19443557a4fa37e8f8066a5bd9, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &7642852030188815067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,6 +98,23 @@ MonoBehaviour:
   - {fileID: 7642852031006191785}
   - {fileID: 7642852031343286627}
   - {fileID: 7642852030837768790}
+--- !u!111 &1976766404
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7642852030188815068}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: ac4ca886c40f8884d835fe6e511fe98e, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 33a8bdeba6609ef4f9d8c06a46e8deed, type: 2}
+  - {fileID: 7400000, guid: ac4ca886c40f8884d835fe6e511fe98e, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &7642852030646053196
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
