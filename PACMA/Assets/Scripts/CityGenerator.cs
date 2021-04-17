@@ -9,11 +9,12 @@ public class CityGenerator : MonoBehaviour
     public List<GameObject> straights;
     public List<GameObject> intersections;
     public List<GameObject> straightIntersections;
+    private Sentido nextCorrectDir;
     public int tileSize = 5;
     public int maxStraight = 3;
     public int minStraight = 1;
-    
-    [Range(0,1)]
+
+    [Range(0, 1)]
     public float failChance = 0.5f;
     private bool playerDecision = false;
     //Jugador
@@ -34,7 +35,7 @@ public class CityGenerator : MonoBehaviour
     private SignGenerator signGenerator;
 
     public GameObject GetInters() { return inters; }
-    
+
     GameObject PlaceTile(GameObject tile, Vector3 direccionVec, Vector3 previousTilePos)
     {
         return Instantiate(tile, previousTilePos + tileSize * direccionVec, Quaternion.LookRotation(direccionVec, Vector3.up));
@@ -100,7 +101,7 @@ public class CityGenerator : MonoBehaviour
             signGenerator.PlacePoste(inters);
         }
         else
-        { 
+        {
             interRecta = PlaceTile(intersections[Random.Range(0, intersections.Count)], direccionVec, lastTile.transform.position);
             signGenerator.PlacePoste(interRecta);
         }
@@ -136,12 +137,16 @@ public class CityGenerator : MonoBehaviour
 
     void initMovement(Sentido dir, Intersection inter)
     {
+        if (dir == inter.getCorrect())
+            Debug.Log("ueeeeee");
+        else
+            Debug.Log("te mamaste we");
         Destroy(oldInters);
         oldInters = inters;
         if (!playerDecision)
             //Por ahora no tenemos forma de saber la salida correcta
             //Asi que pongo la primera? Si? Vale
-            dir = pickRandomDir(inter,inter.salidas[0]);
+            dir = pickRandomDir(inter, inter.salidas[0]);
         if (dir == Sentido.Izquierda && inter.salidas.Contains(Sentido.Izquierda))
         {
             playerColHandler.prepareRotation(Sentido.Izquierda);
@@ -149,7 +154,7 @@ public class CityGenerator : MonoBehaviour
 
             //El jugador decide girar a la izquierda y puede
             playerColHandler.logicFRotate(-90);
-			LeanTween.rotateAroundLocal(carRotationPivot, new Vector3(0, 1, 0), -90, tiempoAnimGirar).setOnComplete(playerColHandler.endRotation);
+            LeanTween.rotateAroundLocal(carRotationPivot, new Vector3(0, 1, 0), -90, tiempoAnimGirar).setOnComplete(playerColHandler.endRotation);
 
 
             Destroy(tileOptDer);
@@ -204,12 +209,12 @@ public class CityGenerator : MonoBehaviour
         if (moving)
         {
             float p = 1.0f;
-		if (Input.GetKey(KeyCode.Space))
-		{
-			p = 5.0f;
-		}
+            if (Input.GetKey(KeyCode.Space))
+            {
+                p = 5.0f;
+            }
 
-		player.transform.position += player.transform.forward * playerSpeed * p;
+            player.transform.position += player.transform.forward * playerSpeed * p;
         }
     }
 
@@ -218,13 +223,13 @@ public class CityGenerator : MonoBehaviour
     {
         Debug.Log("enteringIntersection");
         if (Input.GetKey(KeyCode.RightArrow))
-		{
-			playerNextDir = Sentido.Derecha;
-		}
-		else if (Input.GetKey(KeyCode.LeftArrow))
-		{
-			playerNextDir = Sentido.Izquierda;
-		}
+        {
+            playerNextDir = Sentido.Derecha;
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            playerNextDir = Sentido.Izquierda;
+        }
         initMovement(playerNextDir, inter);
     }
 
@@ -239,7 +244,7 @@ public class CityGenerator : MonoBehaviour
         {
             playerNextDir = Sentido.Izquierda;
         }
-        else if(direction == "Recto")
+        else if (direction == "Recto")
         {
             playerNextDir = Sentido.Recto;
         }

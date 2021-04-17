@@ -33,15 +33,15 @@ public class SignGenerator : MonoBehaviour
         Utility.Sentido s;
         do {
             s = Random.Range((int)Utility.Sentido.Derecha, (int)Utility.Sentido.Recto + 1) + Utility.Sentido.Derecha;
-        } while (!inter.salidas.Contains(s));
+        } 
+        while (!inter.salidas.Contains(s));
         return s;
     }
-
     /// <summary>
     /// Coloca un poste con numero de carteles aleatorio
     /// </summary>
     /// <param name="inter"> Las intersecciones del siguiente cruce </param>
-    public void PlacePoste(GameObject intersectionGO)
+    public Poste PlacePoste(GameObject intersectionGO)
     {
         //Estupido orden de inicializacion
         if(playerCollision==null)
@@ -49,22 +49,27 @@ public class SignGenerator : MonoBehaviour
 
         Intersection inter = intersectionGO.GetComponent<Intersection>();
         // el numero de direcciones del cartel es aleatorio entre las direcciones posibles y el maximo de carteles
-        int numCarteles = Random.Range(vecPostes.Count, 3) + 1;
+        int numCarteles = inter.salidas.Count-1;
 
-        Poste poste = Instantiate(vecPostes[numCarteles - 1]).GetComponent<Poste>();
-        List<Utility.Direccion> dirsList = new List<Utility.Direccion>();
-        
-        for(int i = 0; i < numCarteles; i++)
+        Poste poste = Instantiate(vecPostes[numCarteles]).GetComponent<Poste>();
+        List<Utility.Sentido> dirsList = new List<Utility.Sentido>();
+
+        for (int i = 0; i < numCarteles; i++)
         {
-            Direccion direccion;
-            direccion.sentido = GetRandomSentidoAvailable(inter);
-            direccion.destino = 0;
-            dirsList.Add(direccion);
+            int j;
+            do
+            {
+                j = Random.Range(0, inter.salidas.Count);
+            }
+
+            while (dirsList.Contains(inter.salidas[j]));
         }
 
         Vector3 pos = intersectionGO.GetComponent<PosCartel>().GetPos() - playerCollision.getLogicF() * extraDistance;
-        poste.Init(pos, dirsList, numCarteles - 1);
+        poste.Init(pos, dirsList, numCarteles,inter.getCorrect());
         poste.transform.Rotate(new Vector3(0.0f, intersectionGO.transform.rotation.eulerAngles.y, 0.0f));
         poste.transform.SetParent(intersectionGO.transform);
+
+        return poste;
     }
 }
