@@ -210,7 +210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1265049051227884798, guid: 65f9f2da22e0f2541b45d223bd7b4821, type: 3}
       propertyPath: paletaActual
-      value: 12
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1265049051227884798, guid: 65f9f2da22e0f2541b45d223bd7b4821, type: 3}
       propertyPath: archivoPaletas
