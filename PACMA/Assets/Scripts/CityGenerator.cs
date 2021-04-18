@@ -9,7 +9,6 @@ public class CityGenerator : MonoBehaviour
     public List<GameObject> straights;
     public List<GameObject> intersections;
     public List<GameObject> straightIntersections;
-    private Sentido nextCorrectDir;
     public GameObject hospitalTile;
     public int tileSize = 5;
     public int maxStraight = 3;
@@ -22,10 +21,13 @@ public class CityGenerator : MonoBehaviour
     public GameObject player;
     public GameObject carRotationPivot;
     public float playerSpeed = 1;
+    public float playerSpeedIncreaseMultiplier = 0.1f;
     private bool moving = false;
     private Sentido playerNextDir = Sentido.Recto;
     public PlayerCollisionHandler playerColHandler;
     public float tiempoAnimGirar = 1f;
+    public estres EstresScript;
+    public float stressIncreaseMultiplier = 0.1f;
 
     //Listas para guardar las carreteras que vamos generando
     private List<GameObject> currentCarretera;
@@ -127,7 +129,7 @@ public class CityGenerator : MonoBehaviour
                 signGenerator.PlacePoste(interRecta);
             }
         }
-        
+
         if (!generatingStraightExtra)
             generaTilesSalidaInterseccion(direccionVec);
     }
@@ -162,6 +164,7 @@ public class CityGenerator : MonoBehaviour
         Destroy(oldInters);
         oldInters = inters;
 
+        bool conductorDecidio = false;
         if (!playerDecision || !inter.salidas.Contains(dir))
         {
             //A menos que se pueda ir recto coge una aleatoria a otra direccion
@@ -169,8 +172,10 @@ public class CityGenerator : MonoBehaviour
                 dir = Sentido.Recto;
             else
                 dir = pickRandomDir(inter, inter.getCorrect());
+
+            conductorDecidio = true;
         }
-            
+
         if (dir == Sentido.Izquierda && inter.salidas.Contains(Sentido.Izquierda))
         {
             playerColHandler.prepareRotation(Sentido.Izquierda);
@@ -218,13 +223,25 @@ public class CityGenerator : MonoBehaviour
 
         if (dir == inter.getCorrect())
         {
-            gM.AddPoint();
-            //Soniditos y vainas de pj
+            if (!conductorDecidio)
+            {
+                gM.AddPoint();
+                //Subir la velocidad
+                playerSpeed *= playerSpeedIncreaseMultiplier;
+                tiempoAnimGirar /= playerSpeedIncreaseMultiplier;
+            }
         }
         else
         {
             gM.RemovePoint();
             //Soniditos y vainas de pj
+            EstresScript.stressIncrement *= stressIncreaseMultiplier;
+            if (playerSpeed > 0.1)
+            {
+                tiempoAnimGirar *= playerSpeedIncreaseMultiplier;
+                playerSpeed /= playerSpeedIncreaseMultiplier;
+
+            }
         }
 
         //Reset stuff
