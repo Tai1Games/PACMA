@@ -20,11 +20,11 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 1, g: 0.90061826, b: 0.7216981, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 2bd8959f5fbd3644aa33af1a155fc147, type: 2}
   m_HaloStrength: 0.5
@@ -963,7 +963,7 @@ PrefabInstance:
     - target: {fileID: 1265049051227884798, guid: 65f9f2da22e0f2541b45d223bd7b4821, type: 3}
       propertyPath: arrayMateriales.Array.data[13]
       value: 
-      objectReference: {fileID: 2100000, guid: 13cbc559bf7baa44c9c172037abad11b, type: 2}
+      objectReference: {fileID: 2100000, guid: 66cd388e5f24d994287488ff131b5dc4, type: 2}
     - target: {fileID: 1265049051227884798, guid: 65f9f2da22e0f2541b45d223bd7b4821, type: 3}
       propertyPath: arrayMateriales.Array.data[14]
       value: 
@@ -1098,6 +1098,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1607931598}
   - component: {fileID: 1607931597}
+  - component: {fileID: 1607931599}
   m_Layer: 0
   m_Name: CityManager
   m_TagString: Untagged
@@ -1134,7 +1135,7 @@ MonoBehaviour:
   tileSize: 10
   maxStraight: 4
   minStraight: 1
-  failChance: 0
+  failChance: 0.5
   player: {fileID: 670654398}
   carRotationPivot: {fileID: 1720240592}
   playerSpeed: 0.1
@@ -1155,6 +1156,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1607931599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607931596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 907d5daa0cc833f4c8ddfc689942031d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vecPostes:
+  - {fileID: 3502652760088849174, guid: e27642aa84c3969468564281049b70e7, type: 3}
+  - {fileID: 432829848630048882, guid: 1ba054f873c18bd4bb93223c31a6dd2e, type: 3}
+  - {fileID: 8341610305308449378, guid: 4e40979273fcbe5449bf237650606dba, type: 3}
+  extraDistance: 5
+  imgID: 0
 --- !u!1 &1619570999
 GameObject:
   m_ObjectHideFlags: 0
