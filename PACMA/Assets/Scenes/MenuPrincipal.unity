@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 965916304}
-  m_IndirectSpecularColor: {r: 0.31056783, g: 0.62146395, b: 0.9868149, a: 1}
+  m_IndirectSpecularColor: {r: 0.31080258, g: 0.6215703, b: 0.9868086, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -920,7 +920,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 67ae6a1dbba409441aaebc58317a1679, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.552
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1017,7 +1017,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sound: {fileID: 650137489}
-  maxVolume: 0.7
+  maxVolume: 0.1
   pitchVariance: 0.0025
   startingSpeed: 0.533
   minPitch: 1
@@ -1034,10 +1034,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 79a92db4ffb20fd449e669effcfbde63, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 42ae0eafea7508c49a4bdfb5565bb10e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.7
-  m_Pitch: 1
+  m_Volume: 0.5
+  m_Pitch: 3
   Loop: 1
   Mute: 0
   Spatialize: 0
@@ -1459,6 +1459,8 @@ MonoBehaviour:
   recordText: {fileID: 0}
   car: {fileID: 650137481}
   pointsToWin: 10
+  pointUpAudio: {fileID: 8300000, guid: 7a025dc08b2f44740922e24017f9fcdc, type: 3}
+  pointDownAudio: {fileID: 8300000, guid: 49f0f1fb2b0333140aa7204b2f92a8ec, type: 3}
 --- !u!4 &994083853
 Transform:
   m_ObjectHideFlags: 0

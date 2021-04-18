@@ -19,6 +19,11 @@ public class GameManager : MonoBehaviour
     public int pointsToWin = 3;
 
     private Text pointsText = null;
+    private Animation pointsAnim;
+
+    public AudioClip pointUpAudio;
+    public AudioClip pointDownAudio;
+    private AudioSource audioSource;
 
     private void Awake()
     {
@@ -99,6 +104,18 @@ public class GameManager : MonoBehaviour
     {
         currentPoints += 1;
         pointsText.text = currentPoints.ToString("000");
+        pointsAnim.Play("PointUpAnimation");
+        audioSource.clip = pointUpAudio;
+        audioSource.Play();
+    }
+
+    public void RemovePoint()
+    {
+        if(currentPoints > 0) currentPoints -= 1;
+        pointsText.text = currentPoints.ToString("000");
+        pointsAnim.Play("PointDownAnimation");
+        audioSource.clip = pointDownAudio;
+        audioSource.Play();
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -106,6 +123,10 @@ public class GameManager : MonoBehaviour
         if (scene.name == "MenuPrincipal")
             car = GameObject.FindWithTag("FordfiestaInicio").GetComponent<CarMainMenu>();
         if(scene.name == "Juego")
+        {
             pointsText = GameObject.FindWithTag("TextoPuntuacion").GetComponent<Text>();
+            pointsAnim = pointsText.gameObject.GetComponent<Animation>();
+            audioSource = GameObject.FindWithTag("Player").GetComponent<AudioSource>();
+        }
     }
 }
