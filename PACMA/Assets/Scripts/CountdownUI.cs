@@ -26,6 +26,6 @@ public class CountdownUI : MonoBehaviour
             yield return new WaitForSeconds(1);
             countdownNumbers[i].enabled = false;
         }
-        //cityGen.StartMoving();
+        cityGen.StartMoving();
     }
 }

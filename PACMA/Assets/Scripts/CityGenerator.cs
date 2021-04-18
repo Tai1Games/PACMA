@@ -22,7 +22,7 @@ public class CityGenerator : MonoBehaviour
     public GameObject player;
     public GameObject carRotationPivot;
     public float playerSpeed = 1;
-    private bool moving = true;
+    private bool moving = false;
     private Sentido playerNextDir = Sentido.Recto;
     public PlayerCollisionHandler playerColHandler;
     public float tiempoAnimGirar = 1f;
@@ -55,6 +55,11 @@ public class CityGenerator : MonoBehaviour
             return Quaternion.AngleAxis(-90, Vector3.up) * vec;
         else
             return vec;
+    }
+
+    public void StartMoving()
+    {
+        moving = true;
     }
 
     void generaTilesSalidaInterseccion(Vector3 direccionVec)
