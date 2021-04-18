@@ -7,7 +7,6 @@ public class colorPalletSelector : MonoBehaviour
 {
     public List<Sprite> nombresEmojificados;
 
-    private MaterialManger matManager;
     private int currentPallet = 0;
     private int nPallets;
     public Image imagenNombres;
@@ -15,11 +14,9 @@ public class colorPalletSelector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        matManager = FindObjectOfType<MaterialManger>(); //Haha chupate esa Eva
         nPallets = nombresEmojificados.Count - 1;
-        currentPallet = Random.Range(0, nPallets);
+        currentPallet = MaterialManger.instance.getCurrentPallet();
 
-        matManager.setCurrentPallet(currentPallet);
         imagenNombres.sprite = nombresEmojificados[currentPallet];
     }
 
@@ -35,7 +32,7 @@ public class colorPalletSelector : MonoBehaviour
         if (currentPallet < 0) currentPallet = nPallets;
         else if (currentPallet > nPallets) currentPallet = 0;
         Debug.Log(currentPallet);
-        matManager.setCurrentPallet(currentPallet);
+        MaterialManger.instance.setCurrentPallet(currentPallet);
         imagenNombres.sprite = nombresEmojificados[currentPallet];
     }
 }
