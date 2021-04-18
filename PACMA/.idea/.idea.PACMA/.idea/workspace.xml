@@ -16,7 +16,6 @@
     <changedPaths>
       <option value="$PROJECT_DIR$/Assets/Scripts/estres.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/VoiceVolumeDetection.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Coche/CarSound.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Coche/CarMainMenu.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/CityGenerator.cs" />
@@ -24,6 +23,7 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/MicVol.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PantallaVictoria.cs" />
       <option value="$PROJECT_DIR$/Assets/Materials/Blur.shader" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1r6oKzBBsHZFFTVdPuypdCu15S1" />
@@ -85,6 +85,7 @@
       <workItem from="1618417021316" duration="187000" />
       <workItem from="1618417221772" duration="3989000" />
       <workItem from="1618738043221" duration="1169000" />
+      <workItem from="1618763889336" duration="637000" />
     </task>
     <servers />
   </component>

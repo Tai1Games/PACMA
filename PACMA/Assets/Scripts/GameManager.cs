@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
 
-    public Text recordText;
 
     public CarMainMenu car;
 
@@ -55,7 +54,6 @@ public class GameManager : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("record")) record = PlayerPrefs.GetInt("record");
         else record = 0;
-        recordText.text = record.ToString();
     }
 
     private void OnEnable()
@@ -72,7 +70,6 @@ public class GameManager : MonoBehaviour
     public void updateRecord(int p)
     {
         record += p;
-        recordText.text = record.ToString();
     }
 
     public void SendCommand(string command)
