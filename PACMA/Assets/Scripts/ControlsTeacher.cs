@@ -13,7 +13,8 @@ public class ControlsTeacher : MonoBehaviour
 
 	public RectTransform BarraVolumen;
 	public float minValueBarra = 0.1f;
-	public float sensibilidadBarra = 100;
+	public float sensibilidadBarra = 20;
+	public float volMaxmoNecesario = 0.95f;
 	public CanvasRenderer[] numeros;
 
 	public CanvasRenderer Tickverde;
@@ -59,9 +60,9 @@ public class ControlsTeacher : MonoBehaviour
 			Debug.Log("Cambiando Escena");
 		}
 
-		if (!dejaDeGritar) BarraVolumen.anchorMin = new Vector2(BarraVolumen.anchorMin.x, (volActual * sensibilidadBarra / (1 - minValueBarra)) + minValueBarra);
+		if (!dejaDeGritar) BarraVolumen.anchorMin = new Vector2(BarraVolumen.anchorMin.x, (volActual * sensibilidadBarra / (volMaxmoNecesario - minValueBarra)) + minValueBarra);
 
-		if (!dejaDeGritar && volActual >= 1)
+		if (!dejaDeGritar && volActual >= volMaxmoNecesario)
 		{
 			progreso++;
 			dejaDeGritar = true; //por favor para ya

@@ -1108,6 +1108,8 @@ MonoBehaviour:
   recordText: {fileID: 0}
   car: {fileID: 0}
   pointsToWin: 10
+  pointUpAudio: {fileID: 0}
+  pointDownAudio: {fileID: 0}
 --- !u!4 &994083853
 Transform:
   m_ObjectHideFlags: 0
@@ -1808,6 +1810,7 @@ MonoBehaviour:
   BarraVolumen: {fileID: 2083126336}
   minValueBarra: 0.1
   sensibilidadBarra: 20
+  volMaxmoNecesario: 0.95
   numeros:
   - {fileID: 1351153249}
   - {fileID: 452313562}
