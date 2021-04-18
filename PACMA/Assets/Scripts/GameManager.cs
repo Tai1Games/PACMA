@@ -132,6 +132,7 @@ public class GameManager : MonoBehaviour
             car = GameObject.FindWithTag("FordfiestaInicio").GetComponent<CarMainMenu>();
         if(scene.name == "Juego")
         {
+            currentPoints = 0;
             pointsText = GameObject.FindWithTag("TextoPuntuacion").GetComponent<Text>();
             pointsAnim = pointsText.gameObject.GetComponent<Animation>();
             audioSource = GameObject.FindWithTag("Player").GetComponent<AudioSource>();
