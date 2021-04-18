@@ -44,7 +44,7 @@ public class PlayerCollisionHandler : MonoBehaviour
         else if (hospital)
         {
             //jaja ganaste
-            SceneManager.LoadSceneAsync("MenuPrincipal");
+            SceneManager.LoadSceneAsync("Victoria");
         }
     }
 
