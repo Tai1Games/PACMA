@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class PantallaVictoria : MonoBehaviour
 {
     public Image imagen;
+    public float threshHold;
     
-
-    void Update()
+    public void setMicVol(float v)
     {
-        //si los niveles suben de cierto umbral las al menu principal            
+        if (v > threshHold)
+        {
+            SceneManager.LoadSceneAsync("MenuPrincipal");
+        }
     }
-
-    
 }
