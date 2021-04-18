@@ -1171,7 +1171,7 @@ Transform:
   m_LocalScale: {x: 1000, y: 1000, z: 1000}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1325296040
 PrefabInstance:
@@ -1271,7 +1271,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1730376270408470215, guid: 8f9ddf3c6f4579b489fbde311915a7f6, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1730376270408470215, guid: 8f9ddf3c6f4579b489fbde311915a7f6, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1800,6 +1800,14 @@ PrefabInstance:
       propertyPath: shaderEstressScript
       value: 
       objectReference: {fileID: 380646964}
+    - target: {fileID: 945321188642876086, guid: ec8e04bdc74a22243af90ab827a13765, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 945321189383035026, guid: ec8e04bdc74a22243af90ab827a13765, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec8e04bdc74a22243af90ab827a13765, type: 3}
 --- !u!1001 &1976766401

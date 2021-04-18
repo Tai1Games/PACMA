@@ -16,6 +16,8 @@ public class MaterialManger : MonoBehaviour
 
 	int nPaletas;
 
+	private int currentPallet = 0;
+
     private void Awake()
     {
 		if (instance == null)
@@ -45,7 +47,15 @@ public class MaterialManger : MonoBehaviour
 				Paletas[i][j] = vectorFromString(lineasArchivo[2 + i * (nColores+1) + j + 1].Substring(5));
 			}
 		}
+
+		currentPallet = Random.Range(0, 8); //Hardcodeado porque Unity es horrible y no hay tiempo
+		setCurrentPallet(currentPallet);
 	}
+
+	public int getCurrentPallet()
+    {
+		return currentPallet;
+    }
 
 	// Update is called once per frame
 	void Update()
