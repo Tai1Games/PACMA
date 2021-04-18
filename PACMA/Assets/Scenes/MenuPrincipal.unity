@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 965916304}
-  m_IndirectSpecularColor: {r: 0.31056783, g: 0.62146395, b: 0.9868149, a: 1}
+  m_IndirectSpecularColor: {r: 0.33317593, g: 0.71267104, b: 0.9840203, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1460,7 +1460,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recordText: {fileID: 0}
   car: {fileID: 650137481}
-  pointsToWin: 10
+  pointsToWin: 2
   pointUpAudio: {fileID: 8300000, guid: 7a025dc08b2f44740922e24017f9fcdc, type: 3}
   pointDownAudio: {fileID: 8300000, guid: 49f0f1fb2b0333140aa7204b2f92a8ec, type: 3}
 --- !u!4 &994083853
