@@ -178,11 +178,28 @@ PrefabInstance:
       propertyPath: m_Name
       value: PivotParticles
       objectReference: {fileID: 0}
+    - target: {fileID: 6320857970934904050, guid: 2aa7045c47bb71f4f928749187b23128, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.8867924
+      objectReference: {fileID: 0}
+    - target: {fileID: 6320857970934904050, guid: 2aa7045c47bb71f4f928749187b23128, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.8867924
+      objectReference: {fileID: 0}
+    - target: {fileID: 6320857970934904050, guid: 2aa7045c47bb71f4f928749187b23128, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.8867924
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2aa7045c47bb71f4f928749187b23128, type: 3}
 --- !u!4 &128123424 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6320857969955467916, guid: 2aa7045c47bb71f4f928749187b23128, type: 3}
+  m_PrefabInstance: {fileID: 128123423}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &128123425 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6320857970934904050, guid: 2aa7045c47bb71f4f928749187b23128, type: 3}
   m_PrefabInstance: {fileID: 128123423}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &218207746
@@ -1456,6 +1473,9 @@ MonoBehaviour:
   EstresScript: {fileID: 571794711}
   stressIncreaseMultiplier: 1.1
   bocadillo: {fileID: 1976766402}
+  animeParticles: {fileID: 128123425}
+  colorParticulasMinimo: {r: 1, g: 1, b: 1, a: 0}
+  incrementoColorParticulas: {r: 0, g: 0, b: 0, a: 0.09411765}
 --- !u!4 &1607931598
 Transform:
   m_ObjectHideFlags: 0
@@ -1645,7 +1665,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1720240592
 GameObject:
@@ -1698,7 +1718,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 945321187728059028, guid: ec8e04bdc74a22243af90ab827a13765, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 945321187728059028, guid: ec8e04bdc74a22243af90ab827a13765, type: 3}
       propertyPath: m_AnchorMax.x
