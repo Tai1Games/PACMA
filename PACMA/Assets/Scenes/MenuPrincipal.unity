@@ -1016,7 +1016,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce8cba5c538c73c4b92edaaf9c91b0de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: {fileID: 650137489}
+  motorSoundPlayer: {fileID: 0}
+  girosSoundPlayer: {fileID: 0}
+  listGiroSounds: []
   maxVolume: 0.1
   pitchVariance: 0.0025
   startingSpeed: 0.533
@@ -1213,14 +1215,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nombresEmojificados:
-  - {fileID: 21300000, guid: 6abc6d210e5afd342bc7d3ae7bfa5e7e, type: 3}
   - {fileID: 21300000, guid: 3a57ae1c83a2eaf4cb470a43c6e7eca0, type: 3}
   - {fileID: 21300000, guid: f171e1322fdfd534698e60cbda2ca883, type: 3}
+  - {fileID: 21300000, guid: 628539e3e4f7a6f4e806928ad9605530, type: 3}
   - {fileID: 21300000, guid: d4541a603b5b99a4883ef3213fa61f0a, type: 3}
   - {fileID: 21300000, guid: eb7767d9e242f25418ff2b68c0d1df6f, type: 3}
-  - {fileID: 21300000, guid: db655ebce66c6c0428cd2f6165167e88, type: 3}
   - {fileID: 21300000, guid: e82b0cd8afdc0c84cad055b2540c25e3, type: 3}
-  - {fileID: 21300000, guid: 628539e3e4f7a6f4e806928ad9605530, type: 3}
+  - {fileID: 21300000, guid: db655ebce66c6c0428cd2f6165167e88, type: 3}
+  - {fileID: 21300000, guid: 6abc6d210e5afd342bc7d3ae7bfa5e7e, type: 3}
   imagenNombres: {fileID: 1190235712}
 --- !u!1 &756866859
 GameObject:

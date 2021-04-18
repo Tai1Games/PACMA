@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MaterialManger : MonoBehaviour
 {
+	public static MaterialManger instance = null;
+
 	public Material[] arrayMateriales;
 
 	public TextAsset archivoPaletas;
@@ -16,7 +18,13 @@ public class MaterialManger : MonoBehaviour
 
     private void Awake()
     {
-		DontDestroyOnLoad(this.gameObject);
+		if (instance == null)
+		{
+			instance = this;
+			DontDestroyOnLoad(this.gameObject);
+		}
+		else
+			Destroy(this.gameObject);
 	}
 
     // Start is called before the first frame update
