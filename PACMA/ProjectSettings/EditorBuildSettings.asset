@@ -11,5 +11,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Juego.unity
     guid: 1c3c84ab3844efe45ac0e9a295a8d84a
+  - enabled: 1
+    path: Assets/Scenes/Perdida.unity
+    guid: f7d7061a76da51a4484f69aa93d86d7e
+  - enabled: 1
+    path: Assets/Scenes/Menu Tutorial.unity
+    guid: 89f5d044deaebfa478041878eff23387
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 12195cfa39d95bb498ae761ad02a8b31, type: 2}
