@@ -20,5 +20,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Victoria.unity
     guid: 751e0763047af704ca4aff01fed9e687
+  - enabled: 1
+    path: Assets/Scenes/Menu Tutorial.unity
+    guid: 89f5d044deaebfa478041878eff23387
+  - enabled: 1
+    path: Assets/Scenes/Introduccion.unity
+    guid: 649aa26ada3866546affd36686b5d9e1
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 12195cfa39d95bb498ae761ad02a8b31, type: 2}

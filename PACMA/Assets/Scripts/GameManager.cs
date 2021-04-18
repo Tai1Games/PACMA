@@ -80,6 +80,14 @@ public class GameManager : MonoBehaviour
         else if (command == "Menu") {
             StartCoroutine(LoadSceneAsync("MenuPrincipal"));
         }
+        else if (command == "Tutorial")
+        {
+            StartCoroutine(LoadSceneAsync("MenuTutorial"));
+        }
+        else if (command == "Introduccion")
+        {
+            StartCoroutine(LoadSceneAsync("Introduccion"));
+        }
         else if (command == "Exit")
         {
             Debug.Log("Saliendo del juego");
