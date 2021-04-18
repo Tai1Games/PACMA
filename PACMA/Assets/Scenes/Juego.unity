@@ -897,15 +897,15 @@ PrefabInstance:
     - target: {fileID: 576490115594592506, guid: cc4f2cfba24832944890afc6ef086099, type: 3}
       propertyPath: listGiroSounds.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: 733ec5e41d493eb46aaa3062178443e2, type: 3}
+      objectReference: {fileID: 8300000, guid: d3d94ee7fdbeef444ba278b682f6560f, type: 3}
     - target: {fileID: 576490115594592506, guid: cc4f2cfba24832944890afc6ef086099, type: 3}
       propertyPath: listGiroSounds.Array.data[1]
       value: 
-      objectReference: {fileID: 8300000, guid: 5c85f551291f82a4492be53f341cd89b, type: 3}
+      objectReference: {fileID: 8300000, guid: bde09bcbed34f4e45a1f0c44c0a1e7da, type: 3}
     - target: {fileID: 576490115594592506, guid: cc4f2cfba24832944890afc6ef086099, type: 3}
       propertyPath: listGiroSounds.Array.data[2]
       value: 
-      objectReference: {fileID: 8300000, guid: e96f22f8d4429734c8fbf5e654dbcf17, type: 3}
+      objectReference: {fileID: 8300000, guid: d9df360433152f14aab8a87e9323f704, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc4f2cfba24832944890afc6ef086099, type: 3}
 --- !u!4 &1018195436 stripped
