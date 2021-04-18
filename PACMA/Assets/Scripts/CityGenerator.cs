@@ -9,7 +9,6 @@ public class CityGenerator : MonoBehaviour
     public List<GameObject> straights;
     public List<GameObject> intersections;
     public List<GameObject> straightIntersections;
-    private Sentido nextCorrectDir;
     public GameObject hospitalTile;
     public int tileSize = 5;
     public int maxStraight = 3;
@@ -159,6 +158,7 @@ public class CityGenerator : MonoBehaviour
         Destroy(oldInters);
         oldInters = inters;
 
+        bool conductorDecidio = false;
         if (!playerDecision || !inter.salidas.Contains(dir))
         {
             //A menos que se pueda ir recto coge una aleatoria a otra direccion
@@ -166,6 +166,8 @@ public class CityGenerator : MonoBehaviour
                 dir = Sentido.Recto;
             else
                 dir = pickRandomDir(inter, inter.getCorrect());
+
+            conductorDecidio = true;
         }
 
         if (dir == Sentido.Izquierda && inter.salidas.Contains(Sentido.Izquierda))
@@ -215,10 +217,13 @@ public class CityGenerator : MonoBehaviour
 
         if (dir == inter.getCorrect())
         {
-            gM.AddPoint();
-            //Subir la velocidad
-            playerSpeed *= playerSpeedIncreaseMultiplier;
-            tiempoAnimGirar /= playerSpeedIncreaseMultiplier;
+            if (!conductorDecidio)
+            {
+                gM.AddPoint();
+                //Subir la velocidad
+                playerSpeed *= playerSpeedIncreaseMultiplier;
+                tiempoAnimGirar /= playerSpeedIncreaseMultiplier;
+            }
         }
         else
         {
