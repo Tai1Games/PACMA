@@ -222,6 +222,7 @@ public class CityGenerator : MonoBehaviour
             //Soniditos y vainas de pj
         }
 
+        //Reset stuff
         playerNextDir = Sentido.Recto;
         playerDecision = false;
         bocadillo.hideBocadillo();
