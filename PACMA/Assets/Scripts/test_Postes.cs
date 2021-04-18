@@ -12,27 +12,23 @@ public class test_Postes : MonoBehaviour
         //POSTE DE TAMAÑO 1
 
         Poste poste = Instantiate(vecPostes[0]).GetComponent<Poste>();
-        List<Direccion> direcciones = new List<Direccion>();
+        List<Sentido> direcciones = new List<Sentido>();
 
-        Direccion dir;
-        dir.sentido = Sentido.Recto;
-        dir.destino = 0;
-
+        Sentido dir;
+        dir = Sentido.Recto;
         direcciones.Add(dir);
 
-        poste.Init(new Vector3(0, 0, 0), direcciones, 0);
+        poste.Init(new Vector3(0, 0, 0), direcciones, 0,Sentido.Derecha);
 
         //POSTE DE TAMAÑO 2
         poste = Instantiate(vecPostes[1]).GetComponent<Poste>();
-        direcciones = new List<Direccion>();
+        direcciones = new List<Sentido>();
 
-        dir.sentido = Sentido.Derecha;
-        dir.destino = 0;
+        dir = Sentido.Derecha;
 
         direcciones.Add(dir);
 
-        dir.sentido = Sentido.Izquierda;
-        dir.destino = 0;
+        dir = Sentido.Izquierda;
 
         direcciones.Add(dir);
 
@@ -40,20 +36,18 @@ public class test_Postes : MonoBehaviour
 
         //POSTE DE TAMAÑO 3
         poste = Instantiate(vecPostes[2]).GetComponent<Poste>();
-        direcciones = new List<Direccion>();
+        direcciones = new List<Sentido>();
 
-        dir.sentido = Sentido.Recto;
-        dir.destino = 0;
-
-        direcciones.Add(dir);
-
-        dir.sentido = Sentido.Derecha;
-        dir.destino = 0;
+        dir = Sentido.Recto;
 
         direcciones.Add(dir);
 
-        dir.sentido = Sentido.Recto;
-        dir.destino = 0;
+        dir = Sentido.Derecha;
+
+        direcciones.Add(dir);
+
+        dir = Sentido.Recto;
+ 
 
         direcciones.Add(dir);
 
@@ -61,15 +55,14 @@ public class test_Postes : MonoBehaviour
 
         //POSTE DE TAMAÑO 4
         poste = Instantiate(vecPostes[3]).GetComponent<Poste>();
-        direcciones = new List<Direccion>();
+        direcciones = new List<Sentido>();
 
-        dir.sentido = Sentido.Izquierda;
-        dir.destino = 0;
+        dir = Sentido.Izquierda;
 
         direcciones.Add(dir);
 
-        dir.sentido = Sentido.Recto;
-        dir.destino = 0;
+        dir = Sentido.Recto;
+
 
         direcciones.Add(dir);
 
