@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class PantallaVictoria : MonoBehaviour
 {
     public Image imagen;
+    
     public float threshHold;
     
     public void setMicVol(float v)
