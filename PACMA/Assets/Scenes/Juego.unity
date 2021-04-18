@@ -1204,7 +1204,8 @@ MonoBehaviour:
   playerSpeedIncreaseMultiplier: 1.07
   playerColHandler: {fileID: 670654402}
   tiempoAnimGirar: 1
-  EstresScript: {fileID: 0}
+  EstresScript: {fileID: 571794711}
+  stressIncreaseMultiplier: 1.1
   bocadillo: {fileID: 1976766402}
 --- !u!4 &1607931598
 Transform:

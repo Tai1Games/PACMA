@@ -27,6 +27,7 @@ public class CityGenerator : MonoBehaviour
     public PlayerCollisionHandler playerColHandler;
     public float tiempoAnimGirar = 1f;
     public estres EstresScript;
+    public float stressIncreaseMultiplier = 0.1f;
 
     //Listas para guardar las carreteras que vamos generando
     private List<GameObject> currentCarretera;
@@ -229,7 +230,7 @@ public class CityGenerator : MonoBehaviour
         {
             gM.RemovePoint();
             //Soniditos y vainas de pj
-            EstresScript.stressIncrement += 1;
+            EstresScript.stressIncrement *= stressIncreaseMultiplier;
             if (playerSpeed > 0.1)
             {
                 tiempoAnimGirar *= playerSpeedIncreaseMultiplier;
