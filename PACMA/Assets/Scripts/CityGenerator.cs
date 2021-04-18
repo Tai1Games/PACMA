@@ -44,6 +44,11 @@ public class CityGenerator : MonoBehaviour
     //Bocadillo conductor
     public BocadilloConductor bocadillo;
 
+    //particulas anime gottagofast deja vu 
+    public ParticleSystem animeParticles;
+    public Color colorParticulasMinimo;
+    public Color incrementoColorParticulas;
+
     GameObject PlaceTile(GameObject tile, Vector3 direccionVec, Vector3 previousTilePos)
     {
         return Instantiate(tile, previousTilePos + tileSize * direccionVec, Quaternion.LookRotation(direccionVec, Vector3.up));
@@ -229,6 +234,7 @@ public class CityGenerator : MonoBehaviour
                 //Subir la velocidad
                 playerSpeed *= playerSpeedIncreaseMultiplier;
                 tiempoAnimGirar /= playerSpeedIncreaseMultiplier;
+                animeParticles.startColor += incrementoColorParticulas; 
             }
         }
         else
@@ -257,6 +263,7 @@ public class CityGenerator : MonoBehaviour
         facingVec = playerColHandler.getLogicF();
         GeneraTramo(facingVec, new Vector3(0, 0, 0), false);
         //gM = FindObjectOfType<GameManager>(); //I know. Let me be.
+        animeParticles.startColor = colorParticulasMinimo;
     }
 
     private void FixedUpdate()
