@@ -15,6 +15,8 @@ public class estres : MonoBehaviour
     private void Update()
     {
         UpdateEstres(stressIncrement*Time.deltaTime);
+        if (nivelEstres >= 100)
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Perdida");
     }
 
     public void UpdateEstres(float nivel)
