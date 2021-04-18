@@ -509,7 +509,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 90aceae96673a8e46b88727079bd3e96, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.238
+  m_Volume: 0.12
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -875,12 +875,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 576490115594592261, guid: cc4f2cfba24832944890afc6ef086099, type: 3}
+      propertyPath: m_Volume
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 576490115594592261, guid: cc4f2cfba24832944890afc6ef086099, type: 3}
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 42ae0eafea7508c49a4bdfb5565bb10e, type: 3}
     - target: {fileID: 576490115594592506, guid: cc4f2cfba24832944890afc6ef086099, type: 3}
       propertyPath: maxVolume
-      value: 1
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 576490115594592506, guid: cc4f2cfba24832944890afc6ef086099, type: 3}
       propertyPath: girosSoundPlayer
@@ -934,8 +938,8 @@ MonoBehaviour:
   shake_intensity: 0.002
   disableX: 0
   disableY: 0
-  disableZ: 0
-  rotationOffset: 6
+  disableZ: 1
+  rotationOffset: 5
 --- !u!82 &1018195439 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 576490115594592261, guid: cc4f2cfba24832944890afc6ef086099, type: 3}
@@ -953,7 +957,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.12
   m_Pitch: 1
   Loop: 0
   Mute: 0
