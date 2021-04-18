@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     public CarMainMenu car;
 
+    private SetSignImg papel;
+
     private int record;
 
     private int currentPoints = 0;
@@ -31,6 +33,13 @@ public class GameManager : MonoBehaviour
     public int GetHospitalDestino() { return hospitalDestino; }
     public Color GetColorHospitalDestino() { return colorDestino; }
 
+    public void SetPapel(SetSignImg papel) {
+        this.papel = papel;
+        hospitalDestino = Random.Range(0, SetSignImg.GetNumHospitales());
+        colorDestino = SetSignImg.GetRandomColor();
+        papel.SetImg(hospitalDestino, colorDestino);
+    }
+
     private void Awake()
     {
         if (instance == null)
@@ -44,8 +53,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        colorDestino = SetSignImg.GetRandomColor();
-        colorDestino = Color.red;
         if (PlayerPrefs.HasKey("record")) record = PlayerPrefs.GetInt("record");
         else record = 0;
         recordText.text = record.ToString();
