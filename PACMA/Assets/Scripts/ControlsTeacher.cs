@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ControlsTeacher : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class ControlsTeacher : MonoBehaviour
 	private float volActual = 0;
 	private bool dejaDeGritar = false;
 
+	public string MainMenusceneName;
+	public float timeToChangeScene = 1f;
+
 	void Start()
 	{
 		flechaDer.SetAlpha(0);
@@ -35,19 +39,24 @@ public class ControlsTeacher : MonoBehaviour
 
 	void Update()
 	{
+		foreach (CanvasRenderer num in numeros)
+		{
+			num.SetAlpha(0);
+		}
+		numeros[progreso].SetAlpha(1);
 
 		if (progreso >= 4)
 		{
 			Tickverde.SetAlpha(1);
-			Debug.Log("Cambiando Escena");
-		}
-		else
-		{
+
 			foreach (CanvasRenderer num in numeros)
 			{
 				num.SetAlpha(0);
 			}
-			numeros[progreso].SetAlpha(1);
+			numeros[4].SetAlpha(1);
+
+			StartCoroutine(cambiarEscena(timeToChangeScene));
+			Debug.Log("Cambiando Escena");
 		}
 
 		if (!dejaDeGritar) BarraVolumen.anchorMin = new Vector2(BarraVolumen.anchorMin.x, (volActual * sensibilidadBarra / (1 - minValueBarra)) + minValueBarra);
@@ -57,6 +66,15 @@ public class ControlsTeacher : MonoBehaviour
 			progreso++;
 			dejaDeGritar = true; //por favor para ya
 		}
+	}
+
+	IEnumerator cambiarEscena(float time)
+	{
+		yield return new WaitForSeconds(time);
+
+		this.enabled = true;
+
+		SceneManager.LoadSceneAsync(MainMenusceneName);
 	}
 
 	public void sendCommand(string command)
