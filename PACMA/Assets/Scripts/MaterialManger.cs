@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MaterialManger : MonoBehaviour
 {
+	public static MaterialManger instance = null;
+
 	public Material[] arrayMateriales;
 
 	public TextAsset archivoPaletas;
@@ -14,8 +16,19 @@ public class MaterialManger : MonoBehaviour
 
 	int nPaletas;
 
-	// Start is called before the first frame update
-	void Start()
+    private void Awake()
+    {
+		if (instance == null)
+		{
+			instance = this;
+			DontDestroyOnLoad(this.gameObject);
+		}
+		else
+			Destroy(this.gameObject);
+	}
+
+    // Start is called before the first frame update
+    void Start()
 	{
 		string[] lineasArchivo = archivoPaletas.text.Split('\n');
 
@@ -52,4 +65,9 @@ public class MaterialManger : MonoBehaviour
 
 		return ret;
 	}
+
+	public void setCurrentPallet(int nPallet)
+    {
+		paletaActual = nPallet;
+    }
 }
