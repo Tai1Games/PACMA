@@ -21,7 +21,7 @@ public class CarMainMenu : MonoBehaviour
         this.enabled = false;
         audioSources = GetComponents<AudioSource>();
         _carSound = GetComponents<CarSound>()[0];
-        _carSound.sound = audioSources[1];
+        _carSound.motorSoundPlayer = audioSources[1];
     }
 
     public void StartCar()

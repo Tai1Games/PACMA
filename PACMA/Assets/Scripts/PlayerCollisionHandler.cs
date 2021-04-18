@@ -12,6 +12,8 @@ public class PlayerCollisionHandler : MonoBehaviour
     private Animator carAnimator;
     private BoxCollider playerCollider;
 
+    private CarSound carSound;
+
     public GameObject rotationPivot;
     [Range(0.0f, 4.0f)]
     public float anguloRotDer;
@@ -23,6 +25,7 @@ public class PlayerCollisionHandler : MonoBehaviour
         logicForward = transform.forward;
         carAnimator = GetComponentInChildren<Animator>();
         playerCollider = GetComponent<BoxCollider>();
+        carSound = GetComponentInChildren<CarSound>();
     }
 
     // Update is called once per frame
@@ -64,6 +67,7 @@ public class PlayerCollisionHandler : MonoBehaviour
             carAnimator.SetTrigger("Derecha");
         }
         else carAnimator.SetTrigger("Izquierda");
+        carSound.giroSound();
     }
 
     public void prepareRotation(Sentido s)
