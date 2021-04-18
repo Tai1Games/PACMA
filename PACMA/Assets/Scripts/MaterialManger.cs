@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MaterialManger : MonoBehaviour
 {
+	public static MaterialManger instance = null;
+
 	public Material[] arrayMateriales;
 
 	public TextAsset archivoPaletas;
@@ -14,8 +16,21 @@ public class MaterialManger : MonoBehaviour
 
 	int nPaletas;
 
-	// Start is called before the first frame update
-	void Start()
+	private int currentPallet = 0;
+
+    private void Awake()
+    {
+		if (instance == null)
+		{
+			instance = this;
+			DontDestroyOnLoad(this.gameObject);
+		}
+		else
+			Destroy(this.gameObject);
+	}
+
+    // Start is called before the first frame update
+    void Start()
 	{
 		string[] lineasArchivo = archivoPaletas.text.Split('\n');
 
@@ -32,7 +47,15 @@ public class MaterialManger : MonoBehaviour
 				Paletas[i][j] = vectorFromString(lineasArchivo[2 + i * (nColores+1) + j + 1].Substring(5));
 			}
 		}
+
+		currentPallet = Random.Range(0, 8); //Hardcodeado porque Unity es horrible y no hay tiempo
+		setCurrentPallet(currentPallet);
 	}
+
+	public int getCurrentPallet()
+    {
+		return currentPallet;
+    }
 
 	// Update is called once per frame
 	void Update()
@@ -52,4 +75,9 @@ public class MaterialManger : MonoBehaviour
 
 		return ret;
 	}
+
+	public void setCurrentPallet(int nPallet)
+    {
+		paletaActual = nPallet;
+    }
 }

@@ -80,10 +80,23 @@ public class GameManager : MonoBehaviour
         if (command == "Start")
         {
             Debug.Log("Vamo a jugal ... cuando llegue el coche");
-            
+
             car.StartCar();
-            
-        }else if(command == "Exit"){
+
+        }
+        else if (command == "Menu") {
+            StartCoroutine(LoadSceneAsync("MenuPrincipal"));
+        }
+        else if (command == "Tutorial")
+        {
+            StartCoroutine(LoadSceneAsync("MenuTutorial"));
+        }
+        else if (command == "Introduccion")
+        {
+            StartCoroutine(LoadSceneAsync("Introduccion"));
+        }
+        else if (command == "Exit")
+        {
             Debug.Log("Saliendo del juego");
             Application.Quit();
         }
@@ -126,7 +139,7 @@ public class GameManager : MonoBehaviour
 
     public void RemovePoint()
     {
-        if(currentPoints > 0) currentPoints -= 1;
+        if (currentPoints > 0) currentPoints -= 1;
         pointsText.text = currentPoints.ToString("000");
         pointsAnim.Play("PointDownAnimation");
         audioSource.clip = pointDownAudio;
@@ -137,8 +150,9 @@ public class GameManager : MonoBehaviour
     {
         if (scene.name == "MenuPrincipal")
             car = GameObject.FindWithTag("FordfiestaInicio").GetComponent<CarMainMenu>();
-        if(scene.name == "Juego")
+        if (scene.name == "Juego")
         {
+            currentPoints = 0;
             pointsText = GameObject.FindWithTag("TextoPuntuacion").GetComponent<Text>();
             pointsAnim = pointsText.gameObject.GetComponent<Animation>();
             audioSource = GameObject.FindWithTag("Player").GetComponent<AudioSource>();

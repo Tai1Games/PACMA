@@ -51,7 +51,7 @@ MonoBehaviour:
     value: 1
   rounded:
     overrideState: 1
-    value: 1
+    value: 0
   mask:
     overrideState: 1
     value: {fileID: 2800000, guid: bc130d88cf621b2479a8ecc74ae267e0, type: 3}
