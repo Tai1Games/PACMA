@@ -48,7 +48,8 @@ public class BocadilloConductor : MonoBehaviour
 
     public void hideBocadillo()
     {
-        anim.Play("BocadilloConductorHide");
+        if (bocadillo.enabled)
+            anim.Play("BocadilloConductorHide");
     }
 
     void disableBocadillo()

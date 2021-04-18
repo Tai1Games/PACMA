@@ -13,10 +13,4 @@ namespace Utility
         South = 2,
         East = 3
     }
-
-    public struct Direccion
-    {
-        public Sentido sentido;
-        public int destino; //Esto se cambiar�? Posiblemente
-    }
 }

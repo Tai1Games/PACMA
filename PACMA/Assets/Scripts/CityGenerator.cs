@@ -13,18 +13,21 @@ public class CityGenerator : MonoBehaviour
     public int tileSize = 5;
     public int maxStraight = 3;
     public int minStraight = 1;
-    
-    [Range(0,1)]
+
+    [Range(0, 1)]
     public float failChance = 0.5f;
     private bool playerDecision = false;
     //Jugador
     public GameObject player;
     public GameObject carRotationPivot;
     public float playerSpeed = 1;
-    private bool moving = true;
+    public float playerSpeedIncreaseMultiplier = 0.1f;
+    private bool moving = false;
     private Sentido playerNextDir = Sentido.Recto;
     public PlayerCollisionHandler playerColHandler;
     public float tiempoAnimGirar = 1f;
+    public estres EstresScript;
+    public float stressIncreaseMultiplier = 0.1f;
 
     //Listas para guardar las carreteras que vamos generando
     private List<GameObject> currentCarretera;
@@ -32,6 +35,9 @@ public class CityGenerator : MonoBehaviour
         lastTile = null, tileOptIzq = null, tileOptDer = null;
     Vector3 facingVec = new Vector3(0, 0, 1);
 
+    private SignGenerator signGenerator;
+
+    public GameObject GetInters() { return inters; }
     //Gamemanager
     GameManager gM = GameManager.instance;
 
@@ -51,6 +57,11 @@ public class CityGenerator : MonoBehaviour
             return Quaternion.AngleAxis(-90, Vector3.up) * vec;
         else
             return vec;
+    }
+
+    public void StartMoving()
+    {
+        moving = true;
     }
 
     void generaTilesSalidaInterseccion(Vector3 direccionVec)
@@ -110,16 +121,15 @@ public class CityGenerator : MonoBehaviour
                     inters = PlaceTile(intersections[Random.Range(0, intersections.Count)], direccionVec, lastTile.transform.position);
 
                 }
+                signGenerator.PlacePoste(inters);
             }
             else
             {
-                if (generatingStraightExtra)
-                    interRecta = PlaceTile(intersections[Random.Range(0, intersections.Count)], direccionVec, lastTile.transform.position);
-                else
-                    inters = PlaceTile(intersections[Random.Range(0, intersections.Count)], direccionVec, lastTile.transform.position);
-
+                interRecta = PlaceTile(intersections[Random.Range(0, intersections.Count)], direccionVec, lastTile.transform.position);
+                signGenerator.PlacePoste(interRecta);
             }
         }
+
         if (!generatingStraightExtra)
             generaTilesSalidaInterseccion(direccionVec);
     }
@@ -153,10 +163,19 @@ public class CityGenerator : MonoBehaviour
     {
         Destroy(oldInters);
         oldInters = inters;
-        if (!playerDecision)
-            //Por ahora no tenemos forma de saber la salida correcta
-            //Asi que pongo la primera? Si? Vale
-            dir = pickRandomDir(inter,inter.salidas[0]);
+
+        bool conductorDecidio = false;
+        if (!playerDecision || !inter.salidas.Contains(dir))
+        {
+            //A menos que se pueda ir recto coge una aleatoria a otra direccion
+            if (inter.salidas.Contains(Sentido.Recto))
+                dir = Sentido.Recto;
+            else
+                dir = pickRandomDir(inter, inter.getCorrect());
+
+            conductorDecidio = true;
+        }
+
         if (dir == Sentido.Izquierda && inter.salidas.Contains(Sentido.Izquierda))
         {
             playerColHandler.prepareRotation(Sentido.Izquierda);
@@ -164,7 +183,7 @@ public class CityGenerator : MonoBehaviour
 
             //El jugador decide girar a la izquierda y puede
             playerColHandler.logicFRotate(-90);
-			LeanTween.rotateAroundLocal(carRotationPivot, new Vector3(0, 1, 0), -90, tiempoAnimGirar).setOnComplete(playerColHandler.endRotation);
+            LeanTween.rotateAroundLocal(carRotationPivot, new Vector3(0, 1, 0), -90, tiempoAnimGirar).setOnComplete(playerColHandler.endRotation);
 
 
             Destroy(tileOptDer);
@@ -199,9 +218,33 @@ public class CityGenerator : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Te moristes");
+            Debug.LogError("Esto no deberÃ­a ocurrir, sorry eksdi");
         }
 
+        if (dir == inter.getCorrect())
+        {
+            if (!conductorDecidio)
+            {
+                gM.AddPoint();
+                //Subir la velocidad
+                playerSpeed *= playerSpeedIncreaseMultiplier;
+                tiempoAnimGirar /= playerSpeedIncreaseMultiplier;
+            }
+        }
+        else
+        {
+            gM.RemovePoint();
+            //Soniditos y vainas de pj
+            EstresScript.stressIncrement *= stressIncreaseMultiplier;
+            if (playerSpeed > 0.1)
+            {
+                tiempoAnimGirar *= playerSpeedIncreaseMultiplier;
+                playerSpeed /= playerSpeedIncreaseMultiplier;
+
+            }
+        }
+
+        //Reset stuff
         playerNextDir = Sentido.Recto;
         playerDecision = false;
         bocadillo.hideBocadillo();
@@ -209,6 +252,7 @@ public class CityGenerator : MonoBehaviour
 
     void Start()
     {
+        signGenerator = GetComponent<SignGenerator>();
         currentCarretera = new List<GameObject>();
         facingVec = playerColHandler.getLogicF();
         GeneraTramo(facingVec, new Vector3(0, 0, 0), false);
@@ -220,12 +264,12 @@ public class CityGenerator : MonoBehaviour
         if (moving)
         {
             float p = 1.0f;
-		if (Input.GetKey(KeyCode.Space))
-		{
-			p = 5.0f;
-		}
+            if (Input.GetKey(KeyCode.Space))
+            {
+                p = 5.0f;
+            }
 
-		player.transform.position += player.transform.forward * playerSpeed * p;
+            player.transform.position += player.transform.forward * playerSpeed * p;
         }
     }
 
@@ -234,15 +278,14 @@ public class CityGenerator : MonoBehaviour
     {
         Debug.Log("enteringIntersection");
         if (Input.GetKey(KeyCode.RightArrow))
-		{
-			playerNextDir = Sentido.Derecha;
-		}
-		else if (Input.GetKey(KeyCode.LeftArrow))
-		{
-			playerNextDir = Sentido.Izquierda;
-		}
+        {
+            playerNextDir = Sentido.Derecha;
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            playerNextDir = Sentido.Izquierda;
+        }
         initMovement(playerNextDir, inter);
-        gM.AddPoint(); //Esto se debería poner cuando gire hacia el sitio correcto elemao
     }
 
     public void playerTurn(string direction)
@@ -258,7 +301,7 @@ public class CityGenerator : MonoBehaviour
             playerNextDir = Sentido.Izquierda;
             bocadillo.showBocadillo(Bocadillos.izquierda);
         }
-        else if(direction == "Recto")
+        else if (direction == "Recto")
         {
             playerNextDir = Sentido.Recto;
             bocadillo.showBocadillo(Bocadillos.recto);

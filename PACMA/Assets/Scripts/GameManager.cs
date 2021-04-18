@@ -25,6 +25,12 @@ public class GameManager : MonoBehaviour
     public AudioClip pointDownAudio;
     private AudioSource audioSource;
 
+    int hospitalDestino = 0;
+    Color colorDestino;
+
+    public int GetHospitalDestino() { return hospitalDestino; }
+    public Color GetColorHospitalDestino() { return colorDestino; }
+
     private void Awake()
     {
         if (instance == null)
@@ -38,6 +44,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        colorDestino = SetSignImg.GetRandomColor();
+        colorDestino = Color.red;
         if (PlayerPrefs.HasKey("record")) record = PlayerPrefs.GetInt("record");
         else record = 0;
         recordText.text = record.ToString();
