@@ -22,10 +22,12 @@ public class CityGenerator : MonoBehaviour
     public GameObject player;
     public GameObject carRotationPivot;
     public float playerSpeed = 1;
+    public float playerSpeedIncreaseMultiplier = 0.1f;
     private bool moving = true;
     private Sentido playerNextDir = Sentido.Recto;
     public PlayerCollisionHandler playerColHandler;
     public float tiempoAnimGirar = 1f;
+    public estres EstresScript;
 
     //Listas para guardar las carreteras que vamos generando
     private List<GameObject> currentCarretera;
@@ -122,7 +124,7 @@ public class CityGenerator : MonoBehaviour
                 signGenerator.PlacePoste(interRecta);
             }
         }
-        
+
         if (!generatingStraightExtra)
             generaTilesSalidaInterseccion(direccionVec);
     }
@@ -165,7 +167,7 @@ public class CityGenerator : MonoBehaviour
             else
                 dir = pickRandomDir(inter, inter.getCorrect());
         }
-            
+
         if (dir == Sentido.Izquierda && inter.salidas.Contains(Sentido.Izquierda))
         {
             playerColHandler.prepareRotation(Sentido.Izquierda);
@@ -214,12 +216,21 @@ public class CityGenerator : MonoBehaviour
         if (dir == inter.getCorrect())
         {
             gM.AddPoint();
-            //Soniditos y vainas de pj
+            //Subir la velocidad
+            playerSpeed *= playerSpeedIncreaseMultiplier;
+            tiempoAnimGirar /= playerSpeedIncreaseMultiplier;
         }
         else
         {
             gM.RemovePoint();
             //Soniditos y vainas de pj
+            EstresScript.stressIncrement += 1;
+            if (playerSpeed > 0.1)
+            {
+                tiempoAnimGirar *= playerSpeedIncreaseMultiplier;
+                playerSpeed /= playerSpeedIncreaseMultiplier;
+
+            }
         }
 
         //Reset stuff

@@ -302,8 +302,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   micLoudness: 0
   stress: {fileID: 571794711}
-  volToRecoverStress: 0.5
-  minStressIncrement: 100
+  volToRecoverStress: 0.7
+  minStressIncrement: 75
   maxStressIncrement: 150
 --- !u!114 &218207751
 MonoBehaviour:
@@ -1201,8 +1201,10 @@ MonoBehaviour:
   player: {fileID: 670654398}
   carRotationPivot: {fileID: 1720240592}
   playerSpeed: 0.1
+  playerSpeedIncreaseMultiplier: 1.07
   playerColHandler: {fileID: 670654402}
   tiempoAnimGirar: 1
+  EstresScript: {fileID: 0}
   bocadillo: {fileID: 1976766402}
 --- !u!4 &1607931598
 Transform:
@@ -1453,6 +1455,10 @@ PrefabInstance:
     - target: {fileID: 945321187728059028, guid: ec8e04bdc74a22243af90ab827a13765, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 945321187728059029, guid: ec8e04bdc74a22243af90ab827a13765, type: 3}
+      propertyPath: stressIncrement
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 945321187728059029, guid: ec8e04bdc74a22243af90ab827a13765, type: 3}
       propertyPath: shaderEstressScript
