@@ -9,8 +9,11 @@ public class Intersection : MonoBehaviour
     private bool chosen = false;
     void Start()
     {
-        correcta = salidas[Random.Range(0, salidas.Count)];
-        chosen = true;
+        if (!chosen)
+        {
+            correcta = salidas[Random.Range(0, salidas.Count)];
+            chosen = true;
+        }
     }
     public Utility.Sentido getCorrect()
     {
