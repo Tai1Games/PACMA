@@ -9,8 +9,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MicVol.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PantallaVictoria.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Coche/CarSound.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PantallaVictoria.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -23,6 +23,7 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/PlayerCollisionHandler.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/MicVol.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PantallaVictoria.cs" />
+      <option value="$PROJECT_DIR$/Assets/Materials/Blur.shader" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1r6oKzBBsHZFFTVdPuypdCu15S1" />
