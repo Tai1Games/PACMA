@@ -198,6 +198,7 @@ GameObject:
   - component: {fileID: 218207748}
   - component: {fileID: 218207751}
   - component: {fileID: 218207750}
+  - component: {fileID: 218207752}
   m_Layer: 0
   m_Name: Voice Detection
   m_TagString: Untagged
@@ -342,6 +343,24 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7c0d9b8a9494ee14091542039a5bfc88, type: 3}
   - {fileID: 8300000, guid: 25b745478e9db954da2a740bb0630b58, type: 3}
   soundPlayer: {fileID: 670654403}
+--- !u!114 &218207752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218207746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e90b3a6120fb0eb4ca887f8830e3cabf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Keywords:
+  - Salir
+  - Menu
+  - Escape
+  - Pausa
+  command: Menu
 --- !u!1 &380646963
 GameObject:
   m_ObjectHideFlags: 0
@@ -1166,7 +1185,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 0944333e838137a47ac9b1f75f847ad9, type: 2}
     - target: {fileID: 1265049051227884799, guid: 65f9f2da22e0f2541b45d223bd7b4821, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1265049051227884799, guid: 65f9f2da22e0f2541b45d223bd7b4821, type: 3}
       propertyPath: m_LocalPosition.x
