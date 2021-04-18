@@ -154,17 +154,6 @@ public class CityGenerator : MonoBehaviour
 
     void initMovement(Sentido dir, Intersection inter)
     {
-        if (dir == inter.getCorrect())
-        {
-            gM.AddPoint();
-            //Soniditos y vainas de pj
-        }
-        else
-        {
-            gM.RemovePoint();
-            //Soniditos y vainas de pj
-        }
-
         Destroy(oldInters);
         oldInters = inters;
 
@@ -220,6 +209,17 @@ public class CityGenerator : MonoBehaviour
         else
         {
             Debug.LogError("Esto no debería ocurrir, sorry eksdi");
+        }
+
+        if (dir == inter.getCorrect())
+        {
+            gM.AddPoint();
+            //Soniditos y vainas de pj
+        }
+        else
+        {
+            gM.RemovePoint();
+            //Soniditos y vainas de pj
         }
 
         playerNextDir = Sentido.Recto;

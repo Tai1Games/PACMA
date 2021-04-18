@@ -1135,7 +1135,7 @@ MonoBehaviour:
   tileSize: 10
   maxStraight: 4
   minStraight: 1
-  failChance: 0
+  failChance: 0.5
   player: {fileID: 670654398}
   carRotationPivot: {fileID: 1720240592}
   playerSpeed: 0.1
